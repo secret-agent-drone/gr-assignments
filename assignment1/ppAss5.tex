@@ -1,0 +1,228 @@
+\documentclass[a4paper]{article} % A4 paper and 11pt font size
+
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}
+%\usepackage{tikz-feynman}
+\usepackage{pgfplots}
+\usepackage{pgffor}
+\usepackage[version-1-compatibility]{siunitx}
+\usepackage{fancyhdr}
+
+\usepackage{hyperref}
+
+\usepackage{geometry}
+
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=28mm,
+ right=28mm,
+ top=30mm,
+ bottom=40mm,
+ }
+
+
+\usepackage{framed}
+
+\usepackage{amssymb} %for Lagrangian L, order O
+\usepackage{cancel} %for strikethroughs
+\usepackage{slashed} %for Feynman slashes
+
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\pmx}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\m}{\mathcal{M}}
+\newcommand{\br}{\mathcal{B}}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\re}{Re}
+
+\newcommand{\bpp}{\(B^0 \to \pi^+\pi^-\)}
+\newcommand{\bpk}{\(B^0 \to \phi K_S\)}
+\newcommand{\tr}[1]{\text{Tr}\left[#1\right]}
+\newcommand{\mev}{\text{ MeV}}
+\newcommand{\gev}{\text{ GeV}}
+
+\renewcommand{\c}{\mathcal{C}}
+\newcommand{\p}{\mathcal{P}}
+
+\usepackage{gensymb}
+
+%%%%%%%%%%%%%%%CATE'S PREAMBLE BIT%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{trees}
+\usetikzlibrary{patterns}
+\usetikzlibrary{matrix,arrows} 				% For commutative diagram
+											% http://www.felixl.de/commu.pdf
+\usetikzlibrary{positioning}				% For "above of=" commands
+\usetikzlibrary{calc,through}				% For coordinates
+\usetikzlibrary{decorations.pathreplacing}  % For curly braces
+% http://www.math.ucla.edu/~getreuer/tikz.html
+\usepackage{pgffor}							% For repeating patterns
+
+\usetikzlibrary{decorations.pathmorphing}	% For Feynman Diagrams
+\usetikzlibrary{decorations.markings}
+\tikzset{
+	 >=stealth', %%  Uncomment for more conventional arrows
+    vector/.style={decorate, decoration={snake}, draw},
+	provector/.style={decorate, decoration={snake,amplitude=2.5pt}, draw},
+	antivector/.style={decorate, decoration={snake,amplitude=-2.5pt}, draw},
+    fermion/.style={draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+    fermionbar/.style={draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{<}}}},
+    fermionnoarrow/.style={draw=black},
+    gluon/.style={decorate, draw=black,
+        decoration={coil,amplitude=4pt, segment length=5pt}},
+    scalar/.style={dashed,draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+    scalarbar/.style={dashed,draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{<}}}},
+    scalarnoarrow/.style={dashed,draw=black},
+    electron/.style={draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+    bigvector/.style={decorate, decoration={snake,amplitude=4pt}, draw},
+    arrow/.style={draw=black, postaction={decorate},
+        decoration={markings,mark=at position 1 with {\arrow[draw=black]{>}}}},
+}
+
+% TIKZ - for block diagrams, 
+% from http://www.texample.net/tikz/examples/control-system-principles/
+% \usetikzlibrary{shapes,arrows}
+\tikzstyle{block} = [draw, rectangle, 
+    minimum height=3em, minimum width=6earticlem]
+
+%%%%%%%%%%%%%%END CATE'S PREAMBLE BIT%%%%%%%%%%%%%
+
+
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
+\usepackage{bm}
+
+%for side-by-side figures
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+%Curly epsilons
+\let\oldepsilon\epsilon
+\let\epsilon\varepsilon
+
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.1}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+
+\pagenumbering{arabic}
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{titlepage}
+
+    \begin{center}
+        \textsc{\large SN: 587623}\\[6cm]
+
+        \HRule \\[0.5cm]
+		\Huge \textbf{PHYC90011 Particle Physics}\\[0.5cm]
+        \huge \textbf{Assignment 5}\\[0.5cm] 
+        \HRule \\[1.5cm]
+        \begin{minipage}{0.4\textwidth}
+        \begin{center}
+
+        \large By \\[0.75cm]
+        \huge Braden \scshape Moore \\[0.5cm]
+        \normalsize \normalfont Master of Science \\
+        The University of Melbourne \\
+
+        \end{center}
+        \end{minipage}
+
+        \vfill
+
+        \large \today
+    \end{center}
+
+\newpage
+\end{titlepage}
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\rfoot{\textsc{Braden Moore, 587623}}
+\lfoot{\textsc{\today}}
+\rhead{\textsc{Particle Physics, Part 2: Assignment 3}}
+\setcounter{page}{1}
+\section{Drag racing in space in the Greco-Roman era}
+%%%%%%%%%%%%%%%%%%%%QUESTION 1%%%%%%%%%%%%%%%%%%%%%
+\begin{framed}
+Buoyed by the success of their intrepid interstellar experiment on the twin paradox (the legend is recounted in Section 1.13 of the 1st edition of A First Course in General Relativity, by B. F. Schutz), twin sisters Artemis and Diana decide to conduct a follow-up investigation into the physics of accelerated reference frames in flat space as follows. At the same instant, 1 the sisters jump into two rocket ships, which are initially at rest in a global inertial frame, 2 and race off in the x-direction with constant but unequal proper accelerations. In their space packs they carry a laser pointer (Artemis), a mirror (Diana), and identically manufactured clocks and rulers (Artemis and Diana). 3 Their departure points and trajectories are not the same. In the global inertial frame in which the rocket ships are initially at rest, Artemis starts out from the event $(t, x, y, z) = (0, g^{-1}, 0, 0)$, where $(t, x, y, z)$ are standard Minkowski coordinates, and g denotes her proper acceleration. As derived in lectures, her trajectory on a spacetime diagram is a hyperbola in the x-t plane defined parametrically by
+\begin{align}
+t_A(\tau A) &= g^{-1} \sinh g\tau_A,\\
+x_A(\tau A) &= g^{-1} \cosh g\tau_A,\\
+y_A(\tau A) &= 0,\\
+z_A(\tau A) &= 0
+\end{align}
+
+where $\tau_A$ is her proper time. Diana’s departure point, trajectory, and proper acceleration remain unspecified for now.
+\end{framed}
+
+\begin{framed}
+\textbf{(a)}
+Before attempting any experiments, Artemis constructs a new coordinate system $(t, x, y, z)$ for making measurements in the neighbourhood of her rocket ship. The construction proceeds in three steps, which we copy here. 
+\end{framed}
+
+\begin{framed}
+\textbf{i.} 
+Fermi-Walker transport the Minkowski basis vectors $\vec{e}_0$, $\vec{e}_1$, $\vec{e}_2$, and $\vec{e}_3$ along Artemis’s world line. Show that this procedure yields a new basis
+\begin{align}
+\vec{e}_0(\tau_A) &= \vec{e}_0 \cosh g\tau_A +\vec{e}_1 \sinh g\tau_A,\label{ai. eq1}\\
+\vec{e}_1(\tau_A) &= \vec{e}_0 \sinh g\tau_A +\vec{e}_1 \cosh g\tau_A,\\
+\vec{e}_2(\tau_A) &= \vec{e}_2,\\
+\vec{e}_3(\tau_A) &= \vec{e}_3\label{ai. eq4}
+\end{align}
+
+at the point along the world line labelled by $\tau_A$.
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} 
+Verify that one can obtain (\ref{ai. eq1})-(\ref{ai. eq4}) by Lorentz boosting the Minkowski basis vectors into the rocket ship’s momentarily comoving reference frame.
+\end{framed}
+
+\begin{framed}
+\textbf{iii.} 
+Let the vector $x'\vec{e}_{1'}+y'\vec{e}_{2'}+z'\vec{e}_{3'}$ be the displacement of an event $P$ from the spacetime location of the centre of mass of Artemis’s rocket ship. Let $t'$ be the proper time measured by Artemis at the space point $(x,y,z)=(0,0,0)$. Show that these definitions lead to the transformation
+\begin{align}
+t&=(g^{-1}+x')\sinh gt',\\
+x&=(g^{-1}+x') \cosh gt',\\
+y&=y'\\
+z&=z',
+\end{align}
+if $P$ occurs at $(t,x,y,z)$ in Minkowski coordinates.
+\end{framed}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
