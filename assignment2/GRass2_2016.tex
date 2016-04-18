@@ -1,0 +1,219 @@
+\documentclass[a4paper]{article} % A4 paper and 11pt font size
+
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}
+%\usepackage{tikz-feynman}
+\usepackage{pgfplots}
+\usepackage{pgffor}
+\usepackage[version-1-compatibility]{siunitx}
+\usepackage{fancyhdr}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=28mm,
+ right=28mm,
+ top=30mm,
+ bottom=40mm,
+ }
+
+
+\usepackage{framed}
+\usepackage{amssymb} %for Lagrangian L, order O
+\usepackage{cancel} %for strikethroughs
+\usepackage{slashed} %for Feynman slashes
+
+\newcommand{\pmx}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+\usepackage{gensymb}
+
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
+\usepackage{bm}
+
+%for side-by-side figures
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.1}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+
+\pagenumbering{arabic}
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{titlepage}
+
+    \begin{center}
+        \textsc{\large SN: 587623}\\[6cm]
+
+        \HRule \\[0.5cm]
+		\Huge \textbf{PHYC90012 General Relativity}\\[0.5cm]
+        \huge \textbf{Assignment 2}\\[0.5cm] 
+        \HRule \\[1.5cm]
+        \begin{minipage}{0.4\textwidth}
+        \begin{center}
+
+        \large By \\[0.75cm]
+        \huge Braden \scshape Moore \\[0.5cm]
+        \normalsize \normalfont Master of Science \\
+        The University of Melbourne \\
+
+        \end{center}
+        \end{minipage}
+
+        \vfill
+
+        \large \today
+    \end{center}
+
+\newpage
+\end{titlepage}
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\rfoot{\textsc{Braden Moore, 587623}}
+\lfoot{\textsc{\today}}
+\rhead{\textsc{General Relativity: Assignment 2}}
+\setcounter{page}{1}
+\setcounter{section}{1}
+\section{Klein's geometry}
+%%%%%%%%%%%%%%%%%%%%QUESTION 1%%%%%%%%%%%%%%%%%%%%%
+\begin{framed}
+A two-dimensional surface is covered by coordinates $(u,v)$ in the domain $u^2+v^2=1$. The independent components of the metric are given by
+\begin{align}
+g_{11}&=\frac{a^2(1-v^2)}{(1-u^2-v^2)^2},\label{1eq1}\\
+g_{12}&=\frac{a^2 uv}{(1-u^2-v^2)^2},\\
+g_{22}&=\frac{a^2(1-u^2)}{(1-u^2-v^2)^2},
+\end{align}
+the independent components of the inverse metric are given by
+\begin{align}
+g^{11}&=a^{-2}(1-u^2)(1-u^2-v^2),\\
+g^{12}&=-a^{-2} uv (1-u^2-v^2),\\
+g^{22}&= a^{-2}(1-v^2)(1-u^2-v^2),\label{1eq6}
+\end{align}
+and the independent, non-zero Christoffel symbols are given by
+\begin{align}
+\Gamma^{1}_{11}&=\frac{2u}{1-u^2-v^2},\label{gamma1 11}\\
+\Gamma^{1}_{12}&=\frac{v}{1-u^2-v^2},\\
+\Gamma^{2}_{12}&=\frac{u}{1-u^2-v^2},\\
+\Gamma^{2}_{22}&=\frac{2v}{1-u^2-v^2}.
+\end{align}
+Rember that $g_{\alpha\beta}$, $g^{\alpha\beta}$, and $\Gamma^{\lambda}_{\alpha\beta}$ are all symmetric in $\alpha$ and $\beta$.
+\end{framed}
+
+\begin{framed}
+\textbf{(a)} Starting from~(\ref{1eq1})-(\ref{1eq6}), derive the expression~(\ref{gamma1 11}) for $\Gamma^{1}_{11}$.
+\end{framed}
+
+\begin{framed}
+\textbf{(b)} Prove that the Riemann tensor with all indices lowered, $R_{\alpha\beta\gamma\delta}$, contains four nonzero elements, any three of which can be written in terms of the fourth.
+\end{framed}
+
+\begin{framed}
+\textbf{(c)} Prove that, in Klein’s geometry, the Ricci tensor satisfies
+\begin{align}
+R_{\alpha\beta}&=-\frac{g_{\alpha\beta}}{a^2},
+\intertext{and the Ricci scalar satifies}
+R&=-\frac{2}{a^2}.
+\end{align}
+\end{framed}
+
+\begin{framed}
+\textbf{(d)} Answer each of the following questions in one or two sentences.
+\end{framed}
+
+\begin{framed}
+\textbf{i.} In what fundamental way does Klein’s geometry differ from a two-sphere?
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} The hyperbola $x^2-y^2=1$ is rotated around the $y$-axis to form a three-dimensional hyperboloid of revolution. Does it possess positive or negative curvature? Justify your answer physically with a diagram; do not attempt to calculate anything.
+\end{framed}
+
+\begin{framed}
+\textbf{iii.} The hyperbola $x^2-y^2=1$ is now rotated around the $x$-axis. What is the sign of the curvature this time? Why?
+\end{framed}
+
+\begin{framed}
+\textbf{iv.} Setting aside their dimensionality, in what fundamental way do the hyperboloids of revolution in parts (d)(ii) and (d)(iii) differ from Klein's geometry? Justify your answer in words; don’t try to calculate anything.
+\end{framed}
+
+\begin{framed}
+\textbf{v.} Identify a spacetime manifold, that resembles Klein's geometry. Don’t worry too much about the precise mathematical meaning of ``resembles'', a qualitative justification is fine.
+\end{framed}
+
+\begin{framed}
+\textbf{(e)} Consider the triangle $\Delta$ABC, whose sides are ``straight lines'' (geodesics) joining the points A$(0,0)$, B$(b,0)$, and C$(0,b)$, with $b<1$. It is easy to show (you don't need to!) that the sides AB and AC are just the curves $v=0$ and $u=0$ respectively.
+\end{framed}
+
+\begin{framed}
+\textbf{i.} What is the equation of the geodesic joining B and C?
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} Prove that the sum of the interior angles of $\Delta$ABC is
+\begin{equation}
+\Sigma = \angle\text{ABC}+\angle\text{BCA}+\angle\text{CAB}=\frac{\pi}{2}+2\cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right).
+\end{equation}
+The sum of the angles is less than 180 degrees!
+\end{framed}
+
+\begin{framed}
+\textbf{iii.} Triangles in Klein’s geometry can have $\sum=0$! Without proof, sketch what such a triangle might look like. Your sketch by necessity will be an incomplete representation; there is no way to draw a Klein triangle faithfully on a flat page.
+\end{framed}
+
+\begin{framed}
+\textbf{(f) i.} Write down a closed form expression for the area A of $\Delta$ABC as an integral over a subset of the $(u,v)$ domain.
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} By changing variables to $y=v+u$ and $z=v-u$, recast your integral in the form
+\begin{equation}
+A=2a^2\int^b_0 \frac{dy~y}{(2-y^2)\sqrt{1-y^2}}.
+\end{equation}
+Hence show that one has
+\begin{equation}
+A=a^2(\pi-\Sigma).\label{A(pi,Sigma)}
+\end{equation}
+\end{framed}
+
+\begin{framed}
+\textbf{iii.} Explain briefly, in one or two sentences, why~(\ref{A(pi,Sigma)}) guarantees the \emph{nonexistence} of similar triangles in Klein’s geometry.
+\end{framed}
+
+\begin{framed}
+\textbf{(g)} A vector $\vec{W}$ with equal components $W^1$ and $W^2$ at the point $A(0,0)$ is parallel transported along the geodesic AB. Show that its components, when it reaches the point B$(b,0)$, are in the ratio
+\begin{equation}
+\frac{W^1}{W^2}=(1-b^2)^{1/2}
+\end{equation}
+\end{framed}
+
+
+
+\end{document}
+
+
+
+
+
+
+
