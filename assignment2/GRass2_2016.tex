@@ -156,7 +156,7 @@ So now we can evaluate the Christoffel symbols.
 &=\frac{1}{2}\left[\frac{4u(1-u^2)(1-v^2)-4u^2v^2}{(1-u^2-v^2)^2}\right]\\
 &=2u\left[\frac{1-u^2-v^2+\cancel{u^2v^2-u^2v^2}}{(1-u^2-v^2)^2}\right]\\
 &=\frac{2u}{1-u^2-v^2}
-\intertext{as required.}
+\intertext{as required. As an exercise, I have further derived the remaining Christoffel symbols}
 \Gamma^{1}_{12}&=\frac{1}{2}g^{1\mu}\left(g_{\mu 1,2}+g_{\mu 2,1}-g_{12,\mu}\right)\\
 &=\frac{1}{2}\left[g^{11} g_{11,2}+g^{12}g_{22,1}\right]\\
 &=\frac{1}{2}\left[a^{-2}(1-u^2)(1-u^2-v^2)\frac{2a^2v(1-v^2+u^2)}{(1-u^2-v^2)^3}\right.\nonumber\\
@@ -164,16 +164,23 @@ So now we can evaluate the Christoffel symbols.
 &=\frac{1}{2}\left[\frac{(1-u^2)\cdot 2v(1-v^2-u^2)-uv\cdot 2u(1-u^2+v^2)}{(1-u^2-v^2)^2}\right]\\
 &=v\left[\frac{(1-u^2)(1-v^2+u^2)-u^2(1-u^2+v^2)}{(1-u^2-v^2)^2}\right]\\
 &=v\left[\frac{\cancel{1-u^2-v^2}}{(1-u^2-v^2)^{\cancel{2}}}\right]\\
-&=\frac{v}{1-u^2-v^2}
-\intertext{as required.}
+&=\frac{v}{1-u^2-v^2}=\Gamma^{1}_{21},\quad\text{by symmetry}
+\intertext{as given.}
 \Gamma^{2}_{12}&=\frac{1}{2}g^{2\mu}\left(g_{\mu 1,2}+g_{\mu 2,1}-g_{12,\mu}\right)\\
 &=\frac{1}{2}\left[g^{21}g_{11,2}+g^{22}g_{22,1}\right]
 \intertext{Now, we deduced earlier that $g_{11,2}=g_{22,1}\rvert_{u\leftrightarrow v}$, we see by inspection of~(\ref{1eq6}) that $g^{22}=g^{11}\rvert_{u\leftrightarrow v}$, and by symmetry of the metric we have $g^{21}=g^{12}$. We note also that $g^{12}$ is symmetric under interchange of $u$ and $v$. Combining these results we find}
 \Gamma^{2}_{12}&=\frac{1}{2}\left[g^{12}g_{22,1}+g^{11}g_{11,2}\right]\rvert_{u\leftrightarrow v}\\
 &=\Gamma^{1}_{12}\rvert_{u\leftrightarrow v}\\
 &=\frac{u}{1-u^2-v^2}
+\intertext{as given.}
+\Gamma^{2}_{22}&=\frac{1}{2}g^{2\mu}\left(g_{\mu 2,2}+g_{\mu 2,2}-g_{22,\mu}\right)\\
+&=\frac{1}{2}\left[g^{21}\left(2g_{12,2}-g_{22,1}\right)+g^{22}g_{22,2}\right]
+\intertext{Similar to our approach for $\Gamma^{2}_{12}$, we note by observation that $g_{12,2}=g_{21,1}\rvert_{u \leftrightarrow v}$, $g_{22,1}=g_{11,2}\rvert_{u \leftrightarrow v}$, $g_{22}=g_{11}\rvert_{u \leftrightarrow v}$, and $g_{22,2}=g_{11,1}$, also noting that $g^{21}=g^{12}=g^{12}\rvert_{u \leftrightarrow v}$. Thus we find}
+\Gamma^{2}_{22}&=\frac{1}{2}\left[g^{12}(2g_{21,2}-g_{11,2})+g^{11}g_{11,1}\right]\rvert_{u \leftrightarrow v}\\
+&=\Gamma^{1}_{11}\rvert_{u \leftrightarrow v}\\
+&=\frac{2v}{1-u^2-v^2}=\Gamma^{2}_{21},\quad\text{by symmetry}
 \end{align}
-
+as given.
 
 
 \pagebreak %-----------------------------------------------------------
@@ -182,6 +189,38 @@ So now we can evaluate the Christoffel symbols.
 \textbf{(b)} Prove that the Riemann tensor with all indices lowered, $R_{\alpha\beta\gamma\delta}$, contains four nonzero elements, any three of which can be written in terms of the fourth.
 \end{framed}
 
+We recall the Bianchi identities for the Riemann tensor
+\begin{equation}
+R_{\alpha\beta\mu\nu}=\frac{1}{2}\left(g_{\alpha\nu,\beta \mu}+g_{\beta \mu, \alpha \nu}- g_{\alpha \mu, \beta \nu}-g_{\beta \nu,\alpha \mu}\right)\label{Riemann definition}
+\end{equation}
+
+Since $R_{\alpha\beta\mu\nu}$ is anti-symmetric under exchange $\alpha\leftrightarrow \beta$, and $\mu\leftrightarrow \nu$ also\footnote{This can be easily proved from~(\ref{Riemann definition}) by considering the symmetries of $g_{\alpha\beta,\mu\nu}$; however for brevity this proof is omitted.}, we know
+\begin{align}
+R_{\alpha\alpha\mu\nu}&=0\\
+R_{\alpha\beta\mu\mu}&=0
+\end{align}
+for all $\alpha,\beta,\mu,\nu$. Using this we greatly reduce the number of components to investigate. We find
+
+\begin{align}
+R_{11\mu\nu}=0&&R_{\alpha \beta 11}=0\\
+R_{22\mu\nu}=0&&R_{\alpha \beta 22}=0
+\end{align}
+
+We also know the Riemann tensor is symmetric under exchange of pairs $\alpha\beta\leftrightarrow \mu\nu$, i.e.
+\begin{equation}
+R_{\alpha\beta\mu\nu}=R_{\mu\nu\alpha\beta}
+\end{equation}
+
+Hence we find
+\begin{equation}
+R_{1212}=-R_{1221}=R_{2121}=-R_{2112}
+\end{equation}
+
+We can calculate the component $R_{1212}$ (and hence all can determine all other non-zero components) as
+\begin{align}
+R_{1212}&=\frac{1}{2}\left(g_{12,21}+g_{11,22}-g_{22,11}\right)\\
+&=\frac{1}{2}
+\end{align}
 
 \pagebreak %-----------------------------------------------------------
 
@@ -193,6 +232,30 @@ R_{\alpha\beta}&=-\frac{g_{\alpha\beta}}{a^2},
 R&=-\frac{2}{a^2}.
 \end{align}
 \end{framed}
+
+We can find the Ricci tensor by contracting the first and third indices of the Riemann tensor
+\begin{align}
+R_{\alpha\beta}&=R^{\mu}_{\phantom{\mu}\alpha\mu\beta}\\
+&=g^{\mu\nu}R_{\nu\alpha\mu\beta}
+\end{align}
+
+We shall calculate each component in Klein's geometry below.
+\begin{align}
+R_{11}&=g^{22}R_{2121}\\
+&=g^{22}R_{1212}\\
+R_{12}&=g^{12}R_{2112}\\
+&=-g^{12}R_{1212}=R_{21}\\
+R_{22}&=g^{11}R_{1212}
+\end{align}
+
+The Ricci scalar is formed by contracting the Ricci tensor:
+\begin{align}
+R&=g^{\alpha\beta}R_{\alpha\beta}\\
+&=-g^{\alpha\beta}\frac{g_{\alpha\beta}}{a^2}\\
+&=-\frac{2}{a^2}
+\end{align}
+since $g^{\alpha\beta}g_{\alpha\beta}=2$ in Klein's geometry.
+
 
 \pagebreak %-----------------------------------------------------------
 
