@@ -32,6 +32,7 @@
 \usepackage{slashed} %for Feynman slashes
 
 \newcommand{\pmx}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\ph}[1]{\phantom{#1}}
 
 \usepackage{gensymb}
 
@@ -47,6 +48,7 @@
 \setlength{\parindent}{2em}
 \setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.1}
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -238,19 +240,40 @@ We can find the Ricci tensor by contracting the first and third indices of the R
 R_{\alpha\beta}&=R^{\mu}_{\phantom{\mu}\alpha\mu\beta}\\
 &=\Gamma^{\mu}_{\phantom{\mu}\alpha\beta,\mu}-\Gamma^{\mu}_{\phantom{\mu}\alpha\mu,\beta}
 +\Gamma^{\mu}_{\phantom{\mu}\nu\mu}\Gamma^{\nu}_{\phantom{\nu}\alpha\beta}
--\Gamma^{\mu}_{\phantom{\mu}{\nu\beta}}\Gamma^{\nu}_{\phantom{\nu}\alpha\mu}\label{Rab from Schutz}
+-\Gamma^{\mu}_{\phantom{\mu}{\nu\beta}}\Gamma^{\nu}_{\phantom{\nu}\alpha\mu}\label{Rab from Schutz}\\
+&=\Gamma^{1}_{\ph{1}\alpha\beta,1}+\Gamma^{2}_{\ph{2}\alpha \beta,2}
+-\Gamma^{1}_{\ph{1}\alpha 1,\beta}-\Gamma^{2}_{\ph{2}\alpha 2,\beta}
++\Gamma^{1}_{\ph{1}\nu 1} \Gamma^{\nu}_{\ph{\nu}{\alpha\beta}}
++\Gamma^{2}_{\ph{1}\nu 2} \Gamma^{\nu}_{\ph{\nu}{\alpha\beta}}
+-\Gamma^{1}_{\ph{1}\nu \beta}\Gamma^{\nu}_{\ph{\nu}\alpha 1}
+-\Gamma^{2}_{\ph{2}\nu\beta}\Gamma^{\nu}_{\ph{\nu}\alpha 2}\\
+&=\Gamma^{1}_{\ph{1}\alpha\beta,1}+\Gamma^{2}_{\ph{2}\alpha \beta,2}
+-\Gamma^{1}_{\ph{1}\alpha 1,\beta}-\Gamma^{2}_{\ph{2}\alpha 2,\beta}
++\Gamma^{1}_{\ph{1}1 1} \Gamma^{1}_{\ph{1}{\alpha\beta}}
++\Gamma^{1}_{\ph{1}2 1} \Gamma^{2}_{\ph{2}{\alpha\beta}}
++\Gamma^{2}_{\ph{1}1 2} \Gamma^{1}_{\ph{1}{\alpha\beta}}
++\Gamma^{2}_{\ph{1}2 2} \Gamma^{2}_{\ph{2}{\alpha\beta}}\nonumber\\
+&~-\Gamma^{1}_{\ph{1}1\beta}\Gamma^{1}_{\ph{1}\alpha 1}
+-\Gamma^{1}_{\ph{2}2 \beta}\Gamma^{2}_{\ph{2}\alpha 1}
+-\Gamma^{2}_{\ph{2}1 \beta}\Gamma^{1}_{\ph{1}\alpha 2}
+-\Gamma^{2}_{\ph{2}2 \beta}\Gamma^{2}_{\ph{2}\alpha 2}
 \end{align}
 from Schutz (6.63).
 
 We can easily calculate the values of $\Gamma^{\alpha}_{\beta\mu,\nu}$:
 \begin{align}
-\Gamma^{1}_{11,1}&=-\frac{2(1-u^2+v^2)}{(1-u^2-v^2)^2}\\
-\Gamma^{1}_{11,2}&=\frac{4uv}{(1-u^2-v^2)^2}\\
-\Gamma^{1}_{12,1}&=\frac{2uv}{(1-u^2-v^2)^2}\\
-\Gamma^{1}_{12,2}&=\frac{1-u^2-v^2}{(1-u^2-v^2)^2}\\
-\Gamma^{2}_{12,1}&=\frac{•}{•}
+\Gamma^{1}_{11,1}=\frac{2(1-u^2+v^2)}{(1-u^2-v^2)^2}&&
+\Gamma^{1}_{11,2}=\frac{4uv}{(1-u^2-v^2)^2}\\
+\Gamma^{1}_{12,1}=\frac{2uv}{(1-u^2-v^2)^2}&&
+\Gamma^{1}_{12,2}=\frac{1-u^2+v^2}{(1-u^2-v^2)^2}\\
+\Gamma^{2}_{12,1}=\frac{1+u^2-v^2}{(1-u^2-v^2)^2}&&
+\Gamma^{2}_{12,2}=\frac{2uv}{(1-u^2-v^2)^2}\\
+\Gamma^{2}_{22,1}=\frac{4uv}{(1-u^2-v^2)^2}&&
+\Gamma^{2}_{22,2}=\frac{2(1-u^2+v^2)}{(1-u^2-v^2)^2}
 \end{align}
+with all others zero.
 
+\begin{comment}
 We can express each component in terms of the Riemann tensor as
 \begin{align}
 R_{11}&=g^{22}R_{2121}\\
@@ -260,10 +283,35 @@ R_{12}&=g^{12}R_{2112}\\
 R_{22}&=g^{11}R_{1212}
 \end{align}
 hence $R_{\alpha\beta}$ is symmetric under interchange $\alpha\leftrightarrow \beta$.
+\end{comment}
 
 We shall calculate each component of $R_{\alpha\beta}$ below using~(\ref{Rab from Schutz})
 \begin{align}
-R_{11}&=\Gamma
+R_{11}&=\cancel{\Gamma^{1}_{\ph{1}11,1}}+\Gamma^{2}_{\ph{2}1 1,2}
+-\cancel{\Gamma^{1}_{\ph{1}1 1,1}}-\Gamma^{2}_{\ph{2}1 2,1}
++\cancel{\Gamma^{1}_{\ph{1}1 1} \Gamma^{1}_{\ph{1}{11}}}
++\cancel{\Gamma^{1}_{\ph{1}2 1} \Gamma^{2}_{\ph{2}{11}}}
++\Gamma^{2}_{\ph{1}1 2} \Gamma^{1}_{\ph{1}{11}}
++\Gamma^{2}_{\ph{1}2 2} \Gamma^{2}_{\ph{2}{11}}\nonumber\\
+&~-\cancel{\Gamma^{1}_{\ph{1}11}\Gamma^{1}_{\ph{1}1 1}}
+-\cancel{\Gamma^{1}_{\ph{2}2 1}\Gamma^{2}_{\ph{2}1 1}}
+-\Gamma^{2}_{\ph{2}1 1}\Gamma^{1}_{\ph{1}1 2}
+-\Gamma^{2}_{\ph{2}2 1}\Gamma^{2}_{\ph{2}1 2}
+\intertext{by cancellations,}
+&=\cancel{\Gamma^{2}_{\ph{2}1 1,2}}-\Gamma^{2}_{\ph{2}1 2,1}
++\Gamma^{2}_{\ph{1}1 2} \Gamma^{1}_{\ph{1}{11}}
++\cancel{\Gamma^{2}_{\ph{1}2 2} \Gamma^{2}_{\ph{2}{11}}}
+-\cancel{{\Gamma^{2}_{\ph{2}1 1}}\Gamma^{1}_{\ph{1}1 2}}
+-\Gamma^{2}_{\ph{2}1 2}\Gamma^{2}_{\ph{2}1 2}
+\intertext{since $\Gamma^{2}_{\ph{2}11}=0$,}
+&=\Gamma^{2}_{\ph{1}1 2} \Gamma^{1}_{\ph{1}{11}}
+-\Gamma^{2}_{\ph{2}1 2}\Gamma^{2}_{\ph{2}1 2}
+-\Gamma^{2}_{\ph{2}1 2,1}\\
+&=\frac{1}{(1-u^2-v^2)}\left[u\cdot 2u - u\cdot u - (1+u^2-v^2)\right]\\
+&=\frac{1}{(1-u^2-v^2)^2}\left[2u^2-u^2-1-u^2+v^2\right]\\
+&=-\frac{(1-v^2)}{(1-u^2-v^2)^2}\\
+&=-\frac{1}{a^2}\frac{a^2(1-v^2)}{(1-u^2-v^2)^2}\\
+&=-\frac{g_{\alpha\beta}}{a^2}
 \end{align}
 
 
@@ -275,7 +323,7 @@ The Ricci scalar is formed by contracting the Ricci tensor:
 \begin{align}
 R&=g^{\alpha\beta}R_{\alpha\beta}\\
 &=-g^{\alpha\beta}\frac{g_{\alpha\beta}}{a^2}\\
-&=-\frac{2}{a^2}
+&=-\frac{2}{a^2}      
 \end{align}
 since $g^{\alpha\beta}g_{\alpha\beta}=2$ in Klein's geometry.
 
