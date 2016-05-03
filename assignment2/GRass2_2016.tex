@@ -218,8 +218,8 @@ R_{1212}=-R_{1221}=R_{2121}=-R_{2112}
 
 We can calculate the component $R_{1212}$ (and hence all can determine all other non-zero components) as
 \begin{align}
-R_{1212}&=\frac{1}{2}\left(g_{12,21}+g_{11,22}-g_{22,11}\right)\\
-&=\frac{1}{2}
+R_{1212}&=\frac{1}{2}\left(g_{12,21}+g_{21,12}-g_{11,22}-g_{22,11}\right)\\
+&=g_{12,12}
 \end{align}
 
 \pagebreak %-----------------------------------------------------------
@@ -236,10 +236,22 @@ R&=-\frac{2}{a^2}.
 We can find the Ricci tensor by contracting the first and third indices of the Riemann tensor
 \begin{align}
 R_{\alpha\beta}&=R^{\mu}_{\phantom{\mu}\alpha\mu\beta}\\
-&=g^{\mu\nu}R_{\nu\alpha\mu\beta}
+&=\Gamma^{\mu}_{\phantom{\mu}\alpha\beta,\mu}-\Gamma^{\mu}_{\phantom{\mu}\alpha\mu,\beta}
++\Gamma^{\mu}_{\phantom{\mu}\nu\mu}\Gamma^{\nu}_{\phantom{\nu}\alpha\beta}
+-\Gamma^{\mu}_{\phantom{\mu}{\nu\beta}}\Gamma^{\nu}_{\phantom{\nu}\alpha\mu}\label{Rab from Schutz}
+\end{align}
+from Schutz (6.63).
+
+We can easily calculate the values of $\Gamma^{\alpha}_{\beta\mu,\nu}$:
+\begin{align}
+\Gamma^{1}_{11,1}&=-\frac{2(1-u^2+v^2)}{(1-u^2-v^2)^2}\\
+\Gamma^{1}_{11,2}&=\frac{4uv}{(1-u^2-v^2)^2}\\
+\Gamma^{1}_{12,1}&=\frac{2uv}{(1-u^2-v^2)^2}\\
+\Gamma^{1}_{12,2}&=\frac{1-u^2-v^2}{(1-u^2-v^2)^2}\\
+\Gamma^{2}_{12,1}&=\frac{•}{•}
 \end{align}
 
-We shall calculate each component in Klein's geometry below.
+We can express each component in terms of the Riemann tensor as
 \begin{align}
 R_{11}&=g^{22}R_{2121}\\
 &=g^{22}R_{1212}\\
@@ -247,6 +259,17 @@ R_{12}&=g^{12}R_{2112}\\
 &=-g^{12}R_{1212}=R_{21}\\
 R_{22}&=g^{11}R_{1212}
 \end{align}
+hence $R_{\alpha\beta}$ is symmetric under interchange $\alpha\leftrightarrow \beta$.
+
+We shall calculate each component of $R_{\alpha\beta}$ below using~(\ref{Rab from Schutz})
+\begin{align}
+R_{11}&=\Gamma
+\end{align}
+
+
+
+
+
 
 The Ricci scalar is formed by contracting the Ricci tensor:
 \begin{align}
@@ -264,7 +287,7 @@ since $g^{\alpha\beta}g_{\alpha\beta}=2$ in Klein's geometry.
 \end{framed}
 
 \begin{framed}
-\textbf{i.} In what fundamental way does Klein’s geometry differ from a two-sphere?
+\textbf{i.} In what fundamental way does Klein's geometry differ from a two-sphere?
 \end{framed}
 
 \pagebreak %-----------------------------------------------------------
