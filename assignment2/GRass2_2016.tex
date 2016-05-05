@@ -220,13 +220,15 @@ Hence we find
 R_{1212}=-R_{1221}=R_{2121}=-R_{2112}
 \end{equation}
 
-\begin{comment}
-We can calculate the component $R_{1212}$ (and hence all can determine all other non-zero components) as
+We can calculate the component $R_{1212}$ (and hence determine the remaining components) as
 \begin{align}
 R_{1212}&=\frac{1}{2}\left(g_{12,21}+g_{21,12}-g_{11,22}-g_{22,11}\right)\\
-&=g_{12,12}
+&=g_{12,12}\\
+&=\frac{\partial}{\partial v}\left(g_{12,1}\right)\\
+&=\frac{\partial}{\partial v}\left(\frac{a^2 v(3u^2-v^2+1)}{(1-u^2-v^2)^3}\right)\\
+&=\frac{-a^2\left[3v^2-2v^2(9u^2+1)+(u^2-1)(3u^2+1)\right]}{(1-u^2-v^2)^4}\label{R1212}
 \end{align}
-\end{comment}
+which is, in general, non-zero (note that~\ref{R1212}) is symmetric under interchange $u\leftrightarrow v$, as we would expect).
 
  %-----------------------------------------------------------
 
@@ -381,7 +383,7 @@ since $g^{\alpha\beta}g_{\alpha\beta}=g^{\alpha \beta} g_{\beta \alpha}=\delta^{
 \textbf{i.} In what fundamental way does Klein's geometry differ from a two-sphere?
 \end{framed}
 
-???
+A 2-sphere has positive curvature (the geodesics converge). By contrast, Klein's geometry has negative curvature!
 
  %-----------------------------------------------------------
 
@@ -398,7 +400,14 @@ Along surfaces with positive curvature, geodesics will converge as they travel a
 \label{dii figure}
 \end{figure}
 
-We see that geodesics travelling along the surface would diverge; hence this hyperboloid possesses negative curvature. A triangle on the surface would look like FIGURE, with the sum of its angles $< 180^{\circ}$.
+We see that geodesics travelling along the surface would diverge; hence this hyperboloid possesses negative curvature. A triangle on the surface would look like Figure \ref{neg curv triangle}, with the sum of its angles $< 180^{\circ}$.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{images/negativeCurvTriangle.png}
+\caption{Triangle with $\Sigma<180^{\circ}$}
+\label{neg curv triangle}
+\end{figure}
 
  %-----------------------------------------------------------
 
@@ -410,10 +419,17 @@ We see that geodesics travelling along the surface would diverge; hence this hyp
 \centering
 \includegraphics[width=0.5\textwidth]{images/diii.png}
 \caption{$x^2-y^2=1$ rotated about the $x$-axis}
-\label{dii figure}
+\label{diii figure}
 \end{figure}
 
-We see that geodesics travelling along the surface would converge; hence this hyperboloid possesses positive curvature. A triangle on the surface would look like FIGURE, with the sum of its angles $> 180^{\circ}$.
+We see that geodesics travelling along the surface would converge; hence this hyperboloid possesses positive curvature. A triangle on the surface would look like Figure \ref{pos curv triangle} below, with the sum of its angles $> 180^{\circ}$.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{images/positiveCurvTriangle.png}
+\caption{Triangle with $\Sigma<180^{\circ}$}
+\label{pos curv triangle}
+\end{figure}
 
 
  %-----------------------------------------------------------
@@ -422,18 +438,18 @@ We see that geodesics travelling along the surface would converge; hence this hy
 \textbf{iv.} Setting aside their dimensionality, in what fundamental way do the hyperboloids of revolution in parts (d)(ii) and (d)(iii) differ from Klein's geometry? Justify your answer in words; don’t try to calculate anything.
 \end{framed}
 
+The hyperboloids differ from Klein's geometry in that geodesics can ``traverse'' around the space and return to their origin (for example, by travelling on a geodesic around the hyperboloid). Further, for these hyperboloids we have non-constant curvature.
+
+In the hyperboloid in Figure \ref{diii figure}, we note that there are obvious discontinuities. There are no discontinuities in Klein's geometry, which is an infinite plane.
+
+
  %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{v.} Identify a spacetime manifold, that resembles Klein's geometry. Don’t worry too much about the precise mathematical meaning of ``resembles'', a qualitative justification is fine.
 \end{framed}
 
-A spacetime manifold  resembling Klein's geometry is the interior surface of the paraboloid of rotation formed by rotating $z=x^2$ around the $y$-axis. After inspection of the (non-zero) Christoffel symbols, we note they become zero at $(u,v)=(0,0)$; i.e. locally space is flat at the origin in Klein's geometry. Also, we note that the Christoffel symbols tend to infinity as $u^2+v^2\to 1$, i.e. space becomes more curved further from the origin. Both of these properties are seen in the aforementioned spacetime manifold.
-
-
-NAH
-
-Anti-de Sitter space.
+We can consider anti-de Sitter space to resemble Klein's geometry. We would find that both have negative scalar curvature. The anti-de Sitter space is a maximally symmetric Lorenzian manifold (hence have a different signature metric), but ``locally'' the manifold would resemble Klein's geometry.
 
  %-----------------------------------------------------------
 
@@ -652,6 +668,17 @@ as required.
 \textbf{iii.} Triangles in Klein's geometry can have $\sum=0$! Without proof, sketch what such a triangle might look like. Your sketch by necessity will be an incomplete representation; there is no way to draw a Klein triangle faithfully on a flat page.
 \end{framed}
 
+A triangle in space with negative curvature will have $\Sigma<180^{\circ}$, as shown in Figure \ref{neg curv triangle}. One can imagine a triangle such as Figure \ref{no angle triangle} below.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{images/zeroAngle.png}
+\caption{Triangle with $\Sigma=0^{\circ}$}
+\label{no angle triangle}
+\end{figure}
+
+If the dotted lines extended to infinity, we would have a triangle with $\Sigma=0^{\circ}$. In flat space, the lines would look somewhat parallel.
+
  %-----------------------------------------------------------
 
 \begin{framed}
@@ -762,6 +789,36 @@ A&=\frac{a^2}{\sqrt{2}}\int^{b}_{0} m^{-1}\left[\frac{2y}{\sqrt{2-2y^2}}\right]~
 \end{align}
 
 as required.
+
+We will now show that $A=a^2(\pi-\Sigma)$.
+
+\begin{align}
+A&=2a^2\int^b_0 \frac{\text{d}y~y}{(2-y^2)\sqrt{1-y^2}}
+\intertext{Let $p=\sqrt{1-y^2}$}
+\Rightarrow \frac{dp}{dy}&=\frac{-2y\times\frac{1}{2}}{\sqrt{1-y^2}}=-\frac{y}{\sqrt{1-y^2}}
+=-\frac{y}{p}\\
+\Rightarrow A&=2a^2\int^{p=\sqrt{1-b^2}}_{p=1}\frac{1}{1+p^2}\frac{1}{p}y\times
+\frac{-p}{y}~\text{d}p\\
+&=-2a^2\int^{\sqrt{1-b^2}}_{1}\frac{1}{1+p^2}~\text{d}p\\
+&=2a^2\int_{\sqrt{1-b^2}}^{1}\frac{1}{1+p^2}~\text{d}p\\
+&=2a^2\left[\tan^{-1}(p)\right]^{1}_{\sqrt{1-b^2}}\\
+&=2a^2\left[\tan^{-1}(1)-\tan^{-1}\left(\sqrt{1-b^2}\right)\right]\\
+&=2a^2\left[\frac{\pi}{4}-\tan^{-1}\left(\sqrt{1-b^2}\right)\right]\label{pi sigma pre}
+\intertext{We now consider the remaining $\tan^{-1}$ term.}
+\tan^{-1}(x)&=\sin^{-1}\left(\frac{x}{\sqrt{x^2+1}}\right)\\
+\Rightarrow \tan^{-1}\left(\sqrt{1-b^2}\right)&=
+\sin^{-1}\left(\frac{\sqrt{1-b^2}}{\sqrt{2-b^2}}\right)\\
+&=\sin^{-1}\left(\sqrt{\frac{2-b^2-1}{2-b^2}}\right)\\
+&=\sin^{-1}\left(\sqrt{1-\frac{1}{2-b^2}}\right)\\
+\cos^{-1}(x)&=\sin^{-1}\left(\sqrt{1-x^2}\right),\quad\text{if }0 \leq x \leq 1\\
+\Rightarrow \tan^{-1}\left(\sqrt{1-b^2}\right)&= \sin^{-1}\left(\sqrt{1-\frac{1}{2-b^2}}\right)=
+\cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)
+\intertext{Substituting this into~(\ref{pi sigma pre}) we conclude}
+A&= 2a^2\left[\frac{\pi}{4}-\cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)\right]\\
+&=a^2\left[\frac{\pi}{2}-2cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)\right]\\
+&=a^2\left(\frac{\pi}{2}-\Sigma\right)
+\end{align}
+as required. 
  
  
  %-----------------------------------------------------------
@@ -769,6 +826,12 @@ as required.
 \begin{framed}
 \textbf{iii.} Explain briefly, in one or two sentences, why~(\ref{A(pi,Sigma)}) guarantees the \emph{nonexistence} of similar triangles in Klein’s geometry.
 \end{framed}
+
+The equation
+\begin{equation*}
+A=a^2\left(\frac{\pi}{2}-\Sigma\right)
+\end{equation*}
+tells us that in Klein's geometry, the area of a triangle is linked directly to the sum of its internal angles. Similar triangles possess the same internal angles and hence the same sum of internal angles; however since equation~(\ref{A(pi,Sigma)}) gives only a single value of area for any $\Sigma$, we see that the area is fixed, and hence similar triangles cannot exist in Klein's geometry.
 
  %-----------------------------------------------------------
 
@@ -779,9 +842,110 @@ as required.
 \end{equation}
 \end{framed}
 
+Parallel transport of a vector $\vec{V}$ along a curve $s$ is given by
+\begin{equation}
+U^{\beta}V^{\alpha}_{\ph{\alpha};\beta}=0
+\end{equation}
 
+As $V$ does not change ove the geodesic $AB$, we know $x^{\beta}=u=x^{1}$.
+
+We have two geodesic equations for the transport of $\vec{W}$ along $AB$:
+
+\begin{align}
+\frac{\partial W^{1}}{\partial u}+\Gamma^{1}_{\ph{1}11}W^{1}
++\Gamma^{1}_{ph{1}21}W^2&=0 \label{W1 diff eqn}\\
+\frac{\partial W^{2}}{\partial u}+\Gamma^{2}_{\ph{2}21}W^2&=0
+\end{align}
+
+Solving the second equation gives us
+\begin{align}
+\frac{\partial W^2}{\partial u}+\frac{u}{1-u^2-v^2}W^2&=0\\
+\Rightarrow \frac{\text{d}W^2}{W^2}&=-\frac{u~\text{d}u}{1-u^2-v^2}\\
+\log W^2&=\frac{1}{2}\log(1-u^2-v^2)+c_{1}\\
+W^2&=c_1\sqrt{1-u^2-v^2}\label{W2 eqn}
+\end{align}
+
+Now, substituting~(\ref{W2 eqn}) into~(\ref{W1 diff eqn}) we find
+\begin{align}
+\frac{\partial W^{1}}{\partial u}+\frac{2u}{1-u^2-v^2}W^1=\frac{c_1 v	}{\sqrt{1-u^2-v^2}}&=0\\
+(1-u^2-v^2)^{-1}\frac{\text{d}W^{1}}{\text{d}u}+\frac{2u}{(1-u^2-v^2)^2} W^{1}
++\frac{c_1 v}{(1-u^2-v^2)^{3/2}}&=0\\
+\frac{\partial}{\partial u}\left(\frac{W^{1}}{1-u^2-v^2}\right)&=-\frac{c_1 v}{(1-u^2-v^2)^{3/2}}\\
+\frac{W^1}{1-u^2-v^2}&=-c_1\int \frac{v~\text{d}v}{(1-u^2-v^2)^{3/2}}
+\end{align}
+
+We shall solve this integral through some clever substitution. We let
+\begin{align}
+k&=1-v^2,\\
+m&=\sqrt{k}\sin n
+\end{align}
+
+Then, we have
+\begin{align}
+\Rightarrow \int\frac{v~\text{d}v}{(1-u^2-v^2)^{3/2}}&=\frac{1}{(k-u^2)^{3/2}}\\
+&=k^{-3/2}\int \sec^2 n ~ \text{d}n\\
+&=k^{-3/2}\tan n + c_2\\
+&=k^{-3/2}\frac{n}{\sqrt{k^2-n^2}}+c_2\\
+&=\left(1-v^2)\right)^{-3/2}\frac{u}{\sqrt{1-u^2-v^2}}+c_2
+\end{align}
+
+So now we have
+\begin{align}
+\left(1-u^2-v^2\right)^{-1}W^{1}&=-c_1\left(1-v^2\right)^{-3/2}\frac{vu}{\sqrt{1-u^2-v^2}}+c_3\\
+\Rightarrow W^{1}&=-c_1 \left(1-v^2\right)^{-3/2}vu\sqrt{1-u^2-v^2}+c_3\left(1-u^2-v^2\right)
+\label{W1 eqn}
+\end{align}
+
+We can now combine~(\ref{W1 eqn}) and ~(\ref{W2 eqn}) to find the ratio $\frac{W^1}{W^2}$.
+
+At $(u,v)=(0,0)$, we have $\vec{W}=(w,w)$ (where $w$ is some constant; the components are equal at this point) so
+\begin{align}
+W^1(0,0)&=w=c_3\\
+W^2(0,0)&=w=c_1
+\end{align}
+
+Considering the point $(u,v)=(b,0)$ we find
+\begin{align}
+\frac{W^1}{W^2}&=\frac{c_3}{(1-b^2)}{c\sqrt{1-b^2}}\\
+&=\frac{w}{w}\left(1-b^2\right)^{-1/2}\\
+&=\left(1-b^2\right)^{-1/2}
+\end{align}
+
+as required.
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
