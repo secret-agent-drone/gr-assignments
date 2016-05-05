@@ -12,6 +12,8 @@
 \usepackage{pgffor}
 \usepackage[version-1-compatibility]{siunitx}
 \usepackage{fancyhdr}
+\usepackage{mathtools} %for underbraces without whitespace (\mathclap{})
+
 
 \usepackage{hyperref}
 \usepackage{geometry}
@@ -185,7 +187,7 @@ So now we can evaluate the Christoffel symbols.
 as given.
 
 
-\pagebreak %-----------------------------------------------------------
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{(b)} Prove that the Riemann tensor with all indices lowered, $R_{\alpha\beta\gamma\delta}$, contains four nonzero elements, any three of which can be written in terms of the fourth.
@@ -218,13 +220,15 @@ Hence we find
 R_{1212}=-R_{1221}=R_{2121}=-R_{2112}
 \end{equation}
 
+\begin{comment}
 We can calculate the component $R_{1212}$ (and hence all can determine all other non-zero components) as
 \begin{align}
 R_{1212}&=\frac{1}{2}\left(g_{12,21}+g_{21,12}-g_{11,22}-g_{22,11}\right)\\
 &=g_{12,12}
 \end{align}
+\end{comment}
 
-\pagebreak %-----------------------------------------------------------
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{(c)} Prove that, in Klein’s geometry, the Ricci tensor satisfies
@@ -240,7 +244,7 @@ We can find the Ricci tensor by contracting the first and third indices of the R
 R_{\alpha\beta}&=R^{\mu}_{\phantom{\mu}\alpha\mu\beta}\\
 &=\Gamma^{\mu}_{\phantom{\mu}\alpha\beta,\mu}-\Gamma^{\mu}_{\phantom{\mu}\alpha\mu,\beta}
 +\Gamma^{\mu}_{\phantom{\mu}\nu\mu}\Gamma^{\nu}_{\phantom{\nu}\alpha\beta}
--\Gamma^{\mu}_{\phantom{\mu}{\nu\beta}}\Gamma^{\nu}_{\phantom{\nu}\alpha\mu}\label{Rab from Schutz}\\
+-\Gamma^{\mu}_{\phantom{\mu}{\nu\beta}}\Gamma^{\nu}_{\phantom{\nu}\alpha\mu}\\
 &=\Gamma^{1}_{\ph{1}\alpha\beta,1}+\Gamma^{2}_{\ph{2}\alpha \beta,2}
 -\Gamma^{1}_{\ph{1}\alpha 1,\beta}-\Gamma^{2}_{\ph{2}\alpha 2,\beta}
 +\Gamma^{1}_{\ph{1}\nu 1} \Gamma^{\nu}_{\ph{\nu}{\alpha\beta}}
@@ -256,7 +260,7 @@ R_{\alpha\beta}&=R^{\mu}_{\phantom{\mu}\alpha\mu\beta}\\
 &~-\Gamma^{1}_{\ph{1}1\beta}\Gamma^{1}_{\ph{1}\alpha 1}
 -\Gamma^{1}_{\ph{2}2 \beta}\Gamma^{2}_{\ph{2}\alpha 1}
 -\Gamma^{2}_{\ph{2}1 \beta}\Gamma^{1}_{\ph{1}\alpha 2}
--\Gamma^{2}_{\ph{2}2 \beta}\Gamma^{2}_{\ph{2}\alpha 2}
+-\Gamma^{2}_{\ph{2}2 \beta}\Gamma^{2}_{\ph{2}\alpha 2}\label{Rab from Schutz}
 \end{align}
 from Schutz (6.63).
 
@@ -293,7 +297,7 @@ R_{11}&=\cancel{\Gamma^{1}_{\ph{1}11,1}}+\Gamma^{2}_{\ph{2}1 1,2}
 +\cancel{\Gamma^{1}_{\ph{1}2 1} \Gamma^{2}_{\ph{2}{11}}}
 +\Gamma^{2}_{\ph{1}1 2} \Gamma^{1}_{\ph{1}{11}}
 +\Gamma^{2}_{\ph{1}2 2} \Gamma^{2}_{\ph{2}{11}}\nonumber\\
-&~-\cancel{\Gamma^{1}_{\ph{1}11}\Gamma^{1}_{\ph{1}1 1}}
+&\quad-\cancel{\Gamma^{1}_{\ph{1}11}\Gamma^{1}_{\ph{1}1 1}}
 -\cancel{\Gamma^{1}_{\ph{2}2 1}\Gamma^{2}_{\ph{2}1 1}}
 -\Gamma^{2}_{\ph{2}1 1}\Gamma^{1}_{\ph{1}1 2}
 -\Gamma^{2}_{\ph{2}2 1}\Gamma^{2}_{\ph{2}1 2}
@@ -311,8 +315,47 @@ R_{11}&=\cancel{\Gamma^{1}_{\ph{1}11,1}}+\Gamma^{2}_{\ph{2}1 1,2}
 &=\frac{1}{(1-u^2-v^2)^2}\left[2u^2-u^2-1-u^2+v^2\right]\\
 &=-\frac{(1-v^2)}{(1-u^2-v^2)^2}\\
 &=-\frac{1}{a^2}\frac{a^2(1-v^2)}{(1-u^2-v^2)^2}\\
-&=-\frac{g_{\alpha\beta}}{a^2}
+&=-\frac{g_{11}}{a^2}
+\intertext{as required.}
+R_{12}&=\Gamma^{1}_{\ph{1}12,1}+\cancel{\Gamma^{2}_{\ph{2}1 2,2}}
+-\Gamma^{1}_{\ph{1}1 1,2}-\cancel{\Gamma^{2}_{\ph{2}1 2,2}}
++\cancel{\Gamma^{1}_{\ph{1}1 1} \Gamma^{1}_{\ph{1}{12}}}
++\Gamma^{1}_{\ph{1}2 1} \Gamma^{2}_{\ph{2}{12}}
++\cancel{\Gamma^{2}_{\ph{1}1 2} \Gamma^{1}_{\ph{1}{12}}}
++\cancel{\Gamma^{2}_{\ph{1}2 2} \Gamma^{2}_{\ph{2}{12}}}\nonumber\\
+&\quad-\cancel{\Gamma^{1}_{\ph{1}12}\Gamma^{1}_{\ph{1}1 1}}
+-\cancel{\Gamma^{1}_{\ph{2}2 2}\Gamma^{2}_{\ph{2}1 1}}
+-\cancel{\Gamma^{2}_{\ph{2}1 2}\Gamma^{1}_{\ph{1}1 2}}
+-\cancel{\Gamma^{2}_{\ph{2}2 2}\Gamma^{2}_{\ph{2}1 2}}\\
+&=\Gamma^{1}_{\ph{1}12,1}-\Gamma^{1}_{\ph{1}1 1,2}+\Gamma^{1}_{\ph{1}2 1} \Gamma^{2}_{\ph{2}{12}}\\
+&=\frac{1}{(1-u^2-v^2)}\left[2uv-4uv+v\cdot u\right]\\
+&=-\frac{uv}{(1-u^2-v^2)^2}\\
+&=-\frac{1}{a^2}\frac{a^2uv}{(1-u^2-v^2)^2}\\
+&=-\frac{g_{12}}{a^2}
+\intertext{as required (note by symmetry, $R_{12}=R_{21}$, so $R_{21}=-\frac{g_{21}}{a^2}$).}
+R_{22}&=\cancel{\Gamma^{1}_{\ph{1}22,1}}+\cancel{\Gamma^{2}_{\ph{2}2 2,2}}
+-\Gamma^{1}_{\ph{1}2 1,2}-\cancel{\Gamma^{2}_{\ph{2}2 2,2}}
++\cancel{\Gamma^{1}_{\ph{1}1 1} \Gamma^{1}_{\ph{1}{22}}}
++\Gamma^{1}_{\ph{1}2 1} \Gamma^{2}_{\ph{2}{22}}
++\cancel{\Gamma^{2}_{\ph{2}1 2} \Gamma^{1}_{\ph{1}{22}}}
++\cancel{\Gamma^{2}_{\ph{2}2 2} \Gamma^{2}_{\ph{2}{22}}}\nonumber\\
+&~-\Gamma^{1}_{\ph{1}12}\Gamma^{1}_{\ph{1}2 1}
+-\cancel{\Gamma^{1}_{\ph{2}2 2}\Gamma^{2}_{\ph{2}2 1}}
+-\cancel{\Gamma^{2}_{\ph{2}1 2}\Gamma^{1}_{\ph{1}2 2}}
+-\cancel{\Gamma^{2}_{\ph{2}2 2}\Gamma^{2}_{\ph{2}2 2}}\\
+&=\Gamma^{1}_{\ph{1}2 1} \Gamma^{2}_{\ph{2}{22}}-\Gamma^{1}_{\ph{1}12}\Gamma^{1}_{\ph{1}2 1}-\Gamma^{1}_{\ph{1}2 1,2}\\
+&=\frac{1}{(1-u^2-v^2)^2}\left[v\cdot 2v - v\cdot v - (1-u^2+v^2)\right]\\
+&=\frac{1}{(1-u^2-v^2)^2}\left[2v^2 - v^2 - 1 + u^2 - v^2)\right]\\
+&=-\frac{(1-u^2)}{(1-u^2-v^2)^2}\\
+&=-\frac{1}{a^2}\frac{a^2(1-u^2)}{(1-u^2-v^2)^2}\\
+&=-\frac{g_{22}}{a^2}
+\intertext{as required.}
 \end{align}
+
+Hence we have proved that, in Klen's geometry,
+\begin{equation}
+R_{\alpha\beta}=-\frac{g_{\alpha\beta}}{a^2}
+\end{equation}
 
 
 
@@ -325,10 +368,10 @@ R&=g^{\alpha\beta}R_{\alpha\beta}\\
 &=-g^{\alpha\beta}\frac{g_{\alpha\beta}}{a^2}\\
 &=-\frac{2}{a^2}      
 \end{align}
-since $g^{\alpha\beta}g_{\alpha\beta}=2$ in Klein's geometry.
+since $g^{\alpha\beta}g_{\alpha\beta}=g^{\alpha \beta} g_{\beta \alpha}=\delta^{\alpha}_{\ph{\alpha}\alpha}=2$ in Klein's geometry.
 
 
-\pagebreak %-----------------------------------------------------------
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{(d)} Answer each of the following questions in one or two sentences.
@@ -338,31 +381,61 @@ since $g^{\alpha\beta}g_{\alpha\beta}=2$ in Klein's geometry.
 \textbf{i.} In what fundamental way does Klein's geometry differ from a two-sphere?
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+???
+
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{ii.} The hyperbola $x^2-y^2=1$ is rotated around the $y$-axis to form a three-dimensional hyperboloid of revolution. Does it possess positive or negative curvature? Justify your answer physically with a diagram; do not attempt to calculate anything.
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+Along surfaces with positive curvature, geodesics will converge as they travel along the surface. By contrast, geodesics along surfaces of negative curvature will diverge.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{images/dii.png}
+\caption{$x^2-y^2=1$ rotated about the $y$-axis}
+\label{dii figure}
+\end{figure}
+
+We see that geodesics travelling along the surface would diverge; hence this hyperboloid possesses negative curvature. A triangle on the surface would look like FIGURE, with the sum of its angles $< 180^{\circ}$.
+
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{iii.} The hyperbola $x^2-y^2=1$ is now rotated around the $x$-axis. What is the sign of the curvature this time? Why?
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{images/diii.png}
+\caption{$x^2-y^2=1$ rotated about the $x$-axis}
+\label{dii figure}
+\end{figure}
+
+We see that geodesics travelling along the surface would converge; hence this hyperboloid possesses positive curvature. A triangle on the surface would look like FIGURE, with the sum of its angles $> 180^{\circ}$.
+
+
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{iv.} Setting aside their dimensionality, in what fundamental way do the hyperboloids of revolution in parts (d)(ii) and (d)(iii) differ from Klein's geometry? Justify your answer in words; don’t try to calculate anything.
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{v.} Identify a spacetime manifold, that resembles Klein's geometry. Don’t worry too much about the precise mathematical meaning of ``resembles'', a qualitative justification is fine.
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+A spacetime manifold  resembling Klein's geometry is the interior surface of the paraboloid of rotation formed by rotating $z=x^2$ around the $y$-axis. After inspection of the (non-zero) Christoffel symbols, we note they become zero at $(u,v)=(0,0)$; i.e. locally space is flat at the origin in Klein's geometry. Also, we note that the Christoffel symbols tend to infinity as $u^2+v^2\to 1$, i.e. space becomes more curved further from the origin. Both of these properties are seen in the aforementioned spacetime manifold.
+
+
+NAH
+
+Anti-de Sitter space.
+
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{(e)} Consider the triangle $\Delta$ABC, whose sides are ``straight lines'' (geodesics) joining the points A$(0,0)$, B$(b,0)$, and C$(0,b)$, with $b<1$. It is easy to show (you don't need to!) that the sides AB and AC are just the curves $v=0$ and $u=0$ respectively.
@@ -372,7 +445,99 @@ since $g^{\alpha\beta}g_{\alpha\beta}=2$ in Klein's geometry.
 \textbf{i.} What is the equation of the geodesic joining B and C?
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+From Schutz (6.51), letting $\lambda$ be the parameter of the geodesic with $x^1=u$ and $x^2=v$ we have the geodesic equation
+\begin{equation}
+\frac{d}{d\lambda}\left(\frac{dx^{\alpha}}{d\lambda}\right)+\Gamma^{\alpha}_{\ph{\alpha}\mu\beta}
+\frac{dx^{\mu}}{d\lambda}\frac{dx^{\beta}}{d\lambda}=0
+\end{equation}
+For $\alpha=1$ we have
+\begin{align}
+\frac{d}{d\lambda}\left(\frac{du}{d\lambda}\right)&=-\Gamma^{1}_{\ph{1}\mu\beta}
+\frac{dx^{\mu}}{d\lambda}\frac{dx^{\beta}}{d\lambda}\\
+&=-\Gamma^{1}_{\ph{1}11}\frac{dx^{1}}{d\lambda}\frac{dx^{1}}{d\lambda}
+-\Gamma^{1}_{\ph{1}12}\frac{dx^{1}}{d\lambda}\frac{dx^{2}}{d\lambda}-
+-\Gamma^{1}_{\ph{1}21}\frac{dx^{2}}{d\lambda}\frac{dx^{1}}{d\lambda}-
+-\cancel{\Gamma^{1}_{\ph{1}22}\frac{dx^{2}}{d\lambda}\frac{dx^{2}}{d\lambda}}\\
+&=-\Gamma^{1}_{\ph{1}11}\left(\frac{du}{d\lambda}\right)^2
+-2\Gamma^{1}_{\ph{1}12}\frac{du}{d\lambda}\frac{dv}{d\lambda}
+\end{align}
+which can be written as
+\begin{align}
+\frac{d}{d\lambda}\left(\frac{du}{d\lambda}\right)+
+\Gamma^{1}_{\ph{1}11}\left(\frac{du}{d\lambda}\right)^2
++2\Gamma^{1}_{\ph{1}12}\frac{du}{d\lambda}\frac{dv}{d\lambda}&=0\\
+\Rightarrow \frac{d}{d\lambda}\left(\frac{du}{d\lambda}\right)+
+2u(1-u^2-v^2)^{-1}\left(\frac{du}{d\lambda}\right)^2
++2v(1-u^2-v^2)^{-1}\frac{du}{d\lambda}\frac{dv}{d\lambda}&=0\label{geodes chris0}\\
+\Rightarrow \frac{d}{d\lambda}\left(\frac{du}{d\lambda}\right)(1-u^2-v^2)^{-1}+
+2u(1-u^2-v^2)^{-2}\left(\frac{du}{d\lambda}\right)^2
++2v(1-u^2-v^2)^{-2}\frac{du}{d\lambda}\frac{dv}{d\lambda}&=0\label{geodes chris1}\\
+\Rightarrow \frac{d}{d\lambda}\left[(1-u^2-v^2)^{-1}\frac{du}{d\lambda}\right]&=0 \label{geodes chris2}
+\end{align}
+
+We shall prove that going from~(\ref{geodes chris1}) to~(\ref{geodes chris2}) is correct.
+\begin{align}
+\frac{d}{d\lambda}\left[(1-u^2-v^2)^{-1}\frac{du}{d\lambda}\right]&=
+\frac{d}{d\lambda}\left[(1-u^2-v^2)^{-1}\right)\frac{du}{d\lambda}+(1-u^2-v^2)^{-1}\frac{d^2 u}{d\lambda^2}\\
+&=\left[-\frac{d}{d\lambda}\left(-u^2\right)+-\frac{d}{d\lambda}\left(-v^2\right)\right]
+(1-u^2-v^2)^{-2}\frac{du}{d\lambda}+(1-u^2-v^2)^{-1}\frac{d^2 u}{d\lambda^2}\\
+&=\left[\frac{du}{d\lambda}\frac{d(u^2)}{du}+\frac{dv}{d\lambda}\frac{d(v^2)}{dv}\right]
+(1-u^2-v^2)^{-2}\frac{du}{d\lambda}+(1-u^2-v^2)^{-1}\frac{d^2 u}{d\lambda^2}\\
+&=\left[2u\frac{du}{d\lambda}+2v\frac{dv}{d\lambda}\right]
+(1-u^2-v^2)^{-2}\frac{du}{d\lambda}+(1-u^2-v^2)^{-1}\frac{d^2 u}{d\lambda^2}\\
+&=\text{LHS of}~(\ref{geodes chris1})
+\end{align}
+
+Hence this is indeed correct.
+
+For $\alpha=2$ we have
+\begin{align}
+\frac{d}{d\lambda}\left(\frac{dv}{d\lambda}\right)&=-\Gamma^{2}_{\ph{1}\mu\beta}
+\frac{dx^{\mu}}{d\lambda}\frac{dx^{\beta}}{d\lambda}\\
+&=-\cancel{\Gamma^{2}_{\ph{2}11}\frac{dx^{1}}{d\lambda}\frac{dx^{1}}{d\lambda}}
+-\Gamma^{2}_{\ph{2}12}\frac{dx^{1}}{d\lambda}\frac{dx^{2}}{d\lambda}-
+-\Gamma^{2}_{\ph{2}21}\frac{dx^{2}}{d\lambda}\frac{dx^{1}}{d\lambda}-
+-\Gamma^{2}_{\ph{2}22}\frac{dx^{2}}{d\lambda}\frac{dx^{2}}{d\lambda}\\
+&=-\Gamma^{2}_{\ph{2}22}\left(\frac{dv}{d\lambda}\right)^2
+-2\Gamma^{2}_{\ph{2}12}\frac{du}{d\lambda}\frac{dv}{d\lambda}\\
+&=-2v(1-u^2-v^2)^{-1}\left(\frac{dv}{d\lambda}\right)^2
+-2u(1-u^2-v^2)^{-1}\frac{du}{d\lambda}\frac{dv}{d\lambda}
+\end{align}
+
+By comparison with~(\ref{geodes chris0})-(\ref{geodes chris2}), we see that this implies
+\begin{equation}
+\frac{d}{d\lambda}\left[(1-u^2-v^2)^{-1}\frac{dv}{d\lambda}\right]=0
+\end{equation}
+
+We now find
+\begin{align}
+\frac{d}{d\lambda}\left[(1-u^2-v^2)^{-1}\frac{du}{d\lambda}\right]&=0\Rightarrow
+(1-u^2-v^2)^{-1}\frac{du}{d\lambda}=c_1	\label{divide1}\\
+\frac{d}{d\lambda}\left[(1-u^2-v^2)^{-1}\frac{dv}{d\lambda}\right]&=0\Rightarrow
+(1-u^2-v^2)^{-1}\frac{dv}{d\lambda}=c_2	\label{divide2}
+\end{align}
+
+Dividing~(\ref{divide1}) by~(\ref{divide2}) we find
+\begin{align}
+\frac{du}{dv}&=\frac{c_1}{c_2}\equiv c_3\\
+\Rightarrow v&=c_3 u+c_4
+\end{align}
+
+Since the point $(0,b)$ lies on the geodesic we have,
+\begin{align}
+b&=c_4\\
+\Rightarrow c_4&=b
+\intertext{Similarly using the point $(b,0)$,}
+0&=bc_3+b\\
+\Rightarrow c_3&=-1
+\end{align}
+
+Thus we conclude that equation of the geodesic joining $B$ and $C$ is
+\begin{equation}
+v=-u+b
+\end{equation}
+
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{ii.} Prove that the sum of the interior angles of $\Delta$ABC is
@@ -382,24 +547,151 @@ since $g^{\alpha\beta}g_{\alpha\beta}=2$ in Klein's geometry.
 The sum of the angles is less than 180 degrees!
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+The cosine of the angle between two vectors $\vec{M}$ and $\vec{N}$ is given by
+\begin{equation}
+\cos\theta=\frac{\vec{M}\cdot\vec{N}}{\lvert\vec{M}\rvert\lvert\vec{N}\rvert}
+\end{equation}
+
+In component notation we have
+\begin{equation}
+\theta=\cos^{-1}\left(\frac{g_{\alpha\beta}M^{\alpha}N^{\beta}}{\sqrt{g_{ij}M^{i}M^{j}g_{kl}N^{k}N^{l}}}\right)
+\end{equation}
+
+The angle between two curves at a point is equal to the angle between curves pointing in the same direction;
+
+The equations bounding the triangle parametrised by $\lambda$ are given as
+\begin{align}
+\vec{a}&=(\lambda,0)\\
+\vec{b}&=(0,\lambda)\\
+\vec{c}&=(\lambda,b-\lambda)
+\intertext{where $\lambda\leq b$.}
+\Rightarrow \vec{\dot{a}}&=(1,0)\\
+\vec{\dot{b}}&=(0,1)\\
+\vec{\dot{c}}&=(1,-1)
+\end{align}
+
+We shall use these direction vectors WHY????.
+
+\subsection*{Calculating $\angle$ABC}
+We use $\vec{M}=\vec{\dot{a}}$ and $\vec{N}=\vec{\dot{c}}$. At the point B$(b,0)$,
+\begin{align}
+g_{11}&=\frac{a^2}{(1-b^2)^2}\\
+g_{12}&=0\\
+g_{22}&=\frac{a^2}{1-b^2}
+\end{align}
+
+Hence we find
+\begin{align}
+\angle\text{ABC}&=\cos^{-1}\left(\frac{g_{11}}{\sqrt{g_{11}g_{11}+g_{11}g_{22}}}\right)\\
+&=\cos^{-1}\left(\frac{\frac{a^2}{(1-b^2)^{2}}}{\sqrt{\frac{a^4}{(1-b^2)^4}+\frac{a^4}{(1-b^2)^3}}}
+\right)\\
+&=\cos^{-1}\left(\frac{a^2}{(1-b^2)^2}\sqrt{\frac{1+(1-b^2)}{(1-b^2)^4}}\right)\\
+&=\cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)
+\end{align}
+
+\subsection*{Calculating $\angle$BCA}
+We use $\vec{M}=\vec{\dot{b}}$ and $\vec{N}=\vec{\dot{c}}$. At the point C$(0,b)$,
+\begin{align}
+g_{11}&=\frac{a^2}{1-b^2}\\
+g_{12}&=0\\
+g_{22}&=\frac{a^2}{(1-b^2)^2}
+\end{align}
+
+Hence we find
+\begin{align}
+\angle\text{BCA}&=\cos^{-1}\left(\frac{g_{22}}{\sqrt{g_{22}g_{11}+g_{22}g_{22}}}\right)\\
+&=\cos^{-1}\left(\frac{\frac{a^2}{(1-b^2)^{2}}}{\sqrt{\frac{a^4}{(1-b^2)^4}+\frac{a^4}{(1-b^2)^3}}}
+\right)\\
+&=\cos^{-1}\left(\frac{a^2}{(1-b^2)^2}\sqrt{\frac{1+(1-b^2)}{(1-b^2)^4}}\right)\\
+&=\cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)
+\end{align}
+
+\subsection*{Calculating $\angle$ABC}
+We use $\vec{M}=\vec{\dot{a}}$ and $\vec{N}=\vec{\dot{c}}$. At the point B$(b,0)$,
+\begin{align}
+g_{11}&=\frac{a^2}{(1-b^2)^2}\\
+g_{12}&=0\\
+g_{22}&=\frac{a^2}{1-b^2}
+\end{align}
+
+Hence we find
+\begin{align}
+\angle\text{ABC}&=\cos^{-1}\left(\frac{g_{11}}{\sqrt{g_{11}g_{11}+g_{11}g_{22}}}\right)\\
+&=\cos^{-1}\left(\frac{\frac{a^2}{(1-b^2)^{2}}}{\sqrt{\frac{a^4}{(1-b^2)^4}+\frac{a^4}{(1-b^2)^3}}}
+\right)\\
+&=\cos^{-1}\left(\frac{a^2}{(1-b^2)^2}\sqrt{\frac{1+(1-b^2)}{(1-b^2)^4}}\right)\\
+&=\cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)
+\end{align}
+
+
+\subsection*{Calculating $\angle$CAB}
+We use $\vec{M}=\vec{\dot{a}}$ and $\vec{N}=\vec{\dot{b}}$. At the point A$(0,0)$,
+\begin{align}
+g_{11}&=a^2\\
+g_{12}&=0\\
+g_{22}&=a^2
+\end{align}
+
+Hence we find
+\begin{align}
+\angle\text{BCA}&=\cos^{-1}\left(\frac{\cancel{g_{12}}}{\sqrt{g_{11}g_{22}}}\right)\\
+&=\cos^{-1}\left(0\right)\\
+&=\frac{\pi}{2}
+\end{align}
+
+Summing these angles we indeed find
+\begin{equation}
+\Sigma = \angle\text{ABC}+\angle\text{BCA}+\angle\text{CAB}=\frac{\pi}{2}+2\cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)
+\end{equation}
+
+as required.
+
+ %-----------------------------------------------------------
 
 \begin{framed}
-\textbf{iii.} Triangles in Klein’s geometry can have $\sum=0$! Without proof, sketch what such a triangle might look like. Your sketch by necessity will be an incomplete representation; there is no way to draw a Klein triangle faithfully on a flat page.
+\textbf{iii.} Triangles in Klein's geometry can have $\sum=0$! Without proof, sketch what such a triangle might look like. Your sketch by necessity will be an incomplete representation; there is no way to draw a Klein triangle faithfully on a flat page.
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{(f) i.} Write down a closed form expression for the area A of $\Delta$ABC as an integral over a subset of the $(u,v)$ domain.
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+Surface area depends not on the parameterisation of the space, but only on the surface itself. We have an expression for area
+\begin{equation}
+A=\int_{\text{surface}}\sqrt{\det g}~\text{d}A
+\end{equation}
+
+where $g$ is the metric. We have
+\begin{align}
+g&=\pmx{g_{11}&g_{12}\\g_{21}&g_{22}}\\
+\Rightarrow \det g&=g_{11}g_{22}-g_{12}g_{21}\\
+&=\frac{a^4(1-v^2)(1-u^2)-a^4 u^2 v^2}{(1-u^2-v^2)^4}\\
+&=\frac{a^4}{(1-u^2-v^2)^4}\left[1-u^2-v^2+\cancel{u^2 v^2}-\cancel{u^2 v^2}\right]\\
+&=\frac{a^4}{(1-u^2-v^2)^3}
+\end{align}
+
+We can now determine an expression for the area of $\Delta$ABC as
+\begin{align}
+A&=\iint \frac{a^4}{(1-u^2-v^2)^3}~\text{d}u~\text{d}v\\
+&=\int_{v=0}^{v=b}\int_{u=0}^{u=b-v}\frac{a^2}{(1-u^2-v^2)^{3/2}}~\text{d}u~\text{d}v\label{abc area uv}
+\end{align}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{images/fi.png}
+\caption{The triangle $\Delta$ABC on the $u-v$ axis}
+\label{fi figure}
+\end{figure}
+
+
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{ii.} By changing variables to $y=v+u$ and $z=v-u$, recast your integral in the form
 \begin{equation}
-A=2a^2\int^b_0 \frac{dy~y}{(2-y^2)\sqrt{1-y^2}}.
+A=2a^2\int^b_0 \frac{\text{d}y~y}{(2-y^2)\sqrt{1-y^2}}.
 \end{equation}
 Hence show that one has
 \begin{equation}
@@ -407,13 +699,78 @@ A=a^2(\pi-\Sigma).\label{A(pi,Sigma)}
 \end{equation}
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+We begin by calculating the Jacobian,
+\begin{align}
+J(y,z)&=\pmx{\frac{\partial u}{\partial y}&\frac{\partial u}{\partial z}\\
+\frac{\partial v}{\partial y}&\frac{\partial v}{\partial z}}=\pmx{\frac{1}{2}&-\frac{1}{2}\\\frac{1}{2}&\frac{1}{2}}\\
+\Rightarrow \det J&=\frac{1}{2}
+\end{align}
+
+Next we consider the bounds of the integral; that is, the surface we are integrating over.
+\begin{align}
+(u,v)=(0,0)&\Rightarrow (y,z)=(0,0)\\
+(u,v)=(b,0)&\Rightarrow (y,z)=(b,-b)\\
+(u,v)=(0,b)&\Rightarrow (y,z)=(b,b)
+\end{align}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{images/fii.png}
+\caption{The triangle $\Delta$ABC on the $y-z$ axis}
+\label{yz figure}
+\end{figure}
+
+In $y-z$ space, our surface looks like Figure~\ref{yz figure} above. Just as we integrated over first $u$ in terms of $v$ then integrated over $v$ in~(\ref{abc area uv}), we shall integrate from $z=-y$ to $z=y$, then over $y=0$ to $y=b$.
+
+Also note that we can express $u$ and $v$ in terms of $y$ and $z$ as
+\begin{align}
+u&=\frac{1}{2}(y-z)\\
+v&=\frac{1}{2}(y+z)
+\end{align}
+
+Hence we can rewrite $A$ as
+\begin{align}
+A&=2a^2\int^{y=b}_{y=0}\int_{z=-y}^{z=y}\left(1-\left[\frac{1}{2}(y-z)\right]^2-\left[\frac{1}{2}(y+z)\right]^2\right)^{-3/2}\frac{1}{4}~\text{d}y~\text{d}z\\
+&=\frac{a^2}{2}\int^{y=b}_{y=0}\int_{z=-y}^{z=y}
+\left(1-\frac{1}{2}y^2-\frac{1}{2}z^2\right)^{-3/2}~\text{d}y~\text{d}z
+\intertext{We now let $m=1-\frac{1}{2}y^2$, and let $z=\sqrt{2m}\sin r \Rightarrow \text{d}z=\sqrt{2m}\cos r~\text{d}r$}
+A&=\frac{a^2}{2}\int^{y=b}_{y=0}\int^{r=\sin^{-1}\left(\frac{y}{\sqrt{2m}}\right)}
+_{r=-\sin^{-1}\left(\frac{y}{\sqrt{2m}}\right)}
+\left(\underbrace{m-m\sin^2 r}_{=m(\cos^2 r)}\right)^{-3/2}~\text{d}y~\sqrt{2m}\cos r~\text{d}r\\
+&=\frac{a^2}{2}\iint
+\sqrt{2}m^{-1}\cos^{-2}r~\text{d}y~\text{d}r\\
+&=\frac{a^2}{\sqrt{2}}\int^{y=b}_{y=0}m^{-1}\bigg[\tan(r)\bigg]
+^{\sin^{-1}\left(\frac{y}{\sqrt{2m}}\right)}_{-\sin^{-1}\left(\frac{y}{\sqrt{2m}}\right)}
+~\text{d}y\label{some eq1}\\
+&=\frac{a^2}{\sqrt{2}}\int m^{-1}\left[\frac{2y}{\sqrt{2-2y^2}}\right]~\text{d}y\label{some eq2}
+\end{align}
+In moving from~(\ref{some eq1}) to~(\ref{some eq2}) we use the identity
+\begin{align}
+\tan\left[\sin^{-1}(ax)\right]&=\frac{ax}{\sqrt{1-a^2x^2}}\\
+\Rightarrow \tan\left[\sin^{-1}\left(\frac{y}{\sqrt{2m}}\right)\right]
+&=\frac{\frac{y}{\sqrt{2m}}}{\sqrt{1-\frac{y^2}{2m}}}\\
+&=\frac{y}{\sqrt{2m-y^2}}
+\intertext{Since $m=1-\frac{1}{2}y^2$ we find}
+\tan\left[\sin^{-1}\left(\frac{y}{\sqrt{2m}}\right)\right]&=\frac{y}{\sqrt{2-2y}}
+\end{align}
+
+Continuing from~(\ref{some eq2}),
+\begin{align}
+A&=\frac{a^2}{\sqrt{2}}\int^{b}_{0} m^{-1}\left[\frac{2y}{\sqrt{2-2y^2}}\right]~\text{d}y\\
+&=a^2\int^{b}_{0}\frac{1}{1-\frac{1}{2}y^2}\frac{y}{\sqrt{1-y^2}}~\text{d}y\\
+&=2a^2\int^{b}_{0}\frac{\text{d}y~y}{(2-y^2)\sqrt{1-y^2}}
+\end{align}
+
+as required.
+ 
+ 
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{iii.} Explain briefly, in one or two sentences, why~(\ref{A(pi,Sigma)}) guarantees the \emph{nonexistence} of similar triangles in Klein’s geometry.
 \end{framed}
 
-\pagebreak %-----------------------------------------------------------
+ %-----------------------------------------------------------
 
 \begin{framed}
 \textbf{(g)} A vector $\vec{W}$ with equal components $W^1$ and $W^2$ at the point $A(0,0)$ is parallel transported along the geodesic AB. Show that its components, when it reaches the point B$(b,0)$, are in the ratio
