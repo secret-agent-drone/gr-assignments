@@ -143,7 +143,7 @@ g_{12,1}&=\frac{\partial g_{12}}{\partial x^1}=\frac{\partial\left(\frac{a^{2}uv
 &=g_{21,1}\quad\text{by symmetry}\\
 g_{22,1}&=\frac{\partial g_{22}}{\partial x^1}=\frac{\partial\left(\frac{a^{2}(1-u^2)}{(1-u^2-v^2)^2}\right)}{\partial u}\\
 &=\frac{2a^2u(1-u^2+v^2)}{(1-u^2-v^2)^3}
-\intertext{By inspecting the components of the metric above, we see that $g_{11,1}\mapsto g_{22,2}$ with $u\leftrightarrow v$, similarly $g_{12,1}\mapsto g_{12,2}$ with $u\leftrightarrow v$, and $g_{11,2}\mapsto g_{22,1}$ with $u\leftrightarrow v$. Hence}
+\intertext{By inspecting the components of the metric above, we see that $g_{11,1}=g_{22,2}\rvert_{u\leftrightarrow v}$ (that is, $g_{11,1}(u,v)=g_{22,2}(v,u)$); similarly $g_{12,1}=g_{12,2}\rvert_{u\leftrightarrow v}$. Hence}
 g_{11,2}&=\frac{2a^2v(1-v^2+u^2)}{(1-u^2-v^2)^3}\\
 g_{12,2}&=\frac{a^2 u(3v^2-u^2+1)}{(1-u^2-v^2)^3}\\
 &=g_{21,2}\quad\text{by symmetry}\\
@@ -228,7 +228,7 @@ R_{1212}&=\frac{1}{2}\left(g_{12,21}+g_{21,12}-g_{11,22}-g_{22,11}\right)\\
 &=\frac{\partial}{\partial v}\left(\frac{a^2 v(3u^2-v^2+1)}{(1-u^2-v^2)^3}\right)\\
 &=\frac{-a^2\left[3v^2-2v^2(9u^2+1)+(u^2-1)(3u^2+1)\right]}{(1-u^2-v^2)^4}\label{R1212}
 \end{align}
-which is, in general, non-zero (note that~\ref{R1212}) is symmetric under interchange $u\leftrightarrow v$, as we would expect).
+which is, in general, non-zero (note that~(\ref{R1212}) is symmetric under interchange $u\leftrightarrow v$, as we would expect).
 
 \pagebreak  %-----------------------------------------------------------
 
@@ -354,7 +354,7 @@ R_{22}&=\cancel{\Gamma^{1}_{\ph{1}22,1}}+\cancel{\Gamma^{2}_{\ph{2}2 2,2}}
 \intertext{as required.}
 \end{align}
 
-Hence we have proved that, in Klen's geometry,
+Hence we have proved that, in Klein's geometry,
 \begin{equation}
 R_{\alpha\beta}=-\frac{g_{\alpha\beta}}{a^2}
 \end{equation}
@@ -400,7 +400,7 @@ Along surfaces with positive curvature, geodesics will converge as they travel a
 \label{dii figure}
 \end{figure}
 
-We see that geodesics travelling along the surface would diverge; hence this hyperboloid possesses negative curvature. A triangle on the surface would look like Figure \ref{neg curv triangle}, with the sum of its angles $< 180^{\circ}$.
+We see that geodesics travelling along the surface would diverge; hence this hyperboloid possesses negative curvature. A triangle on surfaces of negative curvature would have the sum of its angles $< 180^{\circ}$. We see that a triangle on the surface in Figure \ref{dii figure} would look like Figure \ref{neg curv triangle}.
 
 \begin{figure}[h]
 \centering
@@ -422,7 +422,7 @@ We see that geodesics travelling along the surface would diverge; hence this hyp
 \label{diii figure}
 \end{figure}
 
-We see that geodesics travelling along the surface would converge; hence this hyperboloid possesses positive curvature. A triangle on the surface would look like Figure \ref{pos curv triangle} below, with the sum of its angles $> 180^{\circ}$.
+We see that geodesics travelling along the surface would converge; hence this hyperboloid possesses positive curvature. A triangle on surfaces of positive curvature would have the sum of its angles $> 180^{\circ}$. We see that a triangle on the surface in Figure \ref{diii figure} would look like Figure \ref{pos curv triangle}.
 
 \begin{figure}[h]
 \centering
@@ -573,23 +573,31 @@ In component notation we have
 \theta=\cos^{-1}\left(\frac{g_{\alpha\beta}M^{\alpha}N^{\beta}}{\sqrt{g_{ij}M^{i}M^{j}g_{kl}N^{k}N^{l}}}\right)
 \end{equation}
 
-The angle between two curves at a point is equal to the angle between curves pointing in the same direction;
 
 The equations bounding the triangle parametrised by $\lambda$ are given as
 \begin{align}
 \vec{a}&=(\lambda,0)\\
 \vec{b}&=(0,\lambda)\\
 \vec{c}&=(\lambda,b-\lambda)
-\intertext{where $\lambda\leq b$.}
-\Rightarrow \vec{\dot{a}}&=(1,0)\\
+\intertext{where $\lambda\leq b$ (see Figure \ref{abc}). Differentiating with respect to the parameter we find obtain}
+\vec{\dot{a}}&=(1,0)\\
 \vec{\dot{b}}&=(0,1)\\
 \vec{\dot{c}}&=(1,-1)
 \end{align}
 
-We shall use these direction vectors WHY????.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{images/abc.png}
+\caption{The vectors $\vec{a}$, $\vec{b}$ and $\vec{c}$}
+\label{abc}
+\end{figure}
+
+
+
+The angle between two curves at a point is equal to the angle between curves pointing in the same direction; we shall use these direction vectors to calculate our angles.
 
 \subsection*{Calculating $\angle$ABC}
-We use $\vec{M}=\vec{\dot{a}}$ and $\vec{N}=\vec{\dot{c}}$. At the point B$(b,0)$,
+We use\footnote{Note that the vectors $\vec{\dot{a}}$ and $\vec{\dot{b}}$ are distinct from the scalar values $a$ and $b$; any confusion is due to an unfortunate naming scheme.} $\vec{M}=\vec{\dot{a}}$ and $\vec{N}=\vec{\dot{c}}$. At the point B$(b,0)$,
 \begin{align}
 g_{11}&=\frac{a^2}{(1-b^2)^2}\\
 g_{12}&=0\\
@@ -707,7 +715,7 @@ A&=\iint \frac{a^4}{(1-u^2-v^2)^3}~\text{d}u~\text{d}v\\
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{images/fi.png}
+\includegraphics[width=0.4\textwidth]{images/fi.png}
 \caption{The triangle $\Delta$ABC on the $u-v$ axis}
 \label{fi figure}
 \end{figure}
@@ -742,7 +750,7 @@ Next we consider the bounds of the integral; that is, the surface we are integra
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{images/fii.png}
+\includegraphics[width=0.4\textwidth]{images/fii.png}
 \caption{The triangle $\Delta$ABC on the $y-z$ axis}
 \label{yz figure}
 \end{figure}
@@ -797,20 +805,22 @@ A&=2a^2\int^b_0 \frac{\text{d}y~y}{(2-y^2)\sqrt{1-y^2}}
 \intertext{Let $p=\sqrt{1-y^2}$}
 \Rightarrow \frac{dp}{dy}&=\frac{-2y\times\frac{1}{2}}{\sqrt{1-y^2}}=-\frac{y}{\sqrt{1-y^2}}
 =-\frac{y}{p}\\
-\Rightarrow A&=2a^2\int^{p=\sqrt{1-b^2}}_{p=1}\frac{1}{1+p^2}\frac{1}{p}y\times
+\Rightarrow A&=2a^2\int^{p=\sqrt{1-b^2}}_{p=1}\frac{1}{1+p^2}\frac{y}{p}\times
 \frac{-p}{y}~\text{d}p\\
 &=-2a^2\int^{\sqrt{1-b^2}}_{1}\frac{1}{1+p^2}~\text{d}p\\
 &=2a^2\int_{\sqrt{1-b^2}}^{1}\frac{1}{1+p^2}~\text{d}p\\
 &=2a^2\left[\tan^{-1}(p)\right]^{1}_{\sqrt{1-b^2}}\\
 &=2a^2\left[\tan^{-1}(1)-\tan^{-1}\left(\sqrt{1-b^2}\right)\right]\\
 &=2a^2\left[\frac{\pi}{4}-\tan^{-1}\left(\sqrt{1-b^2}\right)\right]\label{pi sigma pre}
-\intertext{We now consider the remaining $\tan^{-1}$ term.}
-\tan^{-1}(x)&=\sin^{-1}\left(\frac{x}{\sqrt{x^2+1}}\right)\\
+\end{align}
+We now consider the remaining $\tan^{-1}$ term\footnote{Trigonometric identites~(\ref{trig1}) and~\ref{trig2}) are taken as assumed knowledge and hence are presented here without proof.}.
+\begin{align}
+\tan^{-1}(x)&=\sin^{-1}\left(\frac{x}{\sqrt{x^2+1}}\right)\label{trig1}\\
 \Rightarrow \tan^{-1}\left(\sqrt{1-b^2}\right)&=
 \sin^{-1}\left(\frac{\sqrt{1-b^2}}{\sqrt{2-b^2}}\right)\\
 &=\sin^{-1}\left(\sqrt{\frac{2-b^2-1}{2-b^2}}\right)\\
 &=\sin^{-1}\left(\sqrt{1-\frac{1}{2-b^2}}\right)\\
-\cos^{-1}(x)&=\sin^{-1}\left(\sqrt{1-x^2}\right),\quad\text{if }0 \leq x \leq 1\\
+\cos^{-1}(x)&=\sin^{-1}\left(\sqrt{1-x^2}\right),\quad\text{if }0 \leq x \leq 1\label{trig2}\\
 \Rightarrow \tan^{-1}\left(\sqrt{1-b^2}\right)&= \sin^{-1}\left(\sqrt{1-\frac{1}{2-b^2}}\right)=
 \cos^{-1}\left(\frac{1}{\sqrt{2-b^2}}\right)
 \intertext{Substituting this into~(\ref{pi sigma pre}) we conclude}
@@ -847,17 +857,15 @@ Parallel transport of a vector $\vec{V}$ along a curve $s$ is given by
 U^{\beta}V^{\alpha}_{\ph{\alpha};\beta}=0
 \end{equation}
 
-As $V$ does not change over the geodesic $AB$, we know $x^{\beta}=u=x^{1}$.
-
-We have two geodesic equations for the transport of $\vec{W}$ along $AB$:
+As $\vec{V}$ does not change over the geodesic $AB$, we know $x^{\beta}=u=x^{1}$. Now, we have two geodesic equations for the transport of $\vec{W}$ along $AB$:
 
 \begin{align}
 \frac{\partial W^{1}}{\partial u}+\Gamma^{1}_{\ph{1}11}W^{1}
 +\Gamma^{1}_{\ph{1}21}W^2&=0 \label{W1 diff eqn}\\
-\frac{\partial W^{2}}{\partial u}+\Gamma^{2}_{\ph{2}21}W^2&=0
+\frac{\partial W^{2}}{\partial u}+\Gamma^{2}_{\ph{2}21}W^2&=0\label{de W2}
 \end{align}
 
-Solving the second equation gives us
+Solving ~(\ref{de W2}) for $W^2$, we find
 \begin{align}
 \frac{\partial W^2}{\partial u}+\frac{u}{1-u^2-v^2}W^2&=0\\
 \Rightarrow \frac{\text{d}W^2}{W^2}&=-\frac{u~\text{d}u}{1-u^2-v^2}\\
@@ -865,34 +873,26 @@ Solving the second equation gives us
 W^2&=c_1\sqrt{1-u^2-v^2}\label{W2 eqn}
 \end{align}
 
-Now, substituting~(\ref{W2 eqn}) into~(\ref{W1 diff eqn}) we find
+where $c_1$ is some constant. Now, substituting~(\ref{W2 eqn}) into~(\ref{W1 diff eqn}) we find
 \begin{align}
-\frac{\partial W^{1}}{\partial u}+\frac{2u}{1-u^2-v^2}W^1=\frac{c_1 v	}{\sqrt{1-u^2-v^2}}&=0\\
-(1-u^2-v^2)^{-1}\frac{\text{d}W^{1}}{\text{d}u}+\frac{2u}{(1-u^2-v^2)^2} W^{1}
+\frac{\partial W^{1}}{\partial u}+\frac{2u}{1-u^2-v^2}W^1+\frac{c_1 v	}{\sqrt{1-u^2-v^2}}&=0\\
+\frac{1}{1-u^2-v^2}\frac{\text{d}W^{1}}{\text{d}u}+\frac{2u}{(1-u^2-v^2)^2} W^{1}
 +\frac{c_1 v}{(1-u^2-v^2)^{3/2}}&=0\\
-\frac{\partial}{\partial u}\left(\frac{W^{1}}{1-u^2-v^2}\right)&=-\frac{c_1 v}{(1-u^2-v^2)^{3/2}}\\
-\frac{W^1}{1-u^2-v^2}&=-c_1\int \frac{v~\text{d}v}{(1-u^2-v^2)^{3/2}}
+\frac{\text{d}}{\text{d} u}\left(\frac{W^{1}}{1-u^2-v^2}\right)&=-\frac{c_1 v}{(1-u^2-v^2)^{3/2}}\\
+\frac{W^1}{1-u^2-v^2}&=-c_1 v\int \frac{v~\text{d}u}{(1-u^2-v^2)^{3/2}}
 \end{align}
 
-We shall solve this integral through some clever substitution. We let
-\begin{align}
-k&=1-v^2,\\
-m&=\sqrt{k}\sin n
-\end{align}
+Solving this integral through use of external tools\footnote{Specifically, a TI-89 calculator.} we have
+\begin{equation}
+\int\frac{\text{d}u}{(1-u^2-v^2)^{3/2}}=\left(1-v^2\right)^{-1}\frac{u}{\sqrt{1-u^2-v^2}}+c_2
+\end{equation}
 
-Then, we have
+where $c_2$ is some constant. So now we have
 \begin{align}
-\Rightarrow \int\frac{v~\text{d}v}{(1-u^2-v^2)^{3/2}}&=\frac{1}{(k-u^2)^{3/2}}\\
-&=k^{-3/2}\int \sec^2 n ~ \text{d}n\\
-&=k^{-3/2}\tan n + c_2\\
-&=k^{-3/2}\frac{n}{\sqrt{k^2-n^2}}+c_2\\
-&=\left(1-v^2)\right)^{-3/2}\frac{u}{\sqrt{1-u^2-v^2}}+c_2
-\end{align}
-
-So now we have
-\begin{align}
-\left(1-u^2-v^2\right)^{-1}W^{1}&=-c_1\left(1-v^2\right)^{-3/2}\frac{vu}{\sqrt{1-u^2-v^2}}+c_3\\
-\Rightarrow W^{1}&=-c_1 \left(1-v^2\right)^{-3/2}vu\sqrt{1-u^2-v^2}+c_3\left(1-u^2-v^2\right)
+\frac{W^{1}}{1-u^2-v^2}&=-c_1 v\left[\left(1-v^2\right)^{-1}\frac{u}{\sqrt{1-u^2-v^2}}+c_2\right]\\
+&=-c_1\left(1-v^2\right)^{-1}\frac{uv}{\sqrt{1-u^2-v^2}}+c_3
+\intertext{where $c_3$ is some constant.}
+\Rightarrow W^{1}&=-c_1 \left(1-v^2\right)^{-1}uv\sqrt{1-u^2-v^2}+c_3\left(1-u^2-v^2\right)
 \label{W1 eqn}
 \end{align}
 
