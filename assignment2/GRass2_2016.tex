@@ -709,7 +709,7 @@ g&=\pmx{g_{11}&g_{12}\\g_{21}&g_{22}}\\
 
 We can now determine an expression for the area of $\Delta$ABC as
 \begin{align}
-A&=\iint \frac{a^4}{(1-u^2-v^2)^3}~\text{d}u~\text{d}v\\
+A&=\iint \sqrt{\frac{a^4}{(1-u^2-v^2)^3}}~\text{d}u~\text{d}v\\
 &=\int_{v=0}^{v=b}\int_{u=0}^{u=b-v}\frac{a^2}{(1-u^2-v^2)^{3/2}}~\text{d}u~\text{d}v\label{abc area uv}
 \end{align}
 
@@ -813,7 +813,7 @@ A&=2a^2\int^b_0 \frac{\text{d}y~y}{(2-y^2)\sqrt{1-y^2}}
 &=2a^2\left[\tan^{-1}(1)-\tan^{-1}\left(\sqrt{1-b^2}\right)\right]\\
 &=2a^2\left[\frac{\pi}{4}-\tan^{-1}\left(\sqrt{1-b^2}\right)\right]\label{pi sigma pre}
 \end{align}
-We now consider the remaining $\tan^{-1}$ term\footnote{Trigonometric identites~(\ref{trig1}) and~\ref{trig2}) are taken as assumed knowledge and hence are presented here without proof.}.
+We now consider the remaining $\tan^{-1}$ term\footnote{Trigonometric identites~(\ref{trig1}) and~(\ref{trig2}) are taken as assumed knowledge and hence are presented here without proof.}.
 \begin{align}
 \tan^{-1}(x)&=\sin^{-1}\left(\frac{x}{\sqrt{x^2+1}}\right)\label{trig1}\\
 \Rightarrow \tan^{-1}\left(\sqrt{1-b^2}\right)&=
