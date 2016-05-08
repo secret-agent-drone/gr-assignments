@@ -1,0 +1,373 @@
+\documentclass[a4paper]{article} % A4 paper and 11pt font size
+
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}
+%\usepackage{tikz-feynman}
+\usepackage{pgfplots}
+\usepackage{pgffor}
+\usepackage[version-1-compatibility]{siunitx}
+\usepackage{fancyhdr}
+\usepackage{mathtools} %for underbraces without whitespace (\mathclap{})
+
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=28mm,
+ right=28mm,
+ top=30mm,
+ bottom=40mm,
+ }
+
+
+\usepackage{framed}
+\usepackage{amssymb} %for Lagrangian L, order O
+\usepackage{cancel} %for strikethroughs
+\usepackage{slashed} %for Feynman slashes
+
+\newcommand{\pmx}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\ph}[1]{\phantom{#1}}
+\newcommand{\diag}{\text{diag}~}
+
+\usepackage{gensymb}
+
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
+\usepackage{bm}
+
+%for side-by-side figures
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.1}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+
+\pagenumbering{arabic}
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{titlepage}
+
+    \begin{center}
+        \textsc{\large SN: 587623}\\[6cm]
+
+        \HRule \\[0.5cm]
+		\Huge \textbf{PHYC90012 General Relativity}\\[0.5cm]
+        \huge \textbf{Assignment 3}\\[0.5cm] 
+        \HRule \\[1.5cm]
+        \begin{minipage}{0.4\textwidth}
+        \begin{center}
+
+        \large By \\[0.75cm]
+        \huge Braden \scshape Moore \\[0.5cm]
+        \normalsize \normalfont Master of Science \\
+        The University of Melbourne \\
+
+        \end{center}
+        \end{minipage}
+
+        \vfill
+
+        \large \today
+    \end{center}
+
+\newpage
+\end{titlepage}
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\rfoot{\textsc{Braden Moore, 587623}}
+\lfoot{\textsc{\today}}
+\rhead{\textsc{General Relativity: Assignment 3}}
+\setcounter{page}{1}
+\setcounter{section}{2}
+\section{Playing tennis in a four-dimensional ``brane world''}
+
+\begin{framed}
+Projectile motion in a constant gravitational field is a classic introductory problem in Newtonian mechanics. One way to make a uniform gravitational field is to assemble an infinite, flat sheet of matter. If the mass per unit area in the $x-y$ plane is $\sigma$, then the Newtonian gravitational potential is given by 
+\begin{equation}
+\Phi_{\text{Newton}}=2\pi G\sigma |z|,\label{eq1}
+\end{equation}
+where $z$ is the Cartesian coordinate normal to the sheet. [Convince yourself that~(\ref{eq1}) is true by analogy with electrostatics or otherwise.] Below we ask whether it is possible to recreate this system in the strong-gravity regime in general relativity.
+\end{framed}
+
+\begin{framed}
+\textbf{(a)} By appealing to symmetry, argue that the most general metric of a plane-parallel, four-dimensional spacetime takes the form 
+\begin{equation}
+ds^2=-e^{2\Phi (z)}dt^2 + e^{2\Psi (z)}(dx^2+dy^2)+dz^2,\label{eq2}
+\end{equation}
+where $\Phi(t,z)$ (not necessarily the same as $\Phi_{\text{Newton}}$), $\Psi(t,z)$, and $\Lambda(t,z)$ are functions determined by Einstein's field equations.
+determined by Einstein’s field equations.
+\end{framed}
+
+\begin{framed}
+\textbf{(b) i.} If the spacetime is static (caution: such a solution may not necessarily exist), construct explicitly a coordinate transformation, that puts~(\ref{eq2}) into the form 
+\begin{equation}
+ds^2=-e^{2\Phi(z)} dt^2+e^{2\Psi(z)}(dx^2+dy^2)+dz^2,\label{eq3}
+\end{equation}
+where $t$, $x$, $y$, and $z$ are suitably relabelled from~(\ref{eq2}).
+\end{framed}
+
+\begin{framed}
+\textbf{(b) ii.} Explain why it is impossible to get rid of the $e^{2\Lambda(r)}$ factor multiplying $dr^2$ in the ``standard'' Schwarzschild metric in the same way, such that the metric contains only one undetermined function $e^{2\Phi(r)}$.
+\end{framed}
+
+\begin{framed}
+\textbf{(c)} Nine of the Christoffel symbols associated with~(\ref{eq3}) are nonzero. Calculate them. Here and henceforth, please feel free to use a symbolic algebra package like \emph{Mathematica} to make your life easier.
+\end{framed}
+
+\begin{framed}
+\textbf{(d)} Show that the nonzero components of the Ricci tensor $R_{\mu\nu}$ are
+\begin{align}
+R_{tt}&=e^{2\Phi}[(\Phi')^2+2\Phi' \Psi' +\Phi''],\\
+R_{xx}&=-e^{2\Phi}[2(\Psi')^2+\Psi' \Phi' + \Psi'']\\
+R_{yy}&=R_{xx},\\
+R_{zz}&=-(\Phi')^2-2(\Psi')^2-\Phi''-2\Psi''.
+\end{align}
+Primes denote derivatives with respect to $z$.
+\end{framed}
+
+\begin{framed}
+\textbf{(e)} Show that the nonzero contravariant components of Einstein’s field equations with
+cosmological constant $\Lambda$ and stress-energy tensor $T_{\mu\nu}$ are
+\begin{align}
+8\pi T^{tt}&=-e^{-2\Phi}[3(\Psi')^2+2\Psi''+\Lambda],\\
+8\pi T^{xx}&=e^{-2\Psi}[(\Phi')^2+\Phi' \Psi' + (\Psi')^2+\Phi'' + \Psi'' + \Lambda],\\
+8\pi T^{yy}&=8\pi T^{xx},\\
+8\pi T^{zz}&=\Psi'(2\Phi' + \Psi')+\Lambda.
+\end{align}
+You can do this with pen and paper but will find \emph{Mathematica} more soothing.
+\end{framed}
+
+\begin{framed}
+\textbf{(f)} Einstein’s field equations place strong constraints on the physical form of the
+stress-energy consistent with the metric~(\ref{eq3}).
+\end{framed}
+
+\begin{framed}
+\textbf{i.} Explain why it is impossible to generate~(\ref{eq3}) with a sheet of cold matter (dust).
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} By thinking about a suitable initial value problem qualitatively, speculate why this seemingly natural system - a static dust sheet - is impossible to assemble ``from the ground up'' in general relativity, even though there is no obstacle in a Newtonian context. What might ``go wrong''? Do not try calculating anything, unless you are in the mood to win a Nobel Prize.
+\end{framed}
+
+\begin{framed}
+\textbf{(g)} Consider the special case $\Psi=0$, i.e. warped time, Euclidean space, no preferential
+warping of space in the $z$ direction relative to the $x$ and $y$ directions.
+\end{framed}
+
+\begin{framed}
+\textbf{i.} In the bulk ($z=0$), where there is zero stress-energy, show that $\Lambda=0$ must
+hold to obtain a self-consistent solution of the form~(\ref{eq3}).
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} Hence show that the stress-energy must vanish on the sheet $z = 0$ too.
+\end{framed}
+
+\begin{framed}
+\textbf{iii.} Prove that~(\ref{eq3}) reduces to the Rindler metric for a uniformly accelerated frame.
+What is the implied acceleration?
+
+In the special case $\Phi = 0$, a similar bulk-then-sheet approach yields the Minkowski
+metric.
+\end{framed}
+
+\begin{framed}
+\textbf{(h)} Consider the special case $\Psi=\Phi$. This corresponds to preferentially warping space in $z$ relative to $x$ and $y$, i.e. the ``symmetric'' coordinates $(t, x, y)$ are treated as a Minkowski subspace with warping in the $z$ coordinate. The system is the four dimensional analogue of the five-dimensional \emph{Randall-Sundrum 1-brane} spacetime, which revolutionized the study of brane worlds 
+\end{framed}
+
+\begin{framed}
+\textbf{i.} In the bulk, show that one obtains
+\begin{equation}
+\Phi=g |z|,\label{eq12}
+\end{equation}
+if $\Phi(z)$ vanishes at $z = 0$ without loss of generality. In~(\ref{eq12}), $g$ is an integration
+constant with units of acceleration.
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} Prove that $g$ satisfies the fine-tuning condition
+\begin{equation}
+\Lambda=-3g^2.\label{eq13}
+\end{equation}
+Comment on the physical significance of the sign of $\Lambda$.
+\end{framed}
+
+\begin{framed}
+\textbf{iii.} Assume that the stress-energy is confined to the sheet, i.e. $T^{\mu\nu}\propto \delta(z)$. Prove that the stress-energy tensor takes the physically unusual form
+\begin{equation}
+T^{\mu\nu}=(2\pi)^{-1}g\delta(z)\diag(-1,1,1,0).\label{eq14}
+\end{equation}
+Equation~(\ref{eq14}) implies fine tuning between $T^{\mu\nu}$ and $\Lambda$ via $g$.
+\end{framed}
+
+\begin{framed}
+\textbf{iv.} Interpret physically the two cases $g < 0$ and $g > 0$.
+\end{framed}
+
+\begin{framed}
+\textbf{v.} Interpret physically the signs of $T^{tt}$ and $T^{xx} = T^{yy}$ for $g > 0$.
+\end{framed}
+
+\begin{framed}
+\textbf{vi.}  Explain physically why $T^{zz} = 0$ makes sense in terms of a plausible microscopic
+(``particulate'') model of the sheet.
+\end{framed}
+
+\begin{framed}
+\textbf{vii.} Prove that it is impossible to build the sheet out of a perfect fluid or dust.
+\end{framed}
+
+\begin{framed}
+\textbf{(b) i.} 
+\end{framed}
+
+\begin{framed}
+\textbf{(b) i.} 
+\end{framed}
+
+\begin{framed}
+\textbf{(b) i.} 
+\end{framed}
+
+\begin{framed}
+\textbf{(i)} A tennis player standing on the sheet hits a tennis ball into the $z>0$ half-space with initial 4-velocity $u(0)$.
+\end{framed}
+
+\begin{framed}
+\textbf{i.} Starting from the geodesic equations in the form
+\begin{equation}
+\frac{du_{\nu}}{d\tau}=\frac{1}{2}g_{\alpha\beta,\nu}u^{\alpha}u^{\beta},\label{eq15}
+\end{equation}
+identify three constants of the motion. In~(\ref{eq15}), $\tau$ denotes the proper time as measured in the ball's momentarily comoving reference frame.
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} From the z component of~(\ref{eq15}), show that
+\begin{equation}
+\frac{du^z}{d\tau}=-g[1+(u^z)^2].\label{eq16}
+\end{equation}
+What is unusual physically about this acceleration?
+\end{framed}
+
+\begin{framed}
+\textbf{iii.} Similarly or otherwise, prove the equivalent result
+\begin{equation}
+\left(\frac{dz}{d\tau}\right)^2=-1+e^{-2gz}\{1+[u^z(0)]^2\}.\label{eq17}
+\end{equation}
+\end{framed}
+
+\begin{framed}
+\textbf{iv.} Solve either~(\ref{eq16}) or~(\ref{eq17}) to obtain
+\begin{equation}
+z=g^{-1}\ln[\cos g\tau+u^z(0)\sin g\tau].\label{eq18}
+\end{equation}
+Please note that there are many valid ways to prove~(\ref{eq16})-(\ref{eq18}).
+\end{framed}
+
+\begin{framed}
+\textbf{(j)} Show that the ball reaches the apex of its trajectory at proper time
+\begin{equation}
+\tau_{\text{top}}=g^{-1}\tan^{-1}u^z(0),
+\end{equation}
+and that the associated coordinate time is
+\begin{equation}
+t_{\text{top}}=\frac{u^z(0)\{1+[u^x(0)]^2+[u^z(0)]^2\}^{1/2}}{g\{1+[u^z(0)]^2\}},
+\end{equation}
+in the coordinates in which~(\ref{eq3}) is written. Interestingly, $\tau_{\text{top}}$ is finite, no matter
+how hard the ball is struck initially. Does the same hold true for $t_{\text{top}}$?
+\end{framed}
+
+\begin{framed}
+\textbf{(k)} Show that the horizontal distance traversed by the ball from its launch point to where it lands on the sheet, as measured in the coordinates associated with~(\ref{eq3}), is given by
+\begin{equation}
+x_{\text{land}}=\frac{2u^x(0)u^z(0)}{g\{1+[u^z(0)]^2\}}.\label{eq21}
+\end{equation}
+How does~(\ref{eq21}) differ qualitatively from Newtonian projectile motion? Should we expect $x_{\text{land}}$ to equal the $x$-component of the initial 3-velocity multiplied by $2t_{\text{top}}$,
+since the metric does not depend on $x$?
+\end{framed}
+
+\begin{framed}
+\textbf{(l)} Finally, suppose that instead of a tennis ball we launch a laser beam into the $z > 0$ half-space with initial 4-momentum $p(0)$ per photon.
+\end{framed}
+
+\begin{framed}
+\textbf{i.} Let $\lambda$ be an affine parameter tracing out the light ray. Starting from the geodesic equations or otherwise, solve for the photon’s trajectory. You should find
+\begin{equation}
+z=g^{-1}\ln[1+p^z(0)g\lambda].
+\end{equation}
+In other words, the photon never falls back to the sheet, no matter how much stress-energy the sheet contains.
+\end{framed}
+
+\begin{framed}
+\textbf{ii.} Consider an intergalactic variant of the Pound-Rebka experiment, in which we fly horizontally (in the $x$ direction, say) in a rocket at constant speed $V$ [as measured in the coordinates associated with~(\ref{eq3})] while maintaining a constant altitude $z_{\text{rocket}}$ above the sheet. Show that the laser frequency measured by the stationary emitter $\nu_{\text{em}}$, and the frequency measured by the experimentalist in the rocket, $\nu_{\text{rec}}$, are related according to
+\begin{equation}
+\frac{\nu_{\text{rec}}}{\nu_{\text{em}}}=\frac{e^{-gz_{\text{rocket}}}}{(1-V^2)^{1/2}}
+\left[1-\frac{Vp^x(0)}{\{[p^x(0)]^2+[p^z(0)]^2\}^{1/2}}\right].
+\end{equation}
+
+Most of the physics in this question applies in five dimensions too. It is interesting to think about it in the context of Randall-Sundrum brane worlds.
+\end{framed}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
