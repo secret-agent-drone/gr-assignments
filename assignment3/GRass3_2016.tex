@@ -119,6 +119,20 @@ where $\Phi(t,z)$ (not necessarily the same as $\Phi_{\text{Newton}}$), $\Psi(t,
 determined by Einstein’s field equations.
 \end{framed}
 
+The plane is symmetric under $x$ and $y \Rightarrow g_{xx}=g_{yy}$. By symmetry, the spacetime is unchanged under $x\to -x$, $y\to -y$, $z\to -z$, $t\to -t$ transformations $\Rightarrow$ cross-terms are zero, i.e. $g_{xy}=-g_{xy}=0$.
+
+Recall that the spacetime interval $ds^2$ can be written as,
+\begin{equation}
+ds^2=g_{00}dt^2+g_{11}dx^2+g_{22}dy^+g_{33}dz^2
+\end{equation}
+so that we have
+\begin{equation}
+ds^2=-e^{2\Phi(z,t)}dt^2+e^{2\Psi(z,t)}(dx^2+dy^2)+e^{2\Lambda (z,t)}dz^2
+\end{equation}
+where $g_{00}<0$ and $g_{11},g_{22}>0$ everywhere.
+
+We have introduced functions $\Phi, \Psi, \Lambda$ which depend on $z,t$ by the geometry given.
+
 \begin{framed}
 \textbf{(b) i.} If the spacetime is static (caution: such a solution may not necessarily exist), construct explicitly a coordinate transformation, that puts~(\ref{eq2}) into the form 
 \begin{equation}
@@ -127,13 +141,51 @@ ds^2=-e^{2\Phi(z)} dt^2+e^{2\Psi(z)}(dx^2+dy^2)+dz^2,\label{eq3}
 where $t$, $x$, $y$, and $z$ are suitably relabelled from~(\ref{eq2}).
 \end{framed}
 
+For a static spacetime (no time dependence), we can rewrite the functions independent of time, i.e.
+\begin{align*}
+e^{\Phi(z)}dt'&=e^{\Phi(z,t)}dt\\
+e^{\Psi(z)}dx'&=e^{\Psi(z,t)}dx\\
+e^{\Psi(z)}dy'&=e^{\Psi(z,t)}dy\\
+dx'&=e^{\Lambda(z,t)}dz
+\end{align*}
+
+Assuming the functions $\Phi,\Psi$ can be re-expressed in a time independent way, we will only need the transformation $dz'=e^{\Lambda(z,t)}dz$
+
+This leaves us with
+\begin{equation}
+ds^2=-e^{2\Phi(z)} dt^2+e^{2\Psi(z)}(dx^2+dy^2)+dz^2
+\end{equation}
+as required.
+
+
+
 \begin{framed}
 \textbf{(b) ii.} Explain why it is impossible to get rid of the $e^{2\Lambda(r)}$ factor multiplying $dr^2$ in the ``standard'' Schwarzschild metric in the same way, such that the metric contains only one undetermined function $e^{2\Phi(r)}$.
 \end{framed}
 
+Using Schwarzchild metric $dr'=\left(1-\frac{2M}{r}\right)^{-1/2}dr$ we find
+\begin{equation}
+r'=\sqrt{r^2-2Mr}+M\log\left(\sqrt{r^2-2Mr}+r-m\right)
+\end{equation}
+
+At $r=0$ the second term becomes $M\log(-m)$, which is undefined since $m>0$.
+
+{\huge Wrong?}
+
 \begin{framed}
 \textbf{(c)} Nine of the Christoffel symbols associated with~(\ref{eq3}) are nonzero. Calculate them. Here and henceforth, please feel free to use a symbolic algebra package like \emph{Mathematica} to make your life easier.
 \end{framed}
+
+These Christoffel symbols have been calculated used Mathematica (see attached code).
+
+\begin{align}
+\Gamma^{1}_{14}&=\Gamma^{1}_{41}=\Phi'(z)\\
+\Gamma^{2}_{42}&=\Gamma^{2}_{24}=\Psi'(z)\\
+\Gamma^{3}_{43}&=\Gamma^{3}_{34}=\Psi'(z)\\
+\Gamma^{4}_{11}&=e^{2\Phi}\Phi'\\
+\Gamma^{4}_{22}&=-e^{2\Psi}\Psi'\\
+\Gamma^{4}_{33}&=-e^{2\Psi}\Psi'
+\end{align}
 
 \begin{framed}
 \textbf{(d)} Show that the nonzero components of the Ricci tensor $R_{\mu\nu}$ are
@@ -145,6 +197,30 @@ R_{zz}&=-(\Phi')^2-2(\Psi')^2-\Phi''-2\Psi''.
 \end{align}
 Primes denote derivatives with respect to $z$.
 \end{framed}
+
+We recall the Ricci tensor $R_{\alpha\beta}$ is a contraction on the first and third indices of the Riemann tensor, written as
+\begin{equation}
+R_{\alpha\beta}=R^{i}_{\ph{i}\alpha i \beta}
+\end{equation}
+We also recall that the Riemann tensor in the form $R^{\alpha}_{\beta\mu\nu}$ can be written as
+\begin{equation}
+R^{\rho}_{\ph{\rho}\sigma \mu\nu}=\partial_{\mu}\Gamma^{\rho}_{\ph{\rho}\nu\sigma}
+-\partial_{\nu}\Gamma^{\rho}_{\ph{\rho}\mu\sigma}
++\Gamma^{\rho}_{\ph{\rho}\mu\lambda}\Gamma^{\lambda}_{\ph{\lambda}\nu \sigma}
+-\Gamma^{\rho}_{\ph{\rho}\nu\lambda}\Gamma^{\lambda}_{\ph{\lambda}\mu\sigma}
+\end{equation}
+
+The non-zero components of the Ricci tensor are calculated in Mathematica as shown in the code, and we find
+
+\begin{align}
+R_{tt}&=e^{2\Phi}[(\Phi')^2+2\Phi' \Psi' +\Phi''],\\
+R_{xx}&=-e^{2\Phi}[2(\Psi')^2+\Psi' \Phi' + \Psi'']\\
+R_{yy}&=R_{xx},\\
+R_{zz}&=-(\Phi')^2-2(\Psi')^2-\Phi''-2\Psi'',
+\end{align}
+
+as required.
+
 
 \begin{framed}
 \textbf{(e)} Show that the nonzero contravariant components of Einstein’s field equations with
@@ -158,6 +234,25 @@ cosmological constant $\Lambda$ and stress-energy tensor $T_{\mu\nu}$ are
 You can do this with pen and paper but will find \emph{Mathematica} more soothing.
 \end{framed}
 
+We know
+\begin{align}
+8\pi T_{\mu\nu}&=R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R+g_{\mu\nu}\Lambda\\
+\Rightarrow 8\pi T^{\alpha\beta}&=g^{\alpha\mu}g^{\beta\nu}8\pi T_{\mu\nu}
+\end{align}
+
+The values of $8\pi T^{\alpha\alpha}$ are calculated as shown in the code, and we find
+
+\begin{align}
+8\pi T^{tt}&=-e^{-2\Phi}[3(\Psi')^2+2\Psi''+\Lambda],\\
+8\pi T^{xx}&=e^{-2\Psi}[(\Phi')^2+\Phi' \Psi' + (\Psi')^2+\Phi'' + \Psi'' + \Lambda],\\
+8\pi T^{yy}&=8\pi T^{xx},\\
+8\pi T^{zz}&=\Psi'(2\Phi' + \Psi')+\Lambda,
+\end{align}
+
+as required.
+
+
+
 \begin{framed}
 \textbf{(f)} Einstein’s field equations place strong constraints on the physical form of the
 stress-energy consistent with the metric~(\ref{eq3}).
@@ -167,9 +262,43 @@ stress-energy consistent with the metric~(\ref{eq3}).
 \textbf{i.} Explain why it is impossible to generate~(\ref{eq3}) with a sheet of cold matter (dust).
 \end{framed}
 
+Starting with
+\begin{equation}
+8\pi T^{tt}=-e^{-2\Phi}\left(3(\Psi')^2+2\Psi''+\Lambda\right)
+\end{equation}
+we let $T^{tt}=\delta(z)$ as we are confied to the sheet $z=0$. As the LHS has a delta-function, the right hand side must also be proportional to a delta-function.
+
+As a first derivative cannot be a delta-function (proof not shown), as as $\Lambda=0$, we see
+\begin{equation}
+\Phi''\sim \delta(z)
+\end{equation}
+
+We also have
+\begin{align}
+8\pi T^{xx}&=0=\Phi'^2+\Phi'\Psi'+\Psi'^2+\Phi'' + \Psi'' + \Lambda \label{xx 1}\\
+8\pi T^{zz}&=0=\Psi'(2\Phi' + \Psi') + \Lambda \label{zz 1}
+\end{align}
+Subtracting~(\ref{zz 1}) from~(\ref{xx 1}) we find
+\begin{equation}
+\Phi'' = -\Psi''
+\end{equation}
+which implies that $\Phi''$ must be a delta-function.
+
+Similarly, subtracting~(\ref{xx 1}) from~(\ref{zz 1}) we find
+\begin{align}
+0&=(\Phi')^2-\Phi' \Psi'\\
+\therefore \Psi'&=0 \text{ or } \Phi'=\Psi'
+\end{align}
+
+However, both of these possibilities contradict with our previous findings! Hence we cannot generate~(\ref{eq3}) with a sheet of cold matter.
+
+
 \begin{framed}
 \textbf{ii.} By thinking about a suitable initial value problem qualitatively, speculate why this seemingly natural system - a static dust sheet - is impossible to assemble ``from the ground up'' in general relativity, even though there is no obstacle in a Newtonian context. What might ``go wrong''? Do not try calculating anything, unless you are in the mood to win a Nobel Prize.
 \end{framed}
+
+If we are to build a sheet from the ground up, i.e. particle by particle, we would find that as we add a particle, a gravitational or electric force would act on the other particles currently in the ``sheet'' and distory the structure. Hence, a flat sheet structure would be impossible to form.
+
 
 \begin{framed}
 \textbf{(g)} Consider the special case $\Psi=0$, i.e. warped time, Euclidean space, no preferential
@@ -181,9 +310,29 @@ warping of space in the $z$ direction relative to the $x$ and $y$ directions.
 hold to obtain a self-consistent solution of the form~(\ref{eq3}).
 \end{framed}
 
+Zero stree energy leads to
+\begin{equation}
+8\pi T^{tt}=0=\Psi'(2\Phi' + \Psi) + \Lambda = \Lambda
+\end{equation}
+since $\Psi=0\Rightarrow \Psi'=0$.
+\begin{equation}
+\therefore \Lambda = 0
+\end{equation}
+
+
 \begin{framed}
 \textbf{ii.} Hence show that the stress-energy must vanish on the sheet $z = 0$ too.
 \end{framed}
+
+At $z=0$, there will be no mass as $\Lambda=0,\Psi=0$
+\begin{itemize}
+\item[] $\Rightarrow$ no invariant mass $E_{m}$
+\item[] $\Rightarrow$ no energy density
+\item[] $\therefore T^{tt}=0$
+\item[] $\therefore$ momentum flow must also be zero
+\end{itemize}
+
+{\huge Wrong?}
 
 \begin{framed}
 \textbf{iii.} Prove that~(\ref{eq3}) reduces to the Rindler metric for a uniformly accelerated frame.
@@ -193,9 +342,21 @@ In the special case $\Phi = 0$, a similar bulk-then-sheet approach yields the Mi
 metric.
 \end{framed}
 
+\begin{equation}
+ds^2=-e^{2\Phi(z)}dt^2 + dx^2 + dy^2 + dz^2
+\end{equation}
+
+If $z$ is small we can Taylor expand
+\begin{equation}
+\therefore ds^2 = -\left(1+2\Phi'(z)\right)dt^2 + dx^2 + dy^2 + dz^2
+\end{equation}
+
+This is of the form of an accelerating frame with acceleration $2\Phi'(z)$.
+
 \begin{framed}
 \textbf{(h)} Consider the special case $\Psi=\Phi$. This corresponds to preferentially warping space in $z$ relative to $x$ and $y$, i.e. the ``symmetric'' coordinates $(t, x, y)$ are treated as a Minkowski subspace with warping in the $z$ coordinate. The system is the four dimensional analogue of the five-dimensional \emph{Randall-Sundrum 1-brane} spacetime, which revolutionized the study of brane worlds 
 \end{framed}
+
 
 \begin{framed}
 \textbf{i.} In the bulk, show that one obtains
@@ -206,6 +367,15 @@ if $\Phi(z)$ vanishes at $z = 0$ without loss of generality. In~(\ref{eq12}), $g
 constant with units of acceleration.
 \end{framed}
 
+
+\begin{align}
+\Phi = \Psi \Rightarrow 0 &= 3(\Phi') + \Lambda\\
+\therefore \frac{d\Phi}{dz}&= \pm \sqrt{-\frac{\Lambda}{3}}\\
+\therefore \Phi &= \pm \sqrt{-\frac{\Lambda}{3}}|z|,\quad\text{as z is symmetric}\\
+&=g|z|
+\end{align}
+
+
 \begin{framed}
 \textbf{ii.} Prove that $g$ satisfies the fine-tuning condition
 \begin{equation}
@@ -213,6 +383,13 @@ constant with units of acceleration.
 \end{equation}
 Comment on the physical significance of the sign of $\Lambda$.
 \end{framed}
+
+\begin{equation}
+g=\pm \sqrt{-\frac{\Lambda}{3}} \therefore \Lambda = -3g^2
+\end{equation}
+If $\Lambda$ is positive $\Rightarrow$ imaginary $g$ which is not physical. $\Rightarrow \Lambda$ is negative.
+
+{\huge Wrong?}
 
 \begin{framed}
 \textbf{iii.} Assume that the stress-energy is confined to the sheet, i.e. $T^{\mu\nu}\propto \delta(z)$. Prove that the stress-energy tensor takes the physically unusual form
@@ -222,34 +399,70 @@ T^{\mu\nu}=(2\pi)^{-1}g\delta(z)\diag(-1,1,1,0).\label{eq14}
 Equation~(\ref{eq14}) implies fine tuning between $T^{\mu\nu}$ and $\Lambda$ via $g$.
 \end{framed}
 
+\begin{equation}
+\Phi = g|z| \therefore \Phi''= 2g\delta(z)
+\end{equation}
+as 
+\begin{align}
+\frac{d\Phi}{dz}&=\text{sgn}(z)\\
+\frac{d}{dz}\text{sgn}(z)&=z\delta(z)
+\end{align}
+
+Also, 
+\begin{align}
+3(\Phi')^2&=-\Lambda\\
+\therefore 8\pi T^{tt}&=-e^{2g|z|}(4\Phi'')\\
+\therefore T{tt}&= -e^{2g|z|} (2\pi)^{-1} \delta(z)\\
+8\pi T^{xx}&= e^{2g|z|}(4\Phi'')\\
+T^{xx}&=(2\pi)^{-1}e^{2g|z|} \delta(z)\\
+T^{yy}&=T^{xx}\\
+8\pi T^{zz}&=0\\
+\Rightarrow T^{zz}&=0
+\end{align}
+which leaves us with
+\begin{equation}
+T^{\mu\nu}=(2\pi)^{-1}g\delta(z)\diag(-1,1,1,0),
+\end{equation}
+as required.
+
+
 \begin{framed}
 \textbf{iv.} Interpret physically the two cases $g < 0$ and $g > 0$.
 \end{framed}
 
+$g<0$ positive energy density, normal stress (pressure) is negative.
+
+$g>0$ negative energy density, normal stress (pressure) is positive.
+
+
 \begin{framed}
 \textbf{v.} Interpret physically the signs of $T^{tt}$ and $T^{xx} = T^{yy}$ for $g > 0$.
 \end{framed}
+
+For $g>0$, $T^{tt}$ is negative, $T^{xx}=T^{yy}$ is positive.
 
 \begin{framed}
 \textbf{vi.}  Explain physically why $T^{zz} = 0$ makes sense in terms of a plausible microscopic
 (``particulate'') model of the sheet.
 \end{framed}
 
+$T^{zz}$ is pressure in the $z-$direction. But if there was pressure, this leads to motion in $z$ of the sheet, and the sheet would buckle. But since our sheet is flat, there must not be any pressure in $z \Rightarrow T^{zz}=0$.
+
 \begin{framed}
 \textbf{vii.} Prove that it is impossible to build the sheet out of a perfect fluid or dust.
 \end{framed}
 
-\begin{framed}
-\textbf{(b) i.} 
-\end{framed}
+For Schutz Ch. 4, for a perfect fluid the stress-energy tensor is given by
+\begin{equation}
+T^{\mu\nu}=\text{diag}(\rho,p,p,p)\label{perfect fluid}
+\end{equation}
 
-\begin{framed}
-\textbf{(b) i.} 
-\end{framed}
+But our $T^{\mu\nu}$ is confined to the sheet
+\begin{equation}
+T^{\mu\nu}\propto \text{diag}(-1,1,1,0)\label{sheet}
+\end{equation}
 
-\begin{framed}
-\textbf{(b) i.} 
-\end{framed}
+In the perfect fluid~(\ref{perfect fluid}), we see the last two elements of the tensor are identical. However, on the sheet~(\ref{sheet}) we see the last two elements are different $(1\neq 0) \Rightarrow $ we cannot build a sheet out of a perfect fluid!
 
 \begin{framed}
 \textbf{(i)} A tennis player standing on the sheet hits a tennis ball into the $z>0$ half-space with initial 4-velocity $u(0)$.
