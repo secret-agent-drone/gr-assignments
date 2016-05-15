@@ -35,7 +35,7 @@
 
 \newcommand{\pmx}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \newcommand{\ph}[1]{\phantom{#1}}
-\newcommand{\diag}{\text{diag}~}
+\newcommand{\diag}{\text{diag}}
 
 \usepackage{gensymb}
 
@@ -119,19 +119,20 @@ where $\Phi(t,z)$ (not necessarily the same as $\Phi_{\text{Newton}}$), $\Psi(t,
 determined by Einstein’s field equations.
 \end{framed}
 
-The plane is symmetric under $x$ and $y \Rightarrow g_{xx}=g_{yy}$. By symmetry, the spacetime is unchanged under $x\to -x$, $y\to -y$, $z\to -z$, $t\to -t$ transformations $\Rightarrow$ cross-terms are zero, i.e. $g_{xy}=-g_{xy}=0$.
+An infinite flat sheet in the $x-y$ plane is is symmetric under interchange of $x$ and $y$, so $g_{xx}=g_{yy}$. By symmetry of the sheet, under the transformations $x\to -x$, $y\to -y$, $z\to -z$, $t\to -t$ the spacetime is unchanged $\Rightarrow g_{\alpha\beta}=-g_{\beta\alpha}=0$ (for $\alpha\neq \beta$).
 
-Recall that the spacetime interval $ds^2$ can be written as,
+Recall that the spacetime interval $ds^2$ can be written as
 \begin{equation}
-ds^2=g_{00}dt^2+g_{11}dx^2+g_{22}dy^+g_{33}dz^2
+ds^2=g_{00}dt^2+g_{11}dx^2+g_{22}dy^{2}+g_{33}dz^2
 \end{equation}
+
+
 so that we have
 \begin{equation}
 ds^2=-e^{2\Phi(z,t)}dt^2+e^{2\Psi(z,t)}(dx^2+dy^2)+e^{2\Lambda (z,t)}dz^2
 \end{equation}
-where $g_{00}<0$ and $g_{11},g_{22}>0$ everywhere.
+where the functions $\Phi, \Psi, \Lambda$ depend on $z,t$, and $g_{11},g_{22}>0,g_{00}<0$  everywhere.
 
-We have introduced functions $\Phi, \Psi, \Lambda$ which depend on $z,t$ by the geometry given.
 
 \begin{framed}
 \textbf{(b) i.} If the spacetime is static (caution: such a solution may not necessarily exist), construct explicitly a coordinate transformation, that puts~(\ref{eq2}) into the form 
@@ -141,7 +142,7 @@ ds^2=-e^{2\Phi(z)} dt^2+e^{2\Psi(z)}(dx^2+dy^2)+dz^2,\label{eq3}
 where $t$, $x$, $y$, and $z$ are suitably relabelled from~(\ref{eq2}).
 \end{framed}
 
-For a static spacetime (no time dependence), we can rewrite the functions independent of time, i.e.
+A static spacetime has no time dependence, so we can rewrite the functions independent of time, i.e.
 \begin{align*}
 e^{\Phi(z)}dt'&=e^{\Phi(z,t)}dt\\
 e^{\Psi(z)}dx'&=e^{\Psi(z,t)}dx\\
@@ -149,11 +150,11 @@ e^{\Psi(z)}dy'&=e^{\Psi(z,t)}dy\\
 dx'&=e^{\Lambda(z,t)}dz
 \end{align*}
 
-Assuming the functions $\Phi,\Psi$ can be re-expressed in a time independent way, we will only need the transformation $dz'=e^{\Lambda(z,t)}dz$
+Assuming the functions $\Phi,\Psi$ can be re-expressed in a time independent way, we will only need the transformation $dz'=e^{\Lambda(z,t)}dz$.
 
 This leaves us with
 \begin{equation}
-ds^2=-e^{2\Phi(z)} dt^2+e^{2\Psi(z)}(dx^2+dy^2)+dz^2
+ds^2=-e^{2\Phi(z)} dt^2+e^{2\Psi(z)}(dx^2+dy^2)+dz^2\label{ds2 metric}
 \end{equation}
 as required.
 
@@ -163,20 +164,28 @@ as required.
 \textbf{(b) ii.} Explain why it is impossible to get rid of the $e^{2\Lambda(r)}$ factor multiplying $dr^2$ in the ``standard'' Schwarzschild metric in the same way, such that the metric contains only one undetermined function $e^{2\Phi(r)}$.
 \end{framed}
 
-Using Schwarzchild metric $dr'=\left(1-\frac{2M}{r}\right)^{-1/2}dr$ we find
+Using the Schwarzchild metric $dr'=\left(1-\frac{2M}{r}\right)^{-1/2}dr$, we find
 \begin{equation}
 r'=\sqrt{r^2-2Mr}+M\log\left(\sqrt{r^2-2Mr}+r-m\right)
 \end{equation}
 
 At $r=0$ the second term becomes $M\log(-m)$, which is undefined since $m>0$.
 
-{\huge Wrong?}
-
 \begin{framed}
 \textbf{(c)} Nine of the Christoffel symbols associated with~(\ref{eq3}) are nonzero. Calculate them. Here and henceforth, please feel free to use a symbolic algebra package like \emph{Mathematica} to make your life easier.
 \end{framed}
 
-These Christoffel symbols have been calculated used Mathematica (see attached code).
+We can use the expression for the Christoffel symbols in terms of the metric,
+\begin{equation}
+\Gamma^{\gamma}_{\beta\mu}=\frac{1}{2}g^{\alpha\gamma}\left(
+g_{\alpha\beta,\mu}+g_{\alpha\mu,\beta}-g_{\beta\mu,\alpha}\right)
+\end{equation}
+where we have the metric components $g_{\alpha\alpha}$ as given by~\ref{ds2 metric}) (with all non-diagonal terms zero); i.e.
+\begin{equation}
+g_{\alpha\beta}=\diag\left(-e^{2\Phi(z)},e^{2\Psi(z)},e^{2\Psi(z)},1\right)
+\end{equation}
+
+Now, using a mathematical calculator (specifically an \emph{TI-89 Titanium} calculator) to make our lives easier, we calculate the Christoffel symbols and find the non-zero terms as
 
 \begin{align}
 \Gamma^{1}_{14}&=\Gamma^{1}_{41}=\Phi'(z)\\
@@ -210,7 +219,7 @@ R^{\rho}_{\ph{\rho}\sigma \mu\nu}=\partial_{\mu}\Gamma^{\rho}_{\ph{\rho}\nu\sigm
 -\Gamma^{\rho}_{\ph{\rho}\nu\lambda}\Gamma^{\lambda}_{\ph{\lambda}\mu\sigma}
 \end{equation}
 
-The non-zero components of the Ricci tensor are calculated in Mathematica as shown in the code, and we find
+We calculate the components of the Ricci tensor using our calculator, and find the non-zero components to be
 
 \begin{align}
 R_{tt}&=e^{2\Phi}[(\Phi')^2+2\Phi' \Psi' +\Phi''],\\
@@ -240,7 +249,7 @@ We know
 \Rightarrow 8\pi T^{\alpha\beta}&=g^{\alpha\mu}g^{\beta\nu}8\pi T_{\mu\nu}
 \end{align}
 
-The values of $8\pi T^{\alpha\alpha}$ are calculated as shown in the code, and we find
+From this, we can calculate the values of $8\pi T^{\alpha\alpha}$ using our calculator, with the results
 
 \begin{align}
 8\pi T^{tt}&=-e^{-2\Phi}[3(\Psi')^2+2\Psi''+\Lambda],\\
@@ -266,11 +275,11 @@ Starting with
 \begin{equation}
 8\pi T^{tt}=-e^{-2\Phi}\left(3(\Psi')^2+2\Psi''+\Lambda\right)
 \end{equation}
-we let $T^{tt}=\delta(z)$ as we are confied to the sheet $z=0$. As the LHS has a delta-function, the right hand side must also be proportional to a delta-function.
+we let $T^{tt}=\delta(z)$ (as we are confined to the sheet $z=0$). As the LHS $\propto \delta(z)$, RHS $\propto \delta(z)$.
 
-As a first derivative cannot be a delta-function (proof not shown), as as $\Lambda=0$, we see
+As a first derivative cannot be a delta-function (proof not shown), and as $\Lambda=0$, we see
 \begin{equation}
-\Phi''\sim \delta(z)
+\Phi'' \propto \delta(z)
 \end{equation}
 
 We also have
@@ -297,7 +306,7 @@ However, both of these possibilities contradict with our previous findings! Henc
 \textbf{ii.} By thinking about a suitable initial value problem qualitatively, speculate why this seemingly natural system - a static dust sheet - is impossible to assemble ``from the ground up'' in general relativity, even though there is no obstacle in a Newtonian context. What might ``go wrong''? Do not try calculating anything, unless you are in the mood to win a Nobel Prize.
 \end{framed}
 
-If we are to build a sheet from the ground up, i.e. particle by particle, we would find that as we add a particle, a gravitational or electric force would act on the other particles currently in the ``sheet'' and distory the structure. Hence, a flat sheet structure would be impossible to form.
+For each individual particle we add, a gravitational or electric force would act on the other particles currently in the ``sheet'' causing a distortion to the structure. This means that a flat sheet structure would be impossible to form!
 
 
 \begin{framed}
@@ -310,29 +319,23 @@ warping of space in the $z$ direction relative to the $x$ and $y$ directions.
 hold to obtain a self-consistent solution of the form~(\ref{eq3}).
 \end{framed}
 
-Zero stree energy leads to
+With zero stress-energy, we have
 \begin{equation}
 8\pi T^{tt}=0=\Psi'(2\Phi' + \Psi) + \Lambda = \Lambda
 \end{equation}
-since $\Psi=0\Rightarrow \Psi'=0$.
+since $\Psi=0\Rightarrow \Psi'=0$. Hence we see
 \begin{equation}
-\therefore \Lambda = 0
+\Lambda = 0
 \end{equation}
+as required.
 
 
 \begin{framed}
 \textbf{ii.} Hence show that the stress-energy must vanish on the sheet $z = 0$ too.
 \end{framed}
 
-At $z=0$, there will be no mass as $\Lambda=0,\Psi=0$
-\begin{itemize}
-\item[] $\Rightarrow$ no invariant mass $E_{m}$
-\item[] $\Rightarrow$ no energy density
-\item[] $\therefore T^{tt}=0$
-\item[] $\therefore$ momentum flow must also be zero
-\end{itemize}
+At $z=0$, there will be no mass as $\Lambda=0,\Psi=0$. Hence no invariant mass $E_{m} \Rightarrow$ no energy density $\Rightarrow T^{tt}=0$.
 
-{\huge Wrong?}
 
 \begin{framed}
 \textbf{iii.} Prove that~(\ref{eq3}) reduces to the Rindler metric for a uniformly accelerated frame.
@@ -342,16 +345,18 @@ In the special case $\Phi = 0$, a similar bulk-then-sheet approach yields the Mi
 metric.
 \end{framed}
 
+We start with
+
 \begin{equation}
 ds^2=-e^{2\Phi(z)}dt^2 + dx^2 + dy^2 + dz^2
 \end{equation}
 
-If $z$ is small we can Taylor expand
+For small $z$, we can Taylor expand, so that we have
 \begin{equation}
-\therefore ds^2 = -\left(1+2\Phi'(z)\right)dt^2 + dx^2 + dy^2 + dz^2
+ds^2 = -\left(1+2\Phi'(z)\right)dt^2 + dx^2 + dy^2 + dz^2
 \end{equation}
 
-This is of the form of an accelerating frame with acceleration $2\Phi'(z)$.
+This is of the form of an accelerating frame with acceleration $2\Phi'(z)$!
 
 \begin{framed}
 \textbf{(h)} Consider the special case $\Psi=\Phi$. This corresponds to preferentially warping space in $z$ relative to $x$ and $y$, i.e. the ``symmetric'' coordinates $(t, x, y)$ are treated as a Minkowski subspace with warping in the $z$ coordinate. The system is the four dimensional analogue of the five-dimensional \emph{Randall-Sundrum 1-brane} spacetime, which revolutionized the study of brane worlds 
@@ -370,11 +375,12 @@ constant with units of acceleration.
 
 \begin{align}
 \Phi = \Psi \Rightarrow 0 &= 3(\Phi') + \Lambda\\
-\therefore \frac{d\Phi}{dz}&= \pm \sqrt{-\frac{\Lambda}{3}}\\
-\therefore \Phi &= \pm \sqrt{-\frac{\Lambda}{3}}|z|,\quad\text{as z is symmetric}\\
+\Rightarrow\frac{d\Phi}{dz}&= \pm \sqrt{-\frac{\Lambda}{3}}\\
+\Rightarrow \Phi &= \pm \sqrt{-\frac{\Lambda}{3}}|z|,\quad\text{as z is symmetric}\\
 &=g|z|
 \end{align}
 
+as required.
 
 \begin{framed}
 \textbf{ii.} Prove that $g$ satisfies the fine-tuning condition
@@ -387,32 +393,30 @@ Comment on the physical significance of the sign of $\Lambda$.
 \begin{equation}
 g=\pm \sqrt{-\frac{\Lambda}{3}} \therefore \Lambda = -3g^2
 \end{equation}
-If $\Lambda$ is positive $\Rightarrow$ imaginary $g$ which is not physical. $\Rightarrow \Lambda$ is negative.
-
-{\huge Wrong?}
+Positive $\Lambda$ gives an imaginary $g$, which is not physical. $\Rightarrow \Lambda$ is negative. Physically, this means that space contracts!
 
 \begin{framed}
 \textbf{iii.} Assume that the stress-energy is confined to the sheet, i.e. $T^{\mu\nu}\propto \delta(z)$. Prove that the stress-energy tensor takes the physically unusual form
 \begin{equation}
-T^{\mu\nu}=(2\pi)^{-1}g\delta(z)\diag(-1,1,1,0).\label{eq14}
+T^{\mu\nu}=(2\pi)^{-1}g\delta(z)~\diag(-1,1,1,0).\label{eq14}
 \end{equation}
 Equation~(\ref{eq14}) implies fine tuning between $T^{\mu\nu}$ and $\Lambda$ via $g$.
 \end{framed}
 
-\begin{equation}
-\Phi = g|z| \therefore \Phi''= 2g\delta(z)
-\end{equation}
-as 
+We have
+
 \begin{align}
+\Phi = g|z| \Rightarrow \Phi''&= 2g\delta(z)
+\intertext{since}
 \frac{d\Phi}{dz}&=\text{sgn}(z)\\
 \frac{d}{dz}\text{sgn}(z)&=z\delta(z)
 \end{align}
 
-Also, 
+We also find that
 \begin{align}
 3(\Phi')^2&=-\Lambda\\
-\therefore 8\pi T^{tt}&=-e^{2g|z|}(4\Phi'')\\
-\therefore T{tt}&= -e^{2g|z|} (2\pi)^{-1} \delta(z)\\
+\Rightarrow 8\pi T^{tt}&=-e^{2g|z|}(4\Phi'')\\
+\Rightarrow T{tt}&= -e^{2g|z|} (2\pi)^{-1} \delta(z)\\
 8\pi T^{xx}&= e^{2g|z|}(4\Phi'')\\
 T^{xx}&=(2\pi)^{-1}e^{2g|z|} \delta(z)\\
 T^{yy}&=T^{xx}\\
@@ -421,7 +425,7 @@ T^{yy}&=T^{xx}\\
 \end{align}
 which leaves us with
 \begin{equation}
-T^{\mu\nu}=(2\pi)^{-1}g\delta(z)\diag(-1,1,1,0),
+T^{\mu\nu}=(2\pi)^{-1}g~\delta(z)\diag(-1,1,1,0),
 \end{equation}
 as required.
 
@@ -430,9 +434,9 @@ as required.
 \textbf{iv.} Interpret physically the two cases $g < 0$ and $g > 0$.
 \end{framed}
 
-$g<0$ positive energy density, normal stress (pressure) is negative.
+In the case of $g<0$, there is positive energy density, so the normal stress (pressure) is negative.
 
-$g>0$ negative energy density, normal stress (pressure) is positive.
+In the case of $g>0$, there is negative energy density, so there normal stress (pressure) is positive.
 
 
 \begin{framed}
@@ -446,18 +450,18 @@ For $g>0$, $T^{tt}$ is negative, $T^{xx}=T^{yy}$ is positive.
 (``particulate'') model of the sheet.
 \end{framed}
 
-$T^{zz}$ is pressure in the $z-$direction. But if there was pressure, this leads to motion in $z$ of the sheet, and the sheet would buckle. But since our sheet is flat, there must not be any pressure in $z \Rightarrow T^{zz}=0$.
+$T^{zz}$ is pressure in the $z-$direction. We note that pressure leads to motion in $z$ of the sheet; this motion would cause the sheet to buckle. However, our sheet is flat which implies there must not be any pressure in $z \Rightarrow T^{zz}=0$.
 
 \begin{framed}
 \textbf{vii.} Prove that it is impossible to build the sheet out of a perfect fluid or dust.
 \end{framed}
 
-For Schutz Ch. 4, for a perfect fluid the stress-energy tensor is given by
+For a perfect fluid the stress-energy tensor is given by (see \emph{Schutz} (4.36))
 \begin{equation}
 T^{\mu\nu}=\text{diag}(\rho,p,p,p)\label{perfect fluid}
 \end{equation}
 
-But our $T^{\mu\nu}$ is confined to the sheet
+However, our $T^{\mu\nu}$ is confined to the sheet,
 \begin{equation}
 T^{\mu\nu}\propto \text{diag}(-1,1,1,0)\label{sheet}
 \end{equation}
@@ -476,6 +480,18 @@ In the perfect fluid~(\ref{perfect fluid}), we see the last two elements of the 
 identify three constants of the motion. In~(\ref{eq15}), $\tau$ denotes the proper time as measured in the ball's momentarily comoving reference frame.
 \end{framed}
 
+The geodesic equation is given by
+\begin{equation}
+\frac{du_{\nu}}{d\tau}=\frac{1}{2}g_{\alpha\beta,\nu}u^{\alpha}u^{\beta}
+\end{equation}
+where we have the metric $g_{\alpha\beta}=\diag(-e^{2gz},e^{2gz},e^{2gz},1)$. The metric is dependent only for $z$, so we find
+\begin{equation}
+\frac{du_{\nu}}{d\tau}=0\quad\text{for $\nu=t,x,y$}\\
+\end{equation}
+
+Hence $u_{t},u_{x},u_{y}$ are constants of the motion.
+
+
 \begin{framed}
 \textbf{ii.} From the z component of~(\ref{eq15}), show that
 \begin{equation}
@@ -484,12 +500,63 @@ identify three constants of the motion. In~(\ref{eq15}), $\tau$ denotes the prop
 What is unusual physically about this acceleration?
 \end{framed}
 
+Starting from the geodesic equation we have
+\begin{align}
+\frac{du_{z}}{d\tau}&=ge^{2gz}\left(-(u^t)^2+(u^x)^2+(u^y)^2\right)
+\Rightarrow \frac{du^{z}}{d\tau}=ge^{2gz}\left(-(u^t)^2+(u^x)^2+(u^y)^2\right)
+\end{align}
+where we raise the index ($u_{z} \to u^{z}$) by multiplying both sides by $g^{zz}=1$.
+
+As $\vec{u}\cdot\vec{u}=-1$, we find
+\begin{align}
+e^{2gz}\left(-(u^t)^2+(u^x)^2+(u^y)^2\right)&=-1\\
+\Rightarrow e^{2gz}\left(-(u^t)^2+(u^x)^2+(u^y)^2\right)&=-\left(1+(u^z)^2\right)
+\end{align}
+
+Hence we see
+\begin{equation}
+\frac{du^z}{d\tau}=-g\left[1+(u^z)\right]^2
+\end{equation}
+as required!
+
+We note that the acceleration in $z$ depends on the velocity of the ball. In our own experience if we throw a ball up, we would expect the the acceleration on the ball to be a constant due to gravity. In this case, however, we see that this acceleration is dependent on the velocity! This is quite unsual.
+
 \begin{framed}
 \textbf{iii.} Similarly or otherwise, prove the equivalent result
 \begin{equation}
 \left(\frac{dz}{d\tau}\right)^2=-1+e^{-2gz}\{1+[u^z(0)]^2\}.\label{eq17}
 \end{equation}
 \end{framed}
+
+We start with
+\begin{equation}
+\vec{u}\cdot\vec{u}=-1 \Rightarrow e^{-2gz}\left(-(u_t)^2+(u_x)^2+(u_y)^2\right)
++(u_z)^2=-1
+\end{equation}
+
+Using the initial condition $z=0$ at $\tau=0$, and the fact that $u_x,u_y,u_t$ are constants of the motion:
+\begin{align}
+-\left(u_t(0)\right)^2+\left(u_x(0)\right)^2+\left(u_y(0)\right)^2+\left(u_z(0)\right)^2&=-1 \\
+\Rightarrow e^{4gz}\left[\left(u^t(0)\right)^2+\left(u^x(0)\right)^2+\left(u^y\right)^2\right]
+&=-\left[1+\left(u^z(0)\right)^2\right]\\
+\Rightarrow e^{2gz}\left[\left(u^t\right)^2+\left(u^x\right)^2+\left(u^y\right)^2\right]
+&=-e^{-2gz}\left[1+\left(u^z(0)\right)^2\right]\label{LHS of eqn, 1}
+\end{align}
+as $u^{t},u^{x},u^{y}$ are constants of motion (e.g. $u^t = u^t(0)$).
+
+Also, we note
+\begin{equation}
+\vec{u}\cdot \vec{u}=-1 \Rightarrow e^{2gz}\left(-(u^t)^2+(u^x)^2+(u^y)^2\right)=
+-\left(1+(u^z)^2\right)\label{LHS of eqn, 2}
+\end{equation}
+
+Equating the LHS's of~(\ref{LHS of eqn, 1}) and~(\ref{LHS of eqn, 2}) we find
+\begin{align}
+-e^{-2gz}\left[1+\left(u^z(0)\right)^2\right] & = -\left(1+(u^z)^2\right)\\
+\Rightarrow \left(\frac{dz}{d\tau}\right)^2&=-1+e^{-2gz}\left[1+\left(u^z(0)\right)^2\right]
+\end{align}
+
+as required.
 
 \begin{framed}
 \textbf{iv.} Solve either~(\ref{eq16}) or~(\ref{eq17}) to obtain
@@ -498,6 +565,48 @@ z=g^{-1}\ln[\cos g\tau+u^z(0)\sin g\tau].\label{eq18}
 \end{equation}
 Please note that there are many valid ways to prove~(\ref{eq16})-(\ref{eq18}).
 \end{framed}
+
+
+We recall from~(\ref{eq17}) that
+\begin{align}
+\frac{du^z}{d\tau}&=-g\left(1+(u^z)^2\right)\\
+\Rightarrow \int\frac{du^z}{\left(1+(u^z)^2\right)}&=\int -g~d\tau\\
+\tan^{-1}(u^z)&=-g\tau+c_{1}
+\intertext{where $c_1$ is some constant.}
+u^{z}&=\tan(-g\tau + c_1)
+\intertext{We can use the initial condition $z=0,\tau=0$ to determine the value of the constant}
+u^{z}(0)&=\tan(c)\\
+\Rightarrow c&=\tan^{-1}\left(u^z(0)\right)
+\intertext{We shall substitute this value in later (leaving it as $c_1$ for now, for convenience.}
+u^{z}&=\frac{dz}{dt}\\
+\Rightarrow \int dz&=\int d\tau~\tan(-g\tau+c_1)
+\end{align}
+
+Evaluating this integral, we can now calculate $z$.
+
+\begin{align}
+z&=\frac{1}{g}\log\left[\cos(c_1-g\tau)\right]+c_2
+\intertext{where $c_2$ is some constant,}
+&=\frac{1}{g}\log\left[\cos\Big(\tan^{-1}\big(u^z(0)-g\tau\big)\Big)\right]\\
+&=\frac{1}{g}\log\left[\cos\Big(\tan^{-1}\big(u^z(0)\big)\Big)\cos(g\tau)
++ \sin\Big(\tan^{-1}\big(u^z(0)\big)\Big)\sin(g\tau)\right] + c_2\label{cosab}
+\intertext{where we have used the identity $\cos(\alpha-\beta)=\cos\alpha \cos \beta
++ \sin\alpha \sin \beta$. We now also recall that}
+\cos\left[\tan^{-1}(x)\right]&=\frac{1}{\sqrt{1+x^2}}\\
+\sin\left[\tan^{-1}(x)\right]&=\frac{x}{\sqrt{1+x^2}}\\
+\Rightarrow z&=\frac{1}{g}\log\left(\frac{\cos(g\tau)+u^z(0)\sin(g\tau)}
+{\sqrt{1+(u^z(0))^2}}\right)+c_2\\
+&=\frac{1}{g}\log\left[\cos(g\tau)+u^z(0)\sin(g\tau)\right]
+-\frac{1}{g}\log\left[\sqrt{1+(u^z(0))^2}\right]+c_2
+\intertext{We can determine $c_2$ using the initial conditions $z=0,\tau=0$,}
+\Rightarrow 0&=\underbrace{\frac{1}{g}\log(1)}_{=0}+\frac{1}
+{\log\left[\sqrt{1+(u^z(0))^2}\right]}+c_2\\
+\Rightarrow c_2 &= \frac{1}{g}\log\left[\sqrt{1+(U^z(0))^2}\right]
+\intertext{Hence we conclude}
+z&=g^{-1}\log[\cos g\tau+u^z(0)\sin g\tau].
+\end{align}
+as required.
+
 
 \begin{framed}
 \textbf{(j)} Show that the ball reaches the apex of its trajectory at proper time
@@ -512,6 +621,56 @@ in the coordinates in which~(\ref{eq3}) is written. Interestingly, $\tau_{\text{
 how hard the ball is struck initially. Does the same hold true for $t_{\text{top}}$?
 \end{framed}
 
+We know there will be a maximum (or minimum) in $z$ at $\frac{dz}{d\tau}=0$; hence we can solve for $\tau$ at this point by
+\begin{align}
+\frac{dz}{d\tau}&=\tan\left[-g\tau + \tan^{-1}(u^z(0))\right]\\
+\Rightarrow 0 &= \tan\left[-g\tau_{\text{top}} + \tan^{-1}(u^z(0))\right]\\
+g\tau_{\text{top}}&=\tan^{-1}\left[u^z(0)\right]\\
+\Rightarrow \tau_{\text{top}}&=g^{-1}\tan^{-1}\left[u^z(0)\right]
+\end{align}
+as required. \footnote{We have not shown that $z$ takes a maximum (rather than a minimum) at this $\tau$, however it would not be be difficult to show this (e.g. by checking the sign of $\frac{d^2 z}{d\tau^2}$).}
+
+We have
+\begin{equation}
+\frac{du_t}{d\tau}=0 \Rightarrow u_t = c
+\end{equation}
+where $c$ is some constant. By initial conditions $z=0,\tau=0$ we see
+\begin{equation}
+c=U_t(0)
+\end{equation}
+
+Starting from $u_t$, we can calculate
+\begin{align}
+u_t=g_{tt}u^t=-e^{2gz}u^t&=c\\
+\Rightarrow u^t = -e^{-2gz}\cdot c\\
+\Rightarrow \frac{dt}{dz}&=-u_t(0)e^{-2gz}\\
+dt&=-d\tau\cdot u_t(0) e^{-2gz}\\
+&=-d\tau\cdot u_t(0)e^{-2g\left\{g^{-1}\log\left[\cos(g\tau)+u^z(0)\sin(g\tau)\right]\right\}}\\
+&=-d\tau\cdot u_t(0) e^{\log\left\{\left[\cos(g\tau)+u^z(0)\sin(g\tau)\right]^{-2}\right\}}\\
+&=-d\tau\cdot u_t(0)\left[\cos(g\tau) + u^z(0)\sin(g\tau)\right]^{-2}\\
+&=-d\tau \cdot u_t(0)\left(1+(u^z(0))^2\right)^{-1}\cos\left[-g\tau + \tan^{-1}(u^z(0))\right]^{-2}
+\intertext{where we have performed the opposite steps from~(\ref{cosab}).}
+\Rightarrow t&=g^{-1}u_t(0)\left(1+(U^z(0))^2\right)^{-1}
+\tan\left(-g\tau + \tan^{-1}(u^z(0))\right) + d
+\intertext{We can determine the value of our constant $d$ by considering the initial condition $t=0,\tau=0$}
+\Rightarrow d&=-g^{-1}u_t(0)\left(1+(u^z(0))^2\right)^{-1}u^z(0)
+\intertext{Since $t_{\text{top}}$ will occur when $\tau=\tau_{\text{top}}=g^{-1}\tan^{-1}(u^z(0)),$}
+t_{\text{top}}&=-g^{-1} u_t(0)\left(1+(u^z(0))^2\right)^{-1}u^z(0)
+\end{align}
+
+Using $U_{t}(0)=u^t(0)$ and $-1=\vec{u}\cdot \vec{u}$, we can see
+\begin{equation}
+U^{t}(0)=\pm\sqrt{1+(u^x(0))^2+(u^y(0))^2+(u^z(0))^2}
+\end{equation}
+
+Taking the negative square root gives us the expression for $t_{\text{top}}$
+
+\begin{equation}
+t_{\text{top}}=\frac{u^z(0)\{1+[u^x(0)]^2+[u^z(0)]^2\}^{1/2}}{g\{1+[u^z(0)]^2\}},
+\end{equation}
+
+Since we can choose how fast we throw the ball, this can be infinite!
+
 \begin{framed}
 \textbf{(k)} Show that the horizontal distance traversed by the ball from its launch point to where it lands on the sheet, as measured in the coordinates associated with~(\ref{eq3}), is given by
 \begin{equation}
@@ -520,6 +679,68 @@ x_{\text{land}}=\frac{2u^x(0)u^z(0)}{g\{1+[u^z(0)]^2\}}.\label{eq21}
 How does~(\ref{eq21}) differ qualitatively from Newtonian projectile motion? Should we expect $x_{\text{land}}$ to equal the $x$-component of the initial 3-velocity multiplied by $2t_{\text{top}}$,
 since the metric does not depend on $x$?
 \end{framed}
+
+Starting from
+\begin{equation}
+\frac{du_x}{d\tau}=0
+\end{equation}
+we find that $u_x$ is constant; i.e.
+\begin{equation}
+ u_x=c
+\end{equation}
+From initial conditions, we have
+\begin{equation}
+c=u_x (0)
+\end{equation}
+
+We then calculate
+\begin{align}
+u_x =g_{xx}u^x &= e^{2gz}u^x\\
+u^x &= e^{-2gz}u_x(0)\\
+\frac{dx}{d\tau}&=u_x(0)\left[\cos(g\tau)+u^z(0)\sin(g\tau)\right]\\
+\Rightarrow x&=  -g^{-1}u^x(0)\left[1+u^z(0)\right]\tan\left[-g\tau + \tan^{-1}u^z(0)\right] + d
+\end{align}
+similarly to what we have done previously (note, $d$ is some constant).
+
+Our initial conditions of $x=0,\tau=0$ allow us to calculate $d$ as
+\begin{equation}
+d=g^{-1}U^x(0)\left[1+(u^z(0))^2\right]^{-1}u^z(0)
+\end{equation}
+
+We realise that $x_{\text{land}}$ will occur at $\tau_{\text{land}}$. We assume that $\tau_{\text{land}}=2\tau_{\text{top}}$, but in any case we shall prove this below.
+
+\begin{align}
+z&=g^{-1}\log\left[\cos(g\tau)+u^z(0)\sin(g\tau)\right]\\
+\Rightarrow 0&=g^{-1}\log\left[\sqrt{1+(u^z(0))^2}\cos(-g\tau_{\text{land}}
++\tan^{-1}(u^z(0)))\right]\\
+\Rightarrow \frac{1}{\sqrt{1+(u^z(0))^2}}&=\cos\left(-g\tau_{\text{land}}+\tan^{-1}
+(u^z(0))\right)\\
+\cos^{-1}\left(\frac{1}{\sqrt{1+(u^z(0))^2}}\right)&=-g\tau_{\text{top}}+\tan^{-1}(u^z(0))
+\intertext{Using the relation $\cos^{-1}\left(\frac{1}{\sqrt{1+x^2}}\right)=\tan^{-1}(x)$, we have}
+\tan^{-1}(u^z(0))&=-g\tau_{\text{land}}+\tan^{-1}\left(U^z(0)\right)\\
+\Rightarrow \tau_{\text{land}}&=2g^{-1}\tan^{-1}\left(U^z(0)\right)
+\intertext{which is as we expected,}
+\tau_{\text{land}}&=2\tau_{\text{top}}
+\end{align}
+
+Using this value of $\tau$, we can determine $x_{\text{max}}$.
+
+\begin{align}
+x_{\text{max}}&=-g^{-1}u^x(0)\left(1+(u^z(0))^2\right)^{-1}
+\tan\left[-2\tan^{-1}(u^z(0))+\tan^{-1}(u^z(0))\right] + c\\
+&=g^{-1}u^x(0)\left[1+(u^z(0))^2\right]^{-1}u^z(0)+g^{-1}u^x(0)\left[1+(u^z(0))^2\right]^{-1}
+u^z(0)\\
+\Rightarrow x_{\text{land}}&=\frac{2u^x(0)u^z(0)}{g\{1+[u^z(0)]^2\}}\label{x top}
+\end{align}
+as required.
+
+We should not expect $x_{\text{land}}=\text{initial x-velocity}\times 2t_{\text{top}}$; we see from~(\ref{x top}) that for large $u^z(0)$ we have
+\begin{equation}
+x_{\text{land}}\sim \frac{2u^x(0)}{g u^z(0)}
+\end{equation}
+Since we are free to choose $u^x(0)$ and $u^z(0)$ we see that $x_{\text{land}}$ can be whatever value we dictate (not just  $\text{initial x-velocity}\times t_{\text{land}}$!).
+
+
 
 \begin{framed}
 \textbf{(l)} Finally, suppose that instead of a tennis ball we launch a laser beam into the $z > 0$ half-space with initial 4-momentum $p(0)$ per photon.
@@ -533,6 +754,41 @@ z=g^{-1}\ln[1+p^z(0)g\lambda].
 In other words, the photon never falls back to the sheet, no matter how much stress-energy the sheet contains.
 \end{framed}
 
+Starting from the geodesic equations, we have that $p_x,p_y,p_t$ are constants of the motion. We also consider $\vec{p}\cdot \vec{p}$. That is,
+
+\begin{equation}
+e^{2gz}\left[-(p^t)^2+(p^x)^2+(p^y)^2\right]+(p^z)^2=0\label{li eq1}
+\end{equation}
+
+Now, using the initial condition $z=0,\tau=0$, we find
+
+\begin{equation}
+\left[-(p_t(0))^2+(p_x(0))^2+(p_y(0))^2\right]+(p_z(0))^2=0
+\end{equation}
+
+\begin{equation}
+e^{-2gz}\left[p^z(0)\right]^2=-e^{2gz}\left[-(p^t)^2+(p^x)^2+(p^y)^2\right]\label{li eq2}
+\end{equation}
+where we use the inverse metric to raise indices. Combining equations~(\ref{li eq1}) and~(\ref{li eq2}) we find
+\begin{align}
+(p^z)^2&=e^{-2gz}\left[p^z(0)\right]^2\\
+\Rightarrow \frac{dz}{d\lambda}&=e^{-gz}p^z(0)\\
+\int dz~e^{gz}&=\int d\lambda~p^z(0)\\
+g^{-1}e^{gz}&=p^z(0)\lambda+c\\
+\Rightarrow e^{gz}&=g\lambda p^z(0)+c
+\intertext{where $c$ is some constant. We can determine the value of $c$ by considering the initial conditions $z=0,\lambda=0$}
+\Rightarrow c&=1\\
+\Rightarrow e^{gz}&=g\lambda p^z(0) + 1\\
+gz&=\log\left[g\lambda p^z(0)+1\right]\\
+\Rightarrow z&= g^{-1}\log\left[1+g\lambda p^z(0)\right]
+\end{align}
+
+as required.
+
+
+
+
+
 \begin{framed}
 \textbf{ii.} Consider an intergalactic variant of the Pound-Rebka experiment, in which we fly horizontally (in the $x$ direction, say) in a rocket at constant speed $V$ [as measured in the coordinates associated with~(\ref{eq3})] while maintaining a constant altitude $z_{\text{rocket}}$ above the sheet. Show that the laser frequency measured by the stationary emitter $\nu_{\text{em}}$, and the frequency measured by the experimentalist in the rocket, $\nu_{\text{rec}}$, are related according to
 \begin{equation}
@@ -542,6 +798,67 @@ In other words, the photon never falls back to the sheet, no matter how much str
 
 Most of the physics in this question applies in five dimensions too. It is interesting to think about it in the context of Randall-Sundrum brane worlds.
 \end{framed}
+
+For a photon, we have the energy $E=h\nu$, and its energy measured by an observer is given by $E=-\vec{p}\cdot \vec{u}$.
+
+For the stationary emitter
+\begin{align}
+U&=(1,0,0,0)\\
+\Rightarrow E&=p^{t}e^{2gz}\\
+&=p^t(0)
+\end{align}
+as the emitter is at $z=0$ (and we recall that $p^t$ is a constant of the motion).
+
+For the receiver, $\vec{u}=(Uut,Vu^t,0,0)$, as $\vec{u}\cdot\vec{u}=-1$.
+
+\begin{align}
+-1&=(u^t)^2(-1+V^2)e^{2gz}\\
+\Rightarrow u^t&=\left[(1-V^2)^{-1}e^{-2gz}\right]^{1/2}\\
+&=(1-V^2)^{-1/2} e^{-gz_{\text{rocket}}}
+\end{align}
+
+Therefore $-\vec{p}\cdot\vec{u}$ for the receiver is given by
+\begin{equation}
+-g_{\alpha\beta}p^{\alpha}u^{\beta}=u^{t}e^{2gz}p^t - u^t e^{2gz} V p^{x}
+\end{equation}
+
+So,
+\begin{equation}
+\frac{\nu_{\text{rec}}}{\nu_{\text{emit}}}=\frac{E_{\text{rec}}}{E_{\text{emit}}}
+=\frac{u^t e^{2gz}(p^{t}-Vp^{x})}{p^{t}(0)}
+=\frac{e^{-gz}e^{2gz}(p^{t}-Vp^{x}}{(1-V^2)^{1/2}p^{t}(0)}
+\end{equation}
+
+Also, we see
+\begin{align}
+p^t&=e^{-2gz}p_t=-e^{-2gt}p_t(0)=e^{-2gz}p^{t}(0)\\
+p^x&=e^{-2gz}p_x=e^{-2gz}p_{x}(0)=e^{-2gz}p^x(0)
+\end{align}
+
+\begin{equation}
+\frac{e^{gz}\left[e^{-2gz}p^t(0)-Ve^{-2gz}p^x(0)\right]}{(1-V^2)^{1/2}p^t(0)}
+=\frac{e^{-gz}}{(1-V^2)^{1/2}}
+\end{equation}
+
+\begin{equation}
+-(p^t(0))^2+(p^x(0))^2+(p^y(0))^2+(p^z(0))^2=0
+\end{equation}
+as $\vec{p}\cdot\vec{p}=0$, with $z=\tau=0$.
+
+\begin{equation}
+\Rightarrow p^t(0)=\sqrt{(p^x(0))^2+(p^y(0))^2+(p^z(0))^2}
+\end{equation}
+
+\begin{align}
+\Rightarrow \frac{\nu_{\text{rec}}}{\nu_{\text{emit}}}&=
+\frac{e^{-gz}}{(1-V^2)^{1/2}}\left(1-\frac{Vp^x(0)}
+{\sqrt{(p^x(0))^2+(p^y(0))^2+(p^z(0))^2}}\right)\\
+&=\frac{e^{-gz}}{(1-V^2)^{1/2}}\left(1-
+\frac{Vp^{x}(0)}{\sqrt{(p^x(0))^2+(p^z(0))^2}}\right)
+\end{align}
+where because of symmetry, we have rescaled $p^{x'}(0)$ similar to $t_{\text{top}}$ in Question (j).
+
+This is the result as required!
 
 
 \end{document}
