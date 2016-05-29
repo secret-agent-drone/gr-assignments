@@ -131,7 +131,7 @@ While the spatial separation between the arms are indeed constant in a local Min
 It is this curvature in the global frame, due to the presence of a gravitational wave, that causes a measurable phase shift between photons travelling in the arms; hence there is no contradiction.
 
 \begin{framed}
-\textbf{ii.} Let $[t(\lambda),x(\lambda),0,0]$ be the trajectory of a photon travelling along the x-axis, parametrised by an affine parameter $\lambda$. Show that, along the trajectory, one has
+\textbf{ii.} Let $[t(\lambda),x(\lambda),0,0]$ be the trajectory of a photon travelling along the x-axis, paramatrised by an affine parameter $\lambda$. Show that, along the trajectory, one has
 \begin{equation}
 \frac{dt}{dx}=\pm\left[1+\frac{h_{+}}{2}\exp(-i\Omega t)\right]
 \end{equation}
