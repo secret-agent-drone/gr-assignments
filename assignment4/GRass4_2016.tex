@@ -1,0 +1,656 @@
+\documentclass[a4paper]{article} % A4 paper and 11pt font size
+
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}
+%\usepackage{tikz-feynman}
+\usepackage{pgfplots}
+\usepackage{pgffor}
+\usepackage[version-1-compatibility]{siunitx}
+\usepackage{fancyhdr}
+\usepackage{mathtools} %for underbraces without whitespace (\mathclap{})
+
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=28mm,
+ right=28mm,
+ top=30mm,
+ bottom=40mm,
+ }
+
+
+\usepackage{framed}
+\usepackage{amssymb} %for Lagrangian L, order O
+\usepackage{cancel} %for strikethroughs
+\usepackage{slashed} %for Feynman slashes
+
+\newcommand{\pmx}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\ph}[1]{\phantom{#1}}
+\newcommand{\diag}{\text{diag}}
+
+\newcommand{\ao}{A_{\text{out}}}
+\newcommand{\ai}{A_{\text{in}}}
+
+\usepackage{gensymb}
+
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
+\usepackage{bm}
+
+%for side-by-side figures
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.1}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+
+\pagenumbering{arabic}
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{titlepage}
+
+    \begin{center}
+        \textsc{\large SN: 587623}\\[6cm]
+
+        \HRule \\[0.5cm]
+		\Huge \textbf{PHYC90012 General Relativity}\\[0.5cm]
+        \huge \textbf{Assignment 4}\\[0.5cm] 
+        \HRule \\[1.5cm]
+        \begin{minipage}{0.4\textwidth}
+        \begin{center}
+
+        \large By \\[0.75cm]
+        \huge Braden \scshape Moore \\[0.5cm]
+        \normalsize \normalfont Master of Science \\
+        The University of Melbourne \\
+
+        \end{center}
+        \end{minipage}
+
+        \vfill
+
+        \large \today
+    \end{center}
+
+\newpage
+\end{titlepage}
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\rfoot{\textsc{Braden Moore, 587623}}
+\lfoot{\textsc{\today}}
+\rhead{\textsc{General Relativity: Assignment 3}}
+\setcounter{page}{1}
+\setcounter{section}{3}
+\section{Detecting gravitational waves with lasers}
+
+\begin{framed}
+A Michelson laser interferometer lies in the plane $z = 0$. Its arms are aligned with the $x$- and $y$-axes and have the same
+length, $L$, in the absence of a gravitational wave. A weak gravitational wave is incident normally on the interferometer. In the transverse, traceless gauge, the perturbation to the background Minkowski metric $\eta_{\mu\nu}$ is given by the plane-wave form
+\begin{equation}
+h_{\mu\nu}=H_{\mu\nu}\exp(iKz-i \Omega t),
+\end{equation}
+with
+\begin{equation}
+H_{\mu\nu}=\pmx{0&0&0&0\\0&h_+&h_{\times}&0\\0&h_{\times}&-h_{+}&0\\0&0&0&0}.
+\end{equation}
+In this question, we assume that the gravitational wave consists purely of the plus polarisation, i.e. $h_{\times}=0$
+\end{framed}
+
+\begin{framed}
+\textbf{(a)} Traditionally we analyse the phase shift in a gravitational wave interferometer using ray optics, i.e. by considering photon geodesics.
+\end{framed}
+
+\begin{framed}
+\textbf{i.} In lectures we showed that the spatial coordinates of the interferometer's mirrors remain constant in the transverse, traceless gauge. Nevertheless the interferometer measures a phase shift between its two arms, when a gravitational wave interacts with the system. Explain in words why there is no contradiction.
+\end{framed}
+
+While the spatial separation between the arms are indeed constant in a local Minkowski space and in our transverse traceless gauge, this does not necessarily constrain the curvature of the space.
+
+It is this curvature in the global frame, due to the presence of a gravitational wave, that causes a measurable phase shift between photons travelling in the arms; hence there is no contradiction.
+
+\begin{framed}
+\textbf{ii.} Let $[t(\lambda),x(\lambda),0,0]$ be the trajectory of a photon travelling along the x-axis, paramatrised by an affine parameter $\lambda$. Show that, along the trajectory, one has
+\begin{equation}
+\frac{dt}{dx}=\pm\left[1+\frac{h_{+}}{2}\exp(-i\Omega t)\right]
+\end{equation}
+to first order in the small dimensionless quantity $h_+$.
+\end{framed}
+
+For a null ray (photon), $ds^2=0$. Also, in general $ds^2=g(d\vec{x},d\vec{x})=g_{\alpha\beta}dx^{\alpha}dx^{\beta}$. Noting that $g_{\alpha \beta}=\eta_{\alpha \beta}+h_{\alpha \beta}$, we find
+
+\begin{align}
+g_{\alpha\beta}dx^{\alpha}dx^{\beta}&=0\\
+g_{00}(dx)^2 + g_{11}(dt)^2&=0\\
+\Rightarrow \left(\frac{dt}{dx}\right)^2 &=-\frac{g_{00}}{g_{11}}
+\intertext{We note the relevant metric components as}
+g_{00} &= -1\\
+g_{11}&= 1+ h_{+}\exp(-i\Omega t)
+\intertext{hence we find}
+\Rightarrow \left(\frac{dt}{dx}\right)^2 &= \left[1+h_+ \exp(-i\Omega t)\right]^{-1}\\
+\Rightarrow \frac{dt}{dx} &= \pm \left[ 1 + h_+ \exp(-i\Omega t)\right]^{-1/2}\\
+&= \pm \left[1+ \frac{h_+}{2}\exp(-i\Omega t)\right]
+\end{align}
+to first order in $h_+$ (we can Taylor expand since $h_+ \ll 1$).
+
+
+\begin{framed}
+\textbf{iii.} Show that the round-trip travel time along the x-axis is
+\begin{equation}
+\Delta t=2L + \frac{h_+}{\Omega}\sin(\Omega L) \exp(-i\Omega L) \label{eq4}
+\end{equation}
+to first order in $h_+$. Identify and justify any approximations you make.
+\end{framed}
+
+Starting from~(\ref{eq4}),
+\begin{equation}
+\frac{dt}{dx}=\left[1+\frac{h_+}{2}\exp(-i\Omega t)\right]
+\end{equation}
+\begin{align}
+\Rightarrow dt~\left[1+\frac{h_+}{2}\exp(-i\Omega t)\right]^{-1}&=dx
+\intertext{Since $h_+ \ll 1$, to first-order in $h_+$ we can expand the brackets of the left-hand side (LHS) so that}
+\int dt~\left[1-\frac{h_+}{2}\exp(-i\Omega t)\right]&=\int dx\\
+\Rightarrow t+\frac{h_+}{2}\frac{1}{i\Omega}\exp(-i\Omega t)&=x+c
+\end{align}
+where $c$ is some constant.
+\begin{align}
+\Rightarrow t&=x+c-\frac{h_+}{2i\Omega}\exp(-i\Omega t)
+\intertext{Using initial conditions $t=0, x=0$ we find}
+c&=\frac{h_+}{2i\Omega}\exp(0)=\frac{h_+}{2i\Omega}\\
+\Rightarrow t&=x+\frac{h_+}{2i\Omega}\left[1-\exp(-i\Omega t)\right]\\
+&=x+\frac{h_+}{\Omega}\frac{1}{2i}\left[\exp\left(\frac{i\Omega t}{2}\right)-\exp\left(\frac{-i\Omega t}{2}\right)
+\right]\exp\left(\frac{-i\Omega t}{2}\right)\\
+&=x+\frac{h_+}{\Omega}\sin\left(\frac{\Omega t}{2}\right)\exp\left(\frac{-i\Omega t}{2}\right)
+\end{align}
+by using the identity $\sin(x)=\frac{1}{2i}\left[e^{x}-e^{-x}\right]$. To zeroth order, the round-trip distance is $x=2L$ and $t=x$; hence $t=2L$. Using these zeroth order approximations, we find
+\begin{equation}
+\Delta t = 2L + \frac{h_+}{\Omega}\sin(\Omega L) \exp(-i\Omega L)
+\end{equation}
+
+
+
+\begin{framed}
+\textbf{iv.} Without repeating the calculation, explain why the wave-induced perturbation to the round-trip travel time along the other arm (i.e. for photons travelling along the y-axis) is equal but opposite to the result in~(\ref{eq4}). Hence the total phase shift observed is given by
+\begin{equation}
+\Delta \phi = 2\omega (\Delta t - 2L) = \frac{2h_+ \omega}{\Omega}\sin(\Omega L)\exp(-i\Omega L),\label{eq5}
+\end{equation}
+where $\omega$ is the photon frequency.
+\end{framed}
+
+The $yy$ component of the perturbation $h_{\mu\nu}$ is proportional to $-h_+$, whereas the $xx$ component is proportional to $h_+$. From this, we can expect
+\begin{equation}
+\frac{dt}{dx}=\pm\left[1-\frac{h_+}{2}\exp(-i\Omega t)\right]
+\end{equation}
+by inspecting the expression for $\frac{dt}{dx}$. Following this, we would expect the round-trip travel time to include $-h_+$ where we have $+h_+$ in the $x$ case;
+\begin{equation}
+\Delta t_{y} = 2L  - \frac{h_+}{\Omega}\sin(\Omega L)\exp(-i\Omega L)
+\end{equation}
+
+
+\begin{framed}
+\textbf{(b)} We now analyse the phase shift using physical optics, i.e. by solving for the electromagnetic fields of the laser in the curved spacetime of the gravitational wave. If we are ``lucky'',  we should get the same answer for $\Delta \phi$!
+\end{framed}
+
+\begin{framed}
+\textbf{i.} The inhomogeneous Maxwell equations (Gauss, Ampere) in vacuum take the exact form
+\begin{equation}
+F^{\mu\nu}_{\ph{\mu\nu},\nu}=0 \label{eq6}
+\end{equation}
+in flat spacetime, where $F_{\mu\nu}=\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}$ is the Faraday tensor, and $A$ is the electromagnetic potential. Argue carefully that, in the curved spacetime of the gravitational wave, equation~(\ref{eq6}) takes the exact form
+\begin{equation}
+F^{\mu\nu}_{\ph{\mu\nu};\nu}=0
+\end{equation}
+and hence that we have
+\begin{equation}
+F^{\mu\nu}_{\ph{\mu\nu},\nu}=-\Gamma^{\mu}_{\ph{\mu}\lambda\nu} F^{\lambda\nu} - \Gamma^{\nu}_{\ph{\nu}\lambda\nu}
+F^{\mu\lambda},\label{eq8}
+\end{equation}
+where $\Gamma^{\mu}_{\lambda\nu}$ is a Christoffel symbol.
+\end{framed}
+
+In flat spacetime, we have $F^{\mu\nu}_{\ph{\mu\nu},\nu}=0$. The LHS of this equation comprises components of the tensor $\nabla F$. However, we know that $F^{\mu\nu}_{\ph{\mu\nu};\nu}$ are also components of the same tensor in arbitrary coordinates! So in these arbitrary coordinates, we know $F^{\mu\nu}_{\ph{\mu\nu};\nu}=0$. 
+
+This is a ``good'' tensor equation; it is true in \underline{all} coordinate systems, so in the curved spacetime of the gravitational wave we have
+
+\begin{equation}
+F^{\mu\nu}_{\ph{\mu\nu};\nu}=0
+\end{equation}
+
+
+\begin{framed}
+\textbf{ii.} Show that~(\ref{eq8}) reduces to
+\begin{equation}
+F^{\mu\nu}_{\ph{\mu\nu},\nu}=0 \label{eq9}
+\end{equation}
+to first order in $h_+$. You may find it useful to apply the identity
+\begin{equation}
+\Gamma^{\nu}_{\ph{\nu}\lambda\nu}=\frac{(\sqrt{-g})_{,\lambda}}{\sqrt{-g}},
+\end{equation}
+where $g$ is the metric determinant, but there are many other valid approaches as well.
+\end{framed}
+
+We shall first set about calculating the second Christoffel term, using the relationship
+\begin{equation}
+\Gamma^{\nu}_{\ph{\nu}\lambda\nu}=\frac{(\sqrt{-g})_{,\lambda}}{\sqrt{-g}}
+\end{equation}
+
+We note that the determinant of a diagonal matrix is simply the product of its diagonal components, so for the matrix
+\begin{equation}
+g_{\alpha\beta}=\diag(-1,1+h_+\exp(iKz-i\Omega t),1-h_+\exp(iKz-i\Omega t),1)
+\end{equation}
+we calculate the metric determinant $g$ as
+\begin{align}
+g&=-\big(1-\left[h_+\exp(iKz-i\Omega t)\right]^2\big)\\
+\Rightarrow \sqrt{-g}&=\sqrt{1-h_+^2\exp(2iKz-2i\Omega t)}\\
+&= 1-\frac{1}{2}h_+^2 \exp(2iKz - 2i\Omega t)\\
+&=1
+\end{align}
+to first-order in $h_+$
+
+So now we can calculate $\Gamma^{\nu}_{\ph{\nu}\lambda\nu}$. Observing that $\sqrt{-g}$ is a constant, we immediately find
+\begin{equation}
+\Gamma^{\nu}_{\ph{\nu}\lambda\nu}=0\label{sqrt g}
+\end{equation}
+for all $\lambda$.
+
+Now we consider the first term of~(\ref{eq8}), given as $\Gamma^{\mu}_{\ph{\mu}\lambda\nu} F^{\lambda\nu}$. From the definition of $F^{\mu\nu}$, we can see that it is antisymmetric.
+\begin{align}
+F^{\mu\nu}&=\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu}\\
+F^{\nu\mu}&=\partial^{\nu}A^{\mu}-\partial^{\mu}A^{\nu}\\
+&=-\left(\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu}\right)\\
+\Rightarrow F^{\nu\mu}&=-F^{\mu\nu}
+\end{align}
+
+If $\Gamma^{\mu}_{\ph{\mu}\lambda\nu}$ is symmetric in  $\lambda,\nu$ (that is, $\Gamma^{\mu}_{\ph{\mu}\lambda\nu}
+=\Gamma^{\mu}_{\ph{\mu}\nu\lambda}$), then $\Gamma^{\mu}_{\ph{\mu}\lambda\nu}F^{\lambda\nu}$ will be zero, since
+\begin{align}
+\Gamma^{\mu}_{\ph{\mu}\lambda\nu}F^{\lambda\nu}&=-\Gamma^{\mu}_{\ph{\mu}\nu\lambda}F^{\nu\lambda}\\
+&=-\Gamma^{\mu}_{\ph{\mu}\lambda\nu}F^{\lambda\nu}
+\intertext{under relabelling,}
+\Rightarrow \Gamma^{\mu}_{\ph{\mu}\lambda\nu}F^{\lambda\nu}&=0\label{symm}
+\end{align}
+
+We will show that $\Gamma^{\mu}_{\ph{\mu}\lambda\nu}$ is indeed symmetric in $\lambda,\nu$.
+
+The non-zero components of the metric $g^{\alpha\beta}$ are
+\begin{align}
+g^{00}&=-1\\
+g^{11}&=1+h_+\exp(iKz-i\Omega t)\\
+g^{22}&=1-h_+\exp(iKz-i\Omega t)\\
+g^{33}&=1
+\end{align}
+
+From above, we see that the only non-zero terms $g_{\alpha\beta,\mu}$ are
+\begin{align}
+g_{11,0}&=-i\Omega h_+ \exp(iKz-i\Omega t)\label{g1}\\
+g_{11,3}&=i K h_+ \exp(iKz-i\Omega t)\\
+g_{22,0}&=i \Omega h_+ \exp(iKz-i\Omega t)\\
+g_{22,3}&=-i K h_+ \exp(iKz-i\Omega t)\label{g4}
+\end{align}
+
+The components of $\Gamma^{\mu}_{\ph{\mu}\lambda\nu}$ can be calculated as
+\begin{align}
+\Gamma^{\mu}_{\ph{\mu}\lambda\nu}&=\frac{1}{2}g^{\mu\alpha}\left(g_{\alpha\lambda,\nu}
++g_{\alpha\nu,\lambda}-g_{\lambda\nu,\alpha}\right)\\
+&=\frac{1}{2}\left[g^{\mu 0}\left(\cancel{g_{0\lambda,\nu}}+\cancel{g_{0\nu,\lambda}}-g_{\lambda\nu,0}\right)
++g^{\mu 1}\left(g_{1\lambda,\nu}+g_{1\nu,\lambda}-\cancel{g_{\lambda\nu,1}}\right)
++g^{\mu 2}\left(g_{2\lambda,\nu}+g_{2\nu,\lambda}-\cancel{g_{\lambda\nu,2}}\right)\right.\nonumber\\
+&\qquad\left. +g^{\mu 3}\left(\cancel{g_{3\lambda,\nu}}+\cancel{g_{3\nu,\lambda}}-g_{\lambda\nu,3}\right)\right]\\
+&=\frac{1}{2}\left[-g^{\mu 0}g_{\lambda\nu,0}+g^{\mu 1}\left(g_{1\lambda,\nu}+g_{1\nu,\lambda}\right)
++g^{\mu 2}\left(g_{2\lambda,\nu}+g_{2\nu,\lambda}\right)-g^{\mu 3}g_{\lambda\nu,3}\right]\label{chris}\\
+\Gamma^{0}_{\ph{0}\lambda\nu}&=-\frac{1}{2}g^{00}g_{\lambda\nu,0}\\
+&=\frac{1}{2}g_{\lambda\nu,0}
+\intertext{From~(\ref{g1})-(\ref{g4}) we see that $g_{\lambda\nu,0}$ is symmetric in $\lambda,\nu$. Hence $\Gamma^{0}_{\ph{0}\lambda\nu}$ is symmetric in $\lambda,\nu$. Similarly for $\Gamma^{3}_{\ph{3}\lambda\nu}$,}
+\Gamma^{3}_{\ph{3}\lambda\nu}&=-\frac{1}{2}g^{33}g_{\lambda\nu,3}\\
+&=\frac{1}{2}g_{\lambda\nu,3}
+\intertext{From~(\ref{g1})-(\ref{g4}) we see that $g_{\lambda\nu,3}$ is symmetric in $\lambda,\nu$, so that $\Gamma^{3}_{\ph{3}\lambda\nu}$ is symmetric in $\lambda,\nu$.}
+\Gamma^{1}_{\ph{1}\lambda\nu}&=\frac{1}{2}\g^{11}\left(g_{1\lambda,\nu}+g_{1\nu,\lambda}\right)
+\intertext{We see the only non-zero $\Gamma^{1}_{\ph{1}\lambda\nu}$ terms are $\Gamma^{1}_{\ph{1}10},\Gamma^{1}_{\ph{1}01},\Gamma^{1}_{\ph{1}31},\Gamma^{1}_{\ph{1}13}$.}
+\Gamma^{1}_{\ph{1}10}&=\frac{1}{2}g^{11}g_{11,0}\\
+\Gamma^{1}_{\ph{1}01}&=\frac{1}{2}g^{11}g_{11,0}=\Gamma^{1}_{\ph{1}10}\\
+\Gamma^{1}_{\ph{1}13}&=\frac{1}{2}g^{11}g_{11,3}\\
+\Gamma^{1}_{\ph{1}31}&=\frac{1}{2}g^{11}g_{11,3}=\Gamma^{1}_{\ph{1}13}
+\intertext{Hence  $\Gamma^{1}_{\ph{1}\lambda\nu}$ is symmetric in $\lambda,\nu$. Similarly for $\Gamma^{2}_{\ph{2}\lambda\nu}$,}
+\Gamma^{2}_{\ph{2}\lambda\nu}&=\frac{2}{2}\g^{22}\left(g_{2\lambda,\nu}+g_{2\nu,\lambda}\right)
+\intertext{We see the only non-zero $\Gamma^{2}_{\ph{2}\lambda\nu}$ terms are $\Gamma^{2}_{\ph{2}20},\Gamma^{2}_{\ph{2}02},\Gamma^{2}_{\ph{2}32},\Gamma^{2}_{\ph{2}23}$.}
+\Gamma^{2}_{\ph{2}20}&=\frac{2}{2}g^{22}g_{22,0}\\
+\Gamma^{2}_{\ph{2}02}&=\frac{2}{2}g^{22}g_{22,0}=\Gamma^{2}_{\ph{2}20}\\
+\Gamma^{2}_{\ph{2}23}&=\frac{2}{2}g^{22}g_{22,3}\\
+\Gamma^{2}_{\ph{2}32}&=\frac{2}{2}g^{22}g_{22,3}=\Gamma^{2}_{\ph{2}23}
+\end{align}
+Hence  $\Gamma^{2}_{\ph{2}\lambda\nu}$ is symmetric in $\lambda,\nu$. Thus we have shown that $\Gamma^{\mu}_{\ph{\mu}\lambda\nu}$ is symmetric in $\lambda,\nu$. Combining this result with~(\ref{symm}) and~(\ref{sqrt g}), we conclude that
+\begin{equation}
+F^{\mu\nu}_{\ph{\mu\nu},\nu}=0 \label{eq9}
+\end{equation}
+to first order in $h_+$, as required!
+
+
+\begin{framed}
+\textbf{iii.} In flat space, equation~(\ref{eq9})) reduces to $\hat{D}A^\mu$ in the electromagnetic Lorenz gauge, where $\hat{D}=\eta^{\alpha\beta}\partial_{\alpha}\partial_{\beta}$ symbolises the d'Alembertian (wave) operator. In the curved space of the gravitational wave, show that~(\ref{eq9}) reduces to
+\begin{equation}
+\hat{D}A^{\mu}=-h^{\mu\alpha}_{\ph{\mu\alpha},\nu}F_{\alpha}^{\ph{\alpha}\nu}-h^{\nu\alpha}_{\ph{\nu\alpha},\nu}
+F^{\mu}_{\ph{\mu}\alpha}+h^{\mu\alpha} F_{\alpha\nu}^{\ph{\alpha\nu},\nu}+h^{\nu\alpha} F^{\mu}_{\ph{\mu}\alpha,\nu}\label{eq11}
+\end{equation}
+up to first order in $h_+$, where all indices are raised and lowered with the Minkowski metric in~(\ref{eq11}) and henceforth.
+\end{framed}
+
+Beginning with~(\ref{eq9}), we have
+\begin{align}
+0&=\left(F^{\mu\nu}_{\ph{\mu\nu},\nu}\right)_{,\nu}\\
+&=\left(g^{\alpha\mu}g^{\beta\nu}F_{\alpha\beta}\right)_{,\nu}\\
+&=\left[\left(\eta^{\alpha\mu}\eta^{\beta\nu}+\eta^{\alpha\mu}h^{\beta\nu}+\eta^{\beta\nu}h^{\alpha\mu}
++\cancel{h^{\alpha\mu}h^{\beta\nu}}\right)F_{\alpha\beta}\right]_{,\nu}
+\intertext{where we can cancel the $h^2$ term as we are only considering first-order in $h_+$.}
+\Rightarrow 0&=\left[\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu}+h^{\beta\nu}\left(\partial^{\mu}A_{\beta}
+-\partial_{\beta}A^\mu\right) +h^{\alpha\mu}\left(\partial_\alpha A^\nu - \partial^\nu A_\alpha\right)\right]_{,\nu}\\
+&=\cancel{\partial_\nu \partial^\mu A^\nu} - 
+\underbrace{\partial_\nu \partial^\nu A^\mu}_{\mathclap{=\hat{D}A^\mu}}
++h^{\beta\nu}_{\ph{\beta\nu},\nu}\left(\partial^\mu A_{\beta} - \partial_\beta A^\mu\right)
++h^{\beta\nu}\partial_\nu \left(\partial^\nu A_\beta - \partial_\beta A^\mu \right)\nonumber\\
+&\qquad + h^{\alpha\mu}_{\ph{\alpha\mu},\nu}\left(\partial_{\alpha} A^\nu - \partial^\nu A_\alpha\right)
++h^{\alpha\mu}\partial_{\nu}\left(\partial_\alpha A^\nu - \partial^\nu A_\alpha\right)\\
+\Rightarrow \hat{D}A^\mu&=
+-h^{\beta\nu}_{\ph{\beta\nu},\nu}\left(\partial_\beta A^\mu - \partial^\mu A_{\beta}\right)
+-h^{\alpha\mu}_{\ph{\alpha\mu},\nu}\left(\partial^\nu A_\alpha - \partial_{\alpha} A^\nu \right)
++h^{\beta\nu}\partial_\nu \left(\partial^\mu A_\beta - \partial_\beta A^\mu \right)
++h^{\alpha\mu}\partial_{\nu}\left(\partial_\alpha A^\nu - \partial^\nu A_\alpha\right)\\
+&=-h^{\beta\nu}_{\ph{\beta\nu},\nu}F^{\mu}_{\ph{\mu}\beta}-h^{\alpha\mu}_{\ph{\alpha\mu},\nu}
+F_{\alpha}^{\ph{\alpha}\nu}+h^{\beta\nu}F^{\mu}_{\ph{\mu}\beta,\nu}
++h^{\alpha\mu}F_{\alpha,\nu}^{\ph{\alpha,\nu}\nu}
+\intertext{Following some rearrangement and relabelling, this becomes}
+\hat{D}A^{\mu}&=-h^{\mu\alpha}_{\ph{\mu\alpha},\nu}F_{\alpha}^{\ph{\alpha}\nu}-h^{\nu\alpha}_{\ph{\nu\alpha},\nu}
+F^{\mu}_{\ph{\mu}\alpha}+h^{\mu\alpha} F_{\alpha,\nu}^{\ph{\alpha\nu}\nu}+h^{\nu\alpha} F^{\mu}_{\ph{\mu}\alpha,\nu}
+\end{align}
+which is (more-or-less) as required!
+
+\begin{framed}
+\textbf{(c)} Consider a classical laser field propagating along the $x$-axis and polarised linearly along the $z$-axis, i.e. $\vec{A}=A^3 (t,x) \vec{e}_3$.
+\end{framed}
+
+\begin{framed}
+\textbf{i.} Show that equation~(\ref{eq11}) reduces to
+\begin{equation}
+\left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)A^3 = -h_+ \exp(-i\Omega t) \frac{\partial^2 A^3}{\partial x^2}.\label{eq12}
+\end{equation}
+\end{framed}
+
+Since we have
+\begin{equation}
+\vec{A}=A^3(t,x)\vec{e}_3 = (0,0,0,A)
+\end{equation}
+we see immediately that
+\begin{equation}
+\hat{D}A^\mu = 0\quad\text{for all }\mu\neq 3
+\end{equation}
+Combining this result with~(\ref{eq11}) we have
+\begin{align}
+\hat{D}A^3&=-\underbrace{h^{3\alpha}_{\ph{3\alpha},\nu}}_{=0}F_{\alpha}^{\ph{\alpha}\nu}-h^{\nu\alpha}_{\ph{\nu\alpha},\nu}
+F^{3}_{\ph{3}\alpha}+\underbrace{h^{3\alpha}}_{=0}F_{\alpha\nu}^{\ph{\alpha\nu},\nu}
++h^{\nu\alpha}F^{3}_{\ph{3}\alpha,\nu}
+\intertext{recalling that $h^{3\alpha}=h^{\alpha 3}=0$.}
+\Rightarrow \hat{D}A^3&= -h^{\nu\alpha}_{\ph{\nu\alpha},\nu}F^{3}_{\ph{3}\alpha}
++h^{\nu\alpha}F^{3}_{\ph{3}\alpha,\nu}
+\end{align}
+
+We will now consider the LHS.
+\begin{equation}
+\hat{D}A^3(t,x)=\eta^{\alpha\beta}\partial_{\alpha}\partial_{\beta}A^3
+\end{equation}
+Since $A^3$ is a function of only $t$ and $x$, terms including $\partial_2$ and $\partial_3$ will be zero.
+\begin{equation}
+\hat{D}A^3=\eta^{00}\partial_{00}A^3 + \eta^{01}\partial_{01}A^3 + \eta^{10}\partial_{10}A^3
++\eta^{11}\partial_{11}A^3
+\end{equation}
+However we recall the components of the Minkowski metric,
+\begin{align}
+\eta^{00}&=-1\\
+\eta^{11}&=1\\
+\eta^{01}&=0\\
+\eta^{10}&=0
+\end{align}
+so that the LHS becomes
+\begin{equation}
+\text{LHS}=-\partial_{00}A^3 + \partial_{11}A^3 = -\frac{\partial^2}{\partial t^2}A^3 + \frac{\partial^2}{\partial x^2}A^3
+=\left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)A^3
+\end{equation}
+
+We consider now the right-hand side (RHS),
+\begin{equation}
+\text{RHS}=-h^{\nu\alpha}_{\ph{\nu\alpha},\nu}F^{3}_{\ph{3}\alpha}
++h^{\nu\alpha}F^{3}_{\ph{3}\alpha,\nu}
+\end{equation}
+Noting that the only non-zero components of $h^{\alpha\beta}$ are $h^{11}$ and $h^{22}$, we have
+\begin{equation}
+\text{RHS}=-h^{11}_{\ph{11},1}F^{3}_{\ph{3}1}-h^{22}_{2}F^3_{\ph{3}2}+h^{11}F^{3}_{\ph{3}1,1}
++h^{22}F^{3}_{\ph{3}2,2}
+\end{equation}
+
+Now calculating each of the terms,
+\begin{align}
+h^{11}_{\ph{11},1}&=\frac{\partial}{\partial x}\left[h_+\exp(iKz-i\Omega t)\right]=0\\
+h^{22}_{\ph{22},2}&=\frac{\partial}{\partial y}\left[-h_+\exp(iKz - i\Omega t)\right]=0\\
+F^{3}_{\ph{3}1,1}&=\partial_{1}\left(\cancel{\partial^3 A_1} - \partial_1 A^3\right)
+=-\frac{\partial}{\partial x}\left(\frac{\partial}{\partial x}A^3\right)=-\frac{\partial^2 A^3}{\partial x^2}\\
+F^{3}_{\ph{3}2,2}&=\partial_{2}\left(\cancel{\partial^3 A_2} - \cancel{\partial_2 A^3}\right)=0
+\end{align}
+Hence we conclude for the RHS,
+\begin{equation}
+\text{RHS}=-h^{11}\frac{\partial^2}{\partial x^2}A^3 = -h_+\exp(-i\Omega t) \frac{\partial^2 A^3}{\partial x^2}
+\end{equation}
+
+So we have proven that~(\ref{eq11}) reduces to
+\begin{equation}
+\left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)A^3 = -h_+ \exp(-i\Omega t) \frac{\partial^2 A^3}{\partial x^2}\label{a3 de}
+\end{equation}
+as required!
+
+\begin{framed}
+\textbf{ii.} By inspecting the mathematical form of~(\ref{eq12}) and noting that $h_+$ is small, explain why the laser field can be written approximately as a zeroth-order carrier wave emitted by the laser (constant amplitude $A_{\text{in}}$, frequency $\omega$, wavenumber $k$) plus a first-order correction generated by the interaction with the gravitational wave (slowly varying amplitude $A_{\text{out}}$, frequency $\omega+\Omega$, wavenumber $k$), viz.
+\begin{equation}
+A^3 = A_{\text{in}}\exp(-i\omega t + ikx) + A_{\text{out}}(t)\exp[-i(\omega + \Omega)t + ikx]. \label{eq13}
+\end{equation}
+\end{framed}
+
+Taking~(\ref{a3 de}) to zeroth-order in $h_+$, we find the differential equation for $A^3$,
+\begin{align}
+\left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)A^3&=0\\
+\Rightarrow \frac{\partial ^2 A^3}{\partial t^2}&=\frac{\partial^2 A^3}{\partial x^2}
+\end{align}
+
+The solution gives us $A^3$ in the form
+\begin{equation}
+A^3 = c_1 \exp(c_2 t + c_3 x)
+\end{equation}
+for constants $c_1, c_2, c_3$, where we necessarily require
+\begin{equation}
+c_2^2 = c_3^2.
+\end{equation}
+Since we have $\omega = k$, we take
+\begin{align}
+c_2^2&= -\omega ^2\\
+\Rightarrow c_2 & = -i\omega
+\intertext{where the negative sign is by convention.}
+c_3^2&= -k^2\\
+\Rightarrow c_3&=ik
+\end{align}
+where again, we choose the sign by convention. We also redefine the constant $c_1$ as
+\begin{equation}
+c_1 \equiv A_{\text{in}}
+\end{equation}
+where $A_{\text{in}}$ is the constant amplitude of the laser.
+
+For the first-order correction, we begin by positing that $A^3$ has the form
+\begin{equation}
+A^3 = A_{\text{in}}\exp(-i\omega t + ikx)+f(t,x)\exp(-i\omega t + ikx)\label{a3 form}
+\end{equation}
+Substituting this into~(\ref{eq12}), and recalling $\left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)A_{\text{in}}\exp(-i\omega t + ikx)=0$, we have
+\begin{equation}
+\left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)f(t,x)\exp(-i\omega t + ikx)
+=-h_+\exp(-i\Omega t)\frac{\partial^2}{\partial x^2}\left[A_{\text{in}}\exp(-i\omega t + ikx) + f(t,x)\exp(-i\omega t + ikx)\right]
+\end{equation}
+We assume that $f(t,x)$ has some dependence on $h_+$, so that to first order in $h_+$ we have
+\begin{equation}
+\left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)f(t,x)\exp(-i\omega t + ikx)
+=-h_+\exp(-i\Omega t)\frac{\partial^2}{\partial x^2}\left[A_{\text{in}}\exp(-i\omega t + ikx)\right]
+\end{equation}
+\begin{equation}
+\Rightarrow \left[-\frac{\partial^2 f}{\partial t^2}-\cancel{f(t,x)\times-\omega^2}+\frac{\partial^2 f}{\partial x^2}
++\cancel{f(t,x)\times -k^2}\right]\cancel{\exp(-i\omega t + ikx)}=h_+ k^2 \exp(-i\Omega t)A_{\text{in}}
+\cancel{\exp(-i\omega t + ikx)}
+\end{equation}
+where we recall $\omega = k$.
+\begin{equation}
+\Rightarrow \left(-\frac{\partial^2}{\partial t^2}+\frac{\partial^2}{\partial x^2}\right)f(t,x)=h_+ k^2
+\exp(-i\Omega t) A_{\text{in}}
+\end{equation}
+Since there is no $x$ dependence in the RHS, we will say that $f(t,x)=f(t)$, i.e. there is no $x$-dependence in $f$.
+\begin{align}
+\Rightarrow -\frac{\partial^2 f}{\partial t^2}&=-h_+ k^2 \exp(-i\Omega t)A_{\text{in}}\\
+\frac{\partial f}{\partial t}&=\frac{1}{i\Omega}h_+ k^2 \exp(-i\Omega t)A_{\text{in}}+d_1\\
+f(t)&=\frac{1}{\Omega^2}h_+k^2 \exp(-i\Omega t)A_{\text{in}}+d_1 t\\
+\Rightarrow f(t)&=\exp(-i\Omega t)\left[\frac{1}{\Omega ^2}h_+ k^2 A_{\text{in}}+d_1 t \exp(i\Omega t)\right]
+\end{align}
+where $d_1$ is some constant. Hence we conclude,
+\begin{equation}
+f(t)=A_{\text{out}}(t)\exp(-i\Omega t)
+\end{equation}
+where $A_{\text{out}}$ is some time-varying amplitude. Finally, combining this with~(\ref{a3 form}) we can write $A^3$ in the form of a zeroth-order carrier wave plus a first-order correction as
+\begin{equation}
+A^3 = A_{\text{in}}\exp(-i\omega t + ikx) + A_{\text{out}}(t)\exp[-i(\omega + \Omega)t + ikx]
+\end{equation}
+as required!
+
+
+\begin{framed}
+\textbf{iii.} Use~(\ref{eq12}),~(\ref{eq13}), and the fact that $A_{\text{out}}(t)$ varies slowly ($\Omega \ll \omega$) to obtain
+\begin{equation}
+\frac{dA_{\text{out}}}{dt} - i\Omega A_{\text{out}} = -\frac{i h_+ k A_{\text{in}}}{2}.\label{eq14}
+\end{equation}
+\end{framed}
+
+We begin by calculating $\dfrac{\partial^3 A^3}{\partial^2 t}$ and $\dfrac{\partial^3 A^3}{\partial^2 x}$ (note we will take $\frac{\partial}{\partial x^\mu}=\frac{d}{dx^{\mu}}$ throughout).
+
+\begin{align}
+\frac{\partial A^3}{\partial x}&=\left[ik\ai + ik\ao \exp(-i\Omega t)\right]\exp(i\omega t + ikx)\\
+\frac{\partial^2 A^3}{\partial x^2}&=-k^2\left[\ai+\ao\exp(-i\Omega t)\right]\exp(i\omega t + ikx) \label{d2Adx2}\\
+\frac{\partial A^3}{\partial t}&=\left[-\omega\exp(-i\omega t) -i(\omega + \Omega)\ao\exp(-i(\omega+\Omega)t)
++\frac{d\ao}{dt}\exp(-i(\omega+\Omega)t)\right]\exp(ikx) \\
+\frac{\partial ^2A^3}{\partial x^2}&=\left[-\omega^2\ai-\left((\omega+\Omega)^2\ao+2i(\omega+\Omega)
+\frac{d\ao}{dt}\right.\right.\nonumber\\
+&\qquad \left.\left. -\cancel{\frac{d^2\ao}{dt^2}}\exp(-i(\omega+\Omega)t)\right)\exp(-i\Omega t)\right]
+\exp(-i\omega t + ikx)\label{d2Adt2}
+\end{align}
+Since $\ao$ varies slowly we take $\frac{d^2\ao}{dt^2} \to 0$.
+
+We can rewrite~(\ref{eq12}) as
+\begin{equation}
+\frac{d^2 A^3}{dt^2}=\big(1+h_+\exp(-i \Omega t)\big)\frac{d^2 A^3}{dx^2} \label{dt and dx A}
+\end{equation}
+
+Substituting~(\ref{d2Adx2}) and~(\ref{d2Adt2}) into~(\ref{dt and dx A}) we have
+\begin{align}
+&\omega^2\ai+\left((\omega+\Omega)^2\ao+2i(\omega+\Omega)
+\frac{d\ao}{dt}\right)\exp(-i\Omega t)\\
+&\quad=k^2\left[1+h_+\exp(-i\Omega t)\right]\left[\ai+\ao\exp(-i\Omega t)\right]\\
+&=k^2\left[\ai + \ao\exp(-i\Omega t)+h_+\ai \exp(-i\Omega t)+ h_+\ao \exp(-2i\Omega t)\right]
+\end{align}
+Multiplying both sides by $\exp(i\Omega t)$,
+\begin{align}
+\cancel{\omega^2\ai\exp(i\Omega t)}+(\omega + \Omega)^2\ao + 2i(\omega+\Omega)\frac{d\ao}{dt}
+&=\cancel{k^2\ai\exp(i\Omega t)}+k^2\ao + h_+ k^2\ai + k^2 h_+\ao \exp(-i\Omega t)
+\end{align}
+where we recall $k=\omega$ to cancel some terms above. We shall interchange $k$ and $\omega$ in what follows where convenient.
+
+\begin{align}
+h_+ k^2\ai&=
+(\omega+\Omega)^2\ao - k^2\ao - k^2h_+\ao \exp(-i\Omega t)+2i(\omega + \Omega)\frac{d\ao}{dt}\\
+&=\omega^2\underbrace{\left(1+\frac{\Omega}{\omega}\right)^2}_{\mathclap{\approx 1+\frac{2\Omega}{\omega}}}\ao-\omega^2 \ao -k^2h_+ \ao \exp(-i\Omega t)+2i\omega\underbrace{\left(1+\frac{\Omega}{\omega}\right)}_{\approx 1}\frac{d\ao}{dt}\\
+&=\cancel{\omega^2\ao}+2\omega\Omega \ao -\cancel{k^2\ao}- k^2 h_+\ao\exp(-i\Omega t) 
++ 2i\omega\frac{d\ao}{dt}
+\end{align}
+Multiplying both sides by $-i$,
+\begin{align}
+-h_+ k^2 \ai&=2\omega \frac{d\ao}{dt}-2i\omega\Omega \ao + ik^2 h_+ \ao \exp(i\Omega t)
+\intertext{Now dividing both sides by $2\omega$,}
+-\frac{ih_+k^2}{2\omega}\ai&=\frac{d\ao}{dt}-i\Omega \ao+\frac{ih_+ k^2}{2\omega}\ao\exp(-i\Omega t)\\
+\Rightarrow -\frac{ih_+k}{2}\ai&=\frac{d\ao}{dt}-i\Omega \ao+\frac{ih_+ k}{2}\ao\exp(-i\Omega t)
+\end{align}
+Finally, taking the $\frac{ih_+ k}{2}\ao\exp(-i\Omega t)$ term as negligible, we conclude
+\begin{equation}
+\frac{dA_{\text{out}}}{dt} - i\Omega A_{\text{out}} = -\frac{i h_+ k A_{\text{in}}}{2}
+\end{equation}
+as required!
+
+
+
+\begin{framed}
+\textbf{iv.} Equation~(\ref{eq14}) has the simple solution (you don't need to prove this)
+\begin{equation}
+A_{\text{out}}(t) = -\frac{h_+ k A_{\text{in}}}{2\Omega}[\exp(i\Omega t) - 1]\label{eq15}
+\end{equation}
+for the initial condition $A_{\text{out}}=0$ at $t=0$. By writing out the laser field after one round-trip time in the approximate form $A^3 = A_{\text{in}}\exp(-i\omega t + ikx - i\phi)$, show that~(\ref{eq15}) introduces a phase correction
+\begin{equation}
+\phi = \frac{h_+ \omega}{\Omega}\sin(\Omega L) \exp(-i \Omega L) \label{eq16}
+\end{equation}
+The result~(\ref{eq16}) applies to one arm of the interferometer ($x$-axis). The phase correction in the second arm is equal but opposite. Hence the total phase difference between the arms is twice~(\ref{eq16}), which is exactly the same as the ray optics result~(\ref{eq5})!
+\end{framed}
+
+Starting from~(\ref{eq13}) then substituting in~(\ref{eq15}), we have
+\begin{align}
+A^3 &=\ai\exp(-i\omega t + ikx)+\ao\exp(-i\Omega t)\exp(-i\omega t + ikx)\\
+&=\ai\exp(-i\omega t + ikx)\left[1-\frac{h_+k}{2\Omega}\left(\exp(i\Omega t)-1\right)\exp(-i\Omega t)\right]\\
+&=\ai\exp(-i\omega t + ikx)\left[1-\frac{h_+k}{2\Omega}\left(1-\exp(-i\Omega t)\right)\right]
+\end{align}
+
+Comparing this with the approximate form of $A^3$ in terms of phase shift $\phi$,
+\begin{equation}
+A^3 = \ai\exp(-i\omega t + ikx -i\phi)
+\end{equation}
+we have
+\begin{equation}
+\exp(-i\phi)=1-\frac{h_+k}{2\Omega}\left[1-\exp(-i\Omega t)\right]
+\end{equation}
+
+For small $\phi$, we see
+\begin{equation}
+\exp(-i\phi)=\cos(\phi)-i\sin(\phi)\approx 1-i\phi
+\end{equation}
+Hence we can find $\phi$ as
+\begin{align}
+1-i\phi &= 1-\frac{h_+k}{2\Omega}\left[1-\exp(-i\Omega t)\right]\\
+\Rightarrow \phi &= \frac{h_+k}{2}\frac{1}{2i}\left[\exp\left(\frac{i\Omega t}{2}\right)
+-\exp\left(-\frac{i\Omega t}{2}\right)\right]\exp\left(-\frac{i\Omega t}{2}\right)\\
+&=\frac{h_+k}{\Omega}\sin\left(\frac{\Omega t}{2}\right)\exp\left(-\frac{i\Omega t}{2}\right)\\
+&=\frac{h_+\omega}{\Omega}\sin\left(\frac{\Omega t}{2}\right)\exp\left(-\frac{i\Omega t}{2}\right)
+\end{align}
+
+As we argued in (a) iv., we have $t\approx 2L$ so that we calculate the phase correction,
+\begin{equation}
+\phi = \frac{h_+ \omega}{\Omega}\sin(\Omega L) \exp(-i \Omega L)
+\end{equation}
+as required!
+
+\end{document}
+
+
